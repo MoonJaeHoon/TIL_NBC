@@ -23,8 +23,7 @@
 
 2) `array`의 원소들은 다음과 같이 각각 메모리의 크기가 일정하기 때문에 데이터를 저장하는 공간 활용에 이점이 있다.
 
-![image-20210125112633760](../../../../../AppData/Roaming/Typora/typora-user-images/image-20210125112633760.png)
-
+<img src="NumpyArray_vs_List.assets/image-20210130060813184.png" alt="image-20210130060813184" style="zoom:80%;" />
 
 
 
@@ -101,18 +100,10 @@
 
 ## 유용한 함수들
 
-np.zeros
-
+> np.zeros
 np.ones(shape=(m,n), dtype=np.int8)
-
 np.empty(shape=(m,n), dtype=np.int8)
-
-
-
 np.zeros_like(array)
-
 np.ones_like(array)
-
 np.empty_like(array)
-
 기존 ndarray의 shape만큼 1,0 또는 empty array를 반환
