@@ -1,0 +1,13 @@
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+*.pdf
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+*/.vscode/settings.json
+
+# Local History for Visual Studio Code
+.history/
