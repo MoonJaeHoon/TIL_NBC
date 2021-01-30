@@ -1,5 +1,6 @@
 ## 1. 무어펜로즈 역행렬의 정의
 
+
 $$
 A^+ = (A^TA)^{-1}A^T \\\\ where\ A\ is\ n\times m\ matrix\ (n\ge m)\\\\
 \\\\

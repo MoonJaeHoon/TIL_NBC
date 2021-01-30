@@ -1,4 +1,4 @@
-# 경사하강법
+# 경사하강법 기본
 
 ## 1. Introduction
 
@@ -18,7 +18,7 @@ ex)
 > $$
 
 
-
+- 미분해주는 파이썬의 라이브러리도 있음 (`sym`)
 ```python
 import sympy as sym
 from sympy.abc import x
@@ -44,11 +44,9 @@ Poly(2*x + 2, x, domain='ZZ')
 - 이처럼 미분값을 더하는 것을 경사상승법이라 하며 함수의 극대값의 위치를 구할 때 사용한다.
 - 목표함수를 최대화시킬 때 사용
 
-![image-20210126102302517](../../../../AppData/Roaming/Typora/typora-user-images/image-20210126102302517.png)
+![image-20210130144133386](0126_Gradient Descent(1).assets/image-20210130144133386.png)
 
-
-
-![image-20210126101533592](../../../../AppData/Roaming/Typora/typora-user-images/image-20210126101533592.png)
+![image-20210130144215022](0126_Gradient Descent(1).assets/image-20210130144215022.png)
 
 
 
@@ -59,33 +57,36 @@ Poly(2*x + 2, x, domain='ZZ')
 - 이처럼 미분값을 빼는 것을 경사하강법이라 하며 함수의 극소값의 위치를 구할 때 사용한다.
 - 목표함수를 최소화시킬 때
 
-![image-20210126102237670](../../../../AppData/Roaming/Typora/typora-user-images/image-20210126102237670.png)
+![image-20210130144238634](0126_Gradient Descent(1).assets/image-20210130144238634.png)
 
-
-
-![image-20210126101451401](../../../../AppData/Roaming/Typora/typora-user-images/image-20210126101451401.png)
+![image-20210130144252081](0126_Gradient Descent(1).assets/image-20210130144252081.png)
 
 
 
 ## 3. 변수가 벡터일 때의 미분
 
-- 벡터가 입력인 다변수 함수의 경우, 편미분(partial differentiation)을 사용한다.
+- 다차원의 변수가 입력으로 들어오는 경우 이동할 때 굉장히 많은 방향으로 설정을 해볼 수가 있다.
+- 따라서 이렇게 벡터가 입력인 다변수 함수의 경우, `편미분(partial differentiation)`을 사용한다.
 
-
+> **편도함수의 정의**
 
 > $$
 > {\partial}_{x_i}
-> f(x) = lim_{h→0}\frac{f(x+he_i)-f(x)}{h}
+> f(x) = lim_{h→0}\frac{f(x+he_i)-f(x)}{h}\\\\
+> where\ e_i = (0,0,...1,...0) (1\ \ \ is\ \ \ i-th\ \ element)
 > $$
 
 ex)
+
+
 
 > $$
 > f(x,y) = x^2+2xy+3 + cos(x+2y)
 > $$
 
 > $$
-> f'(x) = 2x+2y-sin(x+2y)
+> {\partial}_{x_i}
+> f(x)=f'(x) = 2x+2y-sin(x+2y)
 > $$
 
 
@@ -105,7 +106,8 @@ sym.diff(sym.poly(x**2+2*x*y+3)+sym.cos(x+2*y),x)
 
 
 
-- 각 변수 별로 편미분을 계산한 그레디언트 벡터를 이용하여 경사하강/경사상승법에 사용하는 것이다.
+- 수식적으로는 각 변수 별로 편미분을 계산한 **그레디언트 벡터**를 이용하여 `경사하강/경사상승법`에 사용합니다.
+- 이렇게 앞서 사용했던 미분값인 `f'(x)` 대신 **그레디언트 벡터**를 사용하면, `변수 x=(x1,...xd)`를 동시에 업데이트가 가능하게 되는 것입니다.
 
 $$
 {\nabla}f = ({\partial}_{x_1}f,{\partial}_{x_2}f, ... ,{\partial}_{x_d}f )
@@ -115,17 +117,23 @@ $$
 where\ \ {\partial}_{x_i}f \ = \ \ lim_{h→0}\frac{f(x+he_i)-f(x)}{h}
 $$
 
-- 기하학적 의미
 
+
+**기하학적 의미**
 $$
--{\nabla}f는\ 각\ 점에서\ 가장\ 빨리\ 감소하게\ 되는\\ 방향을\ 나타내는\ 것입니다.
+결국,\ 그레디언트 벡터 \ -{\nabla}f는\ \ 각\ \ 점에서\ 가장\ 빨리\ 감소하게\ 되는\\ 방향을\ 나타내는\ 것입니다.
 $$
 
 
 
-<img src="../../../../AppData/Roaming/Typora/typora-user-images/image-20210126115114135.png" alt="image-20210126115114135" style="zoom:80%;" />
+![image-20210130144334827](0126_Gradient Descent(1).assets/image-20210130144334827.png)
 
 
 
-
+> **잠시만, 왜 가장 빨리 감소하게 되는 부분인건데?**
+>
+> - ㅇ
+> - ㅇ
+>
+> `출처 : https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives/gradient-and-directional-derivatives/v/why-the-gradient-is-the-direction-of-steepest-ascent`
 
