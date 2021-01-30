@@ -44,9 +44,11 @@ Poly(2*x + 2, x, domain='ZZ')
 - 이처럼 미분값을 더하는 것을 경사상승법이라 하며 함수의 극대값의 위치를 구할 때 사용한다.
 - 목표함수를 최대화시킬 때 사용
 
-![image-20210130144133386](0126_Gradient Descent(1).assets/image-20210130144133386.png)
+![image-20210130233116775](0126_Gradient Descent(1).assets/image-20210130233116775.png)
 
-![image-20210130144215022](0126_Gradient Descent(1).assets/image-20210130144215022.png)
+
+
+![image-20210130233100891](0126_Gradient Descent(1).assets/image-20210130233100891.png)
 
 
 
@@ -57,11 +59,9 @@ Poly(2*x + 2, x, domain='ZZ')
 - 이처럼 미분값을 빼는 것을 경사하강법이라 하며 함수의 극소값의 위치를 구할 때 사용한다.
 - 목표함수를 최소화시킬 때
 
-![image-20210130144238634](0126_Gradient Descent(1).assets/image-20210130144238634.png)
+![image-20210130233141186](0126_Gradient Descent(1).assets/image-20210130233141186.png)
 
-![image-20210130144252081](0126_Gradient Descent(1).assets/image-20210130144252081.png)
-
-
+![image-20210130233159741](0126_Gradient Descent(1).assets/image-20210130233159741.png)
 
 ## 3. 변수가 벡터일 때의 미분
 
@@ -124,7 +124,10 @@ $$
 - (x,y,z)공간의 그래프가 있다고 했을 때, 해당 함수의 그레디언트 벡터에 음수를 취해준 값은 그림과 같이 아래(극솟값)으로 향하는 화살표로서 그 역할을 하게 된다.
 - 이 화살표만 따라가게 되면 (마이너스 그레디언트 벡터 방향 따라가면) 극솟값에 도달할 수 있게 되는 것이 그 원리이다. 
 
-![image-20210130211703465](0126_Gradient Descent(1).assets/image-20210130211703465.png)
+![image-20210130233254500](0126_Gradient Descent(1).assets/image-20210130233254500.png)
+
+
+
 
 
 $$
@@ -133,7 +136,7 @@ $$
 
 
 
-![image-20210130144334827](0126_Gradient Descent(1).assets/image-20210130144334827.png)
+![image-20210130233309922](0126_Gradient Descent(1).assets/image-20210130233309922.png)
 
 
 
