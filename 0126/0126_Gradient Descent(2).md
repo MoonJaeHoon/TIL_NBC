@@ -1,18 +1,30 @@
 # 경사하강법 응용
 
-
-
-<img src="../../../../../AppData/Roaming/Typora/typora-user-images/image-20210126124836357.png" alt="image-20210126124836357" style="zoom:80%;" />
-
+## 1. 경사하강법은 과연 만능인가?
 
 
 
+![image-20210126125415158](0126_Gradient Descent(2).assets/image-20210126125415158.png)
 
-![image-20210126125415158](../../../../../AppData/Roaming/Typora/typora-user-images/image-20210126125415158.png)
+![image-20210126125428692](0126_Gradient Descent(2).assets/image-20210126125428692.png)
 
 
 
-![image-20210126125428692](../../../../../AppData/Roaming/Typora/typora-user-images/image-20210126125428692.png)
+- 위의 식이 직접 지난 시간에 유도까지 해보았던 선형회귀 계수추정을 위한 그레디언트 벡터이다.
+- 하지만 이를 그대로 (L2 norm)을 그대로 사용하여 해당 문제를 해결하려고 하는 것보다, 이를 제곱해서 최소화 문제를 푸는 것 역시 동치이기 때문에 이것이 더 연산을 수월하게 한다.
+
+
+
+![image-20210130220047841](0126_Gradient Descent(2).assets/image-20210130220047841.png)
+
+
+
+- `경사하강법`은 `무어펜로즈역행렬`을 이용하는 것처럼 수치를 정확하게 구해주는 것이 아니고 반복을 통해 수렴해나가는 알고리즘이다.
+- 만약 학습횟수(`epoch`)와 학습률(`LearningRate`)을 적절히 설정하지 못하면  정답을 찾지 못하는 경우가 생길 수가 있다.
+- 이와 같이 경사하강법은 만능은 아니다. 그저 역행렬을 사용하지 않고도 최적화가 가능한 알고리즘이라 편한 것.
+- 이론적으로 경사하강법은 미분가능하고 볼록(`Convex`) 함수에 대해선 적절한 학습률과 학습횟수를 선택했을 때엔 수렴이 보장되어 있긴 합니다.
+- 선형회귀의 경우에는 목적식 `L2 norm`이 회귀계수 *Beta*에 대해 볼록함수이기 때문에 알고리즘을 충분히 돌리면 수렴이 가능하다는 것이 저명한 것입니다.
+  - 하지만 비선형회귀 문제를 해결할 때에는 `NonConvex`함수를 다뤄야하기 때문에 이를 위한 방법이 필요하다. (=> SGD)
 
 
 
@@ -20,13 +32,13 @@
 
 
 
-![image-20210126131115905](../../../../../AppData/Roaming/Typora/typora-user-images/image-20210126131115905.png)
+![image-20210126131115905](0126_Gradient Descent(2).assets/image-20210126131115905.png)
 
 
 
 
 
-![image-20210126131133321](../../../../../AppData/Roaming/Typora/typora-user-images/image-20210126131133321.png)
+![image-20210126131133321](0126_Gradient Descent(2).assets/image-20210126131133321.png)
 
 
 
@@ -39,7 +51,7 @@
 
 
 
-![image-20210126131528150](../../../../../AppData/Roaming/Typora/typora-user-images/image-20210126131528150.png)
+![image-20210126131528150](0126_Gradient Descent(2).assets/image-20210126131528150.png)
 
 
 
@@ -47,7 +59,7 @@
 
 
 
-![image-20210126131623328](../../../../../AppData/Roaming/Typora/typora-user-images/image-20210126131623328.png)
+![image-20210126131623328](0126_Gradient Descent(2).assets/image-20210126131623328.png)
 
 
 
@@ -60,17 +72,17 @@
 
 > 이러한 목적식이 계속 바뀌는 SGD의 특성상, 수렴하는 모습은 다음과 같다.
 
-<img src="../../../../../AppData/Roaming/Typora/typora-user-images/image-20210126132702963.png" alt="image-20210126132702963" style="zoom:150%;" />
+<img src="0126_Gradient Descent(2).assets/image-20210126132702963" style="zoom:150%;" />
 
 
 
 
 
-<img src="../../../../../AppData/Roaming/Typora/typora-user-images/image-20210126132723952.png" alt="image-20210126132723952" style="zoom:150%;" />
+<img src="0126_Gradient Descent(2).assets/image-20210126132723952" style="zoom:150%;" />
 
 
 
-<img src="../../../../../AppData/Roaming/Typora/typora-user-images/image-20210126132738803.png" alt="image-20210126132738803" style="zoom:150%;" />
+<img src="0126_Gradient Descent(2).assets/image-20210126132738803" style="zoom:150%;" />
 
 - 주의할 점 : SGD에서 미니배치 사이즈를 너무 작게 잡게 되면 GD보다 수렴속도가 느려질 수 있다.
 
