@@ -120,6 +120,13 @@ $$
 
 
 **기하학적 의미**
+
+- (x,y,z)공간의 그래프가 있다고 했을 때, 해당 함수의 그레디언트 벡터에 음수를 취해준 값은 그림과 같이 아래(극솟값)으로 향하는 화살표로서 그 역할을 하게 된다.
+- 이 화살표만 따라가게 되면 (마이너스 그레디언트 벡터 방향 따라가면) 극솟값에 도달할 수 있게 되는 것이 그 원리이다. 
+
+![image-20210130211703465](0126_Gradient Descent(1).assets/image-20210130211703465.png)
+
+
 $$
 결국,\ 그레디언트 벡터 \ -{\nabla}f는\ \ 각\ \ 점에서\ 가장\ 빨리\ 감소하게\ 되는\\ 방향을\ 나타내는\ 것입니다.
 $$
@@ -129,11 +136,4 @@ $$
 ![image-20210130144334827](0126_Gradient Descent(1).assets/image-20210130144334827.png)
 
 
-
-> **잠시만, 왜 가장 빨리 감소하게 되는 부분인건데?**
->
-> - ㅇ
-> - ㅇ
->
-> `출처 : https://www.khanacademy.org/math/multivariable-calculus/multivariable-derivatives/gradient-and-directional-derivatives/v/why-the-gradient-is-the-direction-of-steepest-ascent`
 
