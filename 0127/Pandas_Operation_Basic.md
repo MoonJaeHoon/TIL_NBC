@@ -779,7 +779,7 @@ df2.add(df1,fill_value=0)
 
 
 ```python
-df1.mul(df2, fill_value=1) # 곱 연산도 있다, 행렬 곱연산이 아님. 각각 한칸의 value끼리의 곱
+df1.mul(df2, fill_value=1) # 곱 연산도 있다, 행렬 곱연산이 아님. 한칸씩 각각끼리의 value 곱
 ```
 
 
