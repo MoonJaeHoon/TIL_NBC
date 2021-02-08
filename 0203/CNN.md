@@ -1,4 +1,7 @@
+# CNN
 
+- parameter 개수 계산 중요
+- 
 
 Stride=1, padding=1, kernelsize=3 이라면
 
