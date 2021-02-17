@@ -1,0 +1,72 @@
+# 1. CNN에서 다음 과정들의 순서배치를 해보아라.
+
+**`Convolution layer - Batch Normalization - Activation Function - Dropout - Pooling`**
+
+
+
+
+
+- 먼저 배치 정규화의 경우 저자에 따르면 Convoluter Layer 또는 Fully Connected Layer 등의 layer 뒤에 적용되는 것이 맞다고 봅니다.
+- 그리고 ReLU와 같은 Activation function을 적용하기 전에 적용하는 것을 추천하고 있습니다.
+- 왜냐하면 배치 정규화의 목적이 네트워크 연산 결과가 원하는 방향의 분포대로 나오는 것이기 때문에 핵심 연산인 Convolution 연산 뒤에 바로 적용하여 정규화 하는 것이 핵심입니다.
+  - 즉, Activation function이 적용되어 분포가 달라지기 전에 적용하는 것이 올바릅니다.
+
+
+
+- 반면 dropout의 경우 저자에 따르면, activation function을 적용한 뒤에 적용하는 것으로 제안되었습니다.
+
+
+
+- 마지막으로 Convolution 연산과 함께 사용되는 pooling 연산은 정규화 기법 적용이 끝난 뒤에 적용하는 것을 추천합니다.
+- 이것은 제 경험으로 말씀드리는 것으로 정확하지 않을 수 있지만, dropout 이후에 적용하니 성능이 잘 나왔었습니다.(물론 task 마다 다르겠지요?)
+
+
+
+# 2. Competition 에서 `Train : 1만개 vs Test : 100만개` 인 경우, 어떤 방법론을 사용하겠는가?
+
+
+
+​	[2-1] Data Augmentation
+
+​		1) 상하좌우 반전
+
+​		2) 회전
+
+​		3) 일부 픽셀 제거 (해당 픽셀의 값을 랜덤하게 값을 바꾼다던지)
+
+​		4) 그림 바깥부분 자르고 shape 맞춰주기
+
+​		5) 그림 겹치기 (예를 들어 이진분류라면 개와 고양이 그림을 겹쳐서 0.5로 라벨링, Probability를 예측하는 모델링)
+
+​		5-1) 한쪽의 선명도를 상대적으로 더 희미하게 만들어 0.1~0.9까지 라벨링
+
+​		6) 그림 잘라서 합치기 (row 혹은 column concat) => 이것 역시 확률값으로 라벨링
+
+
+
+
+
+​	[2-2] Test set을 정확하지 않더라도 predict 라벨링하여 초기치 설정에 사용해보기
+
+​		1) Train set으로 모델적합
+
+​		2) 모델로 Predict하여 Test set 임의 라벨링 (정확도가 좋지 않을 수도 있지만)
+
+​		3) 임의 라벨링된 Test set으로 새로운 모델을 학습하여 초기 가중치값을 설정
+
+​		4) 해당 초기값으로부터 Train set을 이용하여 새로운 모델을 적합
+
+​		5) 이 모델은 초기값 설정이 달랐으므로 더 좋은 모델이 되었을 것임.
+
+​		6) 해당 모델로 테스트셋을 다시 predict하여 submission
+
+
+
+​	[2-3] Data Generation
+
+​		1) SMOTE
+
+​		2) 
+
+
+

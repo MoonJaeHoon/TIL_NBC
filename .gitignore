@@ -9,6 +9,7 @@
 */.ipynb_checkpoints/*
 */.vscode/settings.json
 */__pycache__/*
+run.bat
 
 # Local History for Visual Studio Code
 .history/
