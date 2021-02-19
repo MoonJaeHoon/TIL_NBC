@@ -10,6 +10,8 @@
 
 ## 2. Contents
 
+### Regularization
+<a href="./0131/L1_L2_Regularization.md">L1_L2_Regularization (Feat. Ridge&Lasso)</a>
 
 
 ### NLP

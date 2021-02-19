@@ -127,7 +127,9 @@ $$
 >
 > - 본래 회귀계수에서는 역행렬이 존재하지 않았지만 다음과 같은 수정된 파라미터를 구해준다면 역행렬이 존재하게 된다는 생각이었던 거죠.
 
-<img src="L1_L2_Regularization.assets/image-20210201095343911.png" alt="image-20210201095343911" style="zoom: 50%;" />
+
+
+<img src="L1_L2_Regularization.assets/image-20210219115703251.png" alt="image-20210219115703251" style="zoom: 80%;" />
 
 
 
@@ -263,7 +265,7 @@ $$
 > 다음 그림에서는 위에서 봤던 *L1 Regularization*과 *L2 Regularization*의 차이를 가중치 w를 변화시키며 더 직접적으로 살펴보았다.
 >
 > 	1. 왼쪽그림은 `x축 : 가중치 w`에 대한 `y축 : Deviance`
->  	2. 오른쪽 그림은 `x축 : 가중치 w`, `y축 : Norm에 대한 기울기(Gradient)`를 나타내고 있습니다.
+> 	2. 오른쪽 그림은 `x축 : 가중치 w`, `y축 : Norm에 대한 기울기(Gradient)`를 나타내고 있습니다.
 
 ![게시물 이미지](https://miro.medium.com/max/1564/1*etUdoAT3P51qjMiadDRHhQ.gif)
 
@@ -331,11 +333,12 @@ $$
 
 ### 2.3 Deep Learning
 
-- 딥러닝에선 이런 가중치 규제화를 Weight Decay라고도 부름
+- 딥러닝에선 이런 가중치 규제화를 Weight Regularization라고도 부름
+- 모델마다 다르겠지만 대부분 모델들에서 파라미터 중 clip_norm 파라미터를 통해 이를 조절할 수 있음.
 
 
 
-> Weight Decay(가중치 감소)  적용 전(왼쪽) vs후(오른쪽) 비교
+> Weight Regularization(가중치 규제)  적용 전(왼쪽) vs후(오른쪽) 비교
 
 ![img](http://blogfiles.naver.net/MjAxOTA3MzBfMTI4/MDAxNTY0NDY3Mjc1NDMy.Av0Aw4b-QeP6bk3BUtlLXKh3zGU9SygKeIes1GbjTxIg.R38g3wM9jdyeomxTBDEDKMY--3n7SCMQaHj1ivarkoMg.PNG.tinz6461/image.png)
 
