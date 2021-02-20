@@ -120,17 +120,135 @@ Transformer에서는 이를 현재 time-step의 input 값 x_t로 대체하여 �
 
 <img src="Transformer(Attention is All you need).assets/image-20210218160529062.png" alt="image-20210218160529062" style="zoom: 67%;" />
 
-1) 결국 이런식으로 각기 다른 역할을 하게 선형변환해준 Query와 Key Vector를 이용하여 Attention Score(유사도)를 구해냅니다.
+​	1) 결국 이런식으로 각기 다른 역할을 하게 선형변환해준 Query와 Key Vector를 이용하여 Attention Score(유사도)를 구해냅니다.
 
-2) 이것에 softmax를 취해 Attention Distribution을 구한다.
+​	2) 이것에 softmax를 취해 Attention Distribution을 구한다.
 
-3) Attention Distribution 을 Value Vector의 가중평균을 구하는데 사용하여 Context Vector를 만들어냅니다.
+​	3) Attention Distribution 을 Value Vector의 가중평균을 구하는데 사용하여 Context Vector를 만들어냅니다.
 
-4) 위 과정을 각 time-step에 대하여 수행하면서 `h1`, `h2`, `h3`라는 Context Vector들을 구할 수 있게 된다.
+​	4) 위 과정을 각 time-step에 대하여 수행하면서 `h1`, `h2`, `h3`라는 Context Vector들을 구할 수 있게 된다.
 
 
 
-그런데 여기서, key vector와 value vector를 만들어주는 선형결합 행렬 W^K , W^V matrix는 한 번만 업데이트 될텐데 각기 다른 `h1`, `h2`, `h3`라는 Context Vector들을 적절히 구해낼 수 있을지 의문이 들 수도 있을 것이라 생각한다.
+그런데 여기서, key vector와 value vector를 만들어주는 선형결합 행렬 W^K , W^V matrix는 한 번만 업데이트 될텐데 각기 다른 `h1`, `h2`, `h3`라는 Context Vector들을 적절히 구해낼 수 있을지 의문이 들 수도 있을 것이라 생각합니다.
 
-- 이것은 바로 Query Vector가 해결해줄 수 있게 된다.
+- 이러한 의문은 바로 Query Vector가 해결해줄 수 있가 있습니다.
 - 첫번째 time-step에서는 Score(유사도)와 Distribution(가중치)를 구함에 있어서 `I`에 대한 Query Vector를 이용(즉, 어떤 W^Q를 사용), 다른 time-step에서는 또다른 Query Vector를 사용(즉, 어떤 또다른 W^Q를 사용)함으로써 다른 유사도를 뽑아낼 수 있게 되는 것이다.
+
+
+
+> 위와 같이 가중치 매트릭스 (W^Q, W^K, W^V 매트릭스)를 통해 각각의 벡터들에 연산이 되는 것을 다음과 같은 행렬연산으로 생각해볼 수가 있습니다.
+>
+> - 결국 RNN 기반 모델의 문제가 되었던 Long-time Dependancy에 상관없이 집중해야할 정보를 무리없이 선택할 수 있습니다.
+
+![image-20210219123410712](Transformer(Attention is All you need).assets/image-20210219123410712.png)
+
+
+
+### 1.2.3 실제 사용되는 Matrix 형태를 이해해보기
+
+결국 ContextVector는 앞서 구해진 Score, Distribution을 통해 Value Vector를 가중평균을 낸 것이라고 볼 수 있음.
+
+- Query와 Key Vector는 내적연산이 이루어져야 하므로 Dimension이 같아야 한다.
+
+- Value vector는 별개의 Dimension을 가질 수 있다.
+
+![image-20210219124452572](Transformer(Attention is All you need).assets/image-20210219124452572.png)
+
+
+
+
+
+위에서는 query Vector로서 살펴보았고, 실제 연산에서는 query vector들이 행으로서 concat되어 만들어진 아래와 같이 Query Matrix를 생각하게 됩니다.
+
+
+
+![image-20210219142750937](Transformer(Attention is All you need).assets/image-20210219142750937.png)
+
+
+
+> ※ 유의할 점
+>
+> 그런데 위 그림에서 이상한 점 한가지, Query와 Key의 Dimension이 다르다? (Q_d=3, K_d=4)
+>
+> 이게 가능한건가?
+>
+> - 정답은 바로 decoder 안에 있는 encoder-decoder 간 attention을 하기 때문에 이것이 가능한 경우입니다.
+> - 해당 Attention에서는 Encoder에 들어가는 src sentence의 길이와 Decoder에 들어가는 trg sentence의 길이가 다를 경우가 있을 수 있기 때문입니다.
+>
+> 결국, Decoder를 수행함에 있어서는 Q랑 K의 차원수가 같아야 하지만 Input과 Output의 Sequence길이가 다를 수 있기 때문에 개수는 다를 수 있다.(이게 정말 헷갈리지만 중요한 부분이다. 번역 TASK를 생각해보자.)
+>
+> 
+>
+> 여기서 하나더 유의깊게 보아야할 부분은 k와 v의 개수(seq_len)가 무조건 같아야한다는 것이다. (차원의 수는 다를 수도 있음)
+>
+> k와 v의 개수가 같아야 한다는 것은 각 token의 개수인 seq_len이 동일해야 하는 것을 뜻합니다. (ex. Decoder에 투입되는 seq가 (=>번역의 결과로 나와야하는 seq가) I go home이라면 seq_len=3개)
+>
+> - 위 그림을 다시 한번 보면, Q의 길이(decoder input의 token 개수)와 K의 길이(encoder input의 token 개수)가 다른 경우이지만 K와 V의 길이는 동일한 것을 볼 수 있습니다.
+> - 하지만 Q의 차원수, K의 차원수는 일치하고 있습니다.
+
+
+
+
+
+![image-20210219143759628](Transformer(Attention is All you need).assets/image-20210219143759628.png)
+
+```
+결국 위의 그림에서 Attention의 결과를 보면 행은 Q, 열은 d_v의 차원을 가지고 있습니다.
+해당 Attention 결과 Matrix는 각 행마다의(q1,q2,q3로부터 나온) Context Vector를 가지고 있는 형태인 것입니다.
+문장seq의 길이이자 단어 갯수인 seq_len 개의 Context Vector가 있으며 각 하나의 Context Vector는 Value Vector의 차원을 따르게 되는 것입니다.
+
+```
+
+- Row-Wise Softmax라 함은 Row마다 Softmax 연산을 적용해준다는 것이다.
+- 이렇게 함으로써 하나의 query vector 내에서 k의 개수(k1, k2, k3, k4이므로 여기선 4)만큼의 가중치를 구할 수 있게 된다.
+  - 아래 예시를 보면 이해가 될 것이다. (0.2+0.1+0.4+0.3=1)
+
+![image-20210219143919966](Transformer(Attention is All you need).assets/image-20210219143919966.png)
+
+
+
+
+
+위 결과로부터 Value Vector로 이루어진 Matrix까지의 연산을 수행하면서 마지막 결과를 이해해보자.
+
+- 다음과 같이 결국 결과 Matrix는 각각의 Query Vector에 대한 Output Vector를 계산하여 저장하고 있는 형태라는 것을 알 수가 있습니다.
+- Matrix 형태로 연산을 하는 이유는 GPU와 같은 장치를 통한 병렬처리가 가능하다는 장점을 가지게 해주는 것입니다.
+
+![image-20210219145215404](Transformer(Attention is All you need).assets/image-20210219145215404.png)
+
+
+
+### 1.2.4 내적연산 중 Problem과 Solution
+
+Q와 K의 내적연산을 한 결과는 임의의 조정이 필요한 결과값이 나오게 됩니다. 
+
+- 예를 들어 다음과 같이 query, key의 원소들이 각각 평균이 0 분산이 1인 확률분포를 따르는 확률변수라고 생각해봅시다.
+- 내적연산의 결과로 생성된 ax+by라는 확률변수의 분산은 2라는 상대적으로 매우 작은 값이 나오게 됩니다.
+- 그리고 만약 query와 key의 차원이 100이라면 다음과 같이 분산=100(표준편차=10)이 나오고 차원이 커질수록 분산이 매우 큰 값을 가지게 되는 문제가 생깁니다.
+
+<img src="Transformer(Attention is All you need).assets/image-20210219151244246.png" alt="image-20210219151244246" style="zoom:50%;" />
+
+
+
+```
+예를 들어,
+경우(1) - 내적연산을 통해 나온 Score값이 (1.1, -0.8, -1.7)과 같이 분산이 매우 작게 나옴. 
+경우(2) - 내적연산을 통해 나온 Score값이 (9, -11, 7)과 같이 분산이 매우 크게 나올 수 있는 경우를 생각해보았을 때
+
+※ 두 가지 모두 Distribution 을 구하기 위한 Softmax함수를 취해주었을 때, 문제점이 대두된다.
+
+경우(1) : softmax를 취하게 되면 0~1 사이에 매우 고르게 분포되려는 경향이 생기게 됩니다.(실제 집중해야 하는 것에 집중하지 못하고 균등하게 가중치를 배분하는 경우)
+경우(2) : softmax를 취하게 되면 0~1 사이에 고르지 않고 극단적으로 분포되려는 경향이 생기게 됩니다.(원래 고르게 분포되어야 하더라도 소수의 element에만 극단적으로 높은 값을 가져 집중하게 되는 경우)
+
+```
+
+
+
+- 위에서 말하고 싶은 것은 결국 의도치 않게 query와 key의 Dimension 값에 따라 Softmax값이 변동될 가능성이 있다는 것입니다.
+
+- 따라서 다음과 같이 차원수에 루트를 씌운값으로 나눠주어 이를 해결합니다.
+  - 위의 (a,b)와 (x,y)에 대한 예시에서는 루트(2)로 나누어주게 됨. (분산은 2로 나누어준 값이 될 것이다)
+  - 또한 100차원의 예시에 대해서는 루트(100)으로 나누어줍니다. (분산은 10으로 나누어준 값이 될 것입니다.)
+
+![image-20210219145810609](Transformer(Attention is All you need).assets/image-20210219145810609.png)
