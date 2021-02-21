@@ -13,6 +13,9 @@
 ### Regularization
 <a href="./0131/L1_L2_Regularization.md">L1_L2_Regularization (Feat. Ridge&Lasso)</a>
 
+<a href="./0202\Optimization_CV_Ensemble_BatchSize.md
+">Optimization_CV_Ensemble_BatchSize</a>
+
 
 ### NLP
 
