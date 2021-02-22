@@ -283,3 +283,31 @@ brevity penalty (짧은 문장에 대한 Penalty)
 > Model1의 BLEU SCORE값은 0.52
 >
 > Model2의 BLEU SCORE는 0으로 구해졌습니다.
+
+
+
+
+
+## 2.4 BLEU SCORE 단점
+
+BLEU score가 번역 문장 평가에 있어서 갖는 단점은 무엇이 있을까요?
+
+
+
+> ex)  Ground Truth : 나는 정말 맛있게 밥을 먹었다
+>
+> predicted1 : 나는 밥을 정말 맛있게 먹었다
+>
+> predicted2 : 나는 매우 맛있게 쌀밥을 먹었다
+
+
+
+BLEU의 단점)
+
+
+It doesn't consider meaning.
+It doesn't directly consider sentence structure.
+It doesn't handle morphologically rich languages well.
+It doesn't map well to human judgements.
+
+One problem with BLEU scores is that they tend to favor short translations, which can produce very high precision scores, even using modified precision.
