@@ -11,5 +11,8 @@
 */__pycache__/*
 run.bat
 
+Adv_IMC_test.csv
+Adv_IMC_train.csv
+
 # Local History for Visual Studio Code
 .history/
