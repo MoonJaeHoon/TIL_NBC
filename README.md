@@ -13,18 +13,17 @@
 ### Regularization
 <a href="./0131/L1_L2_Regularization.md">L1_L2_Regularization (Feat. Ridge&Lasso)</a>
 
-<a href="./0202\Optimization_CV_Ensemble_BatchSize.md
-">Optimization_CV_Ensemble_BatchSize</a>
+<a href="./0202/Optimization_CV_Ensemble_BatchSize.md">Optimization_CV_Ensemble_BatchSize</a>
 
 
 ### NLP
 
 ---
 
-<a href="./0217/Seq2seq_Attention.md">Seq2Seq & Attention Mechanism</a>
+<a href="./Week4_NLP/0217/Seq2seq_Attention.md">Seq2Seq & Attention Mechanism</a>
 
-<a href="./0217/BeamSearch_BLEU.md">BeamSearch & BLEU</a>
+<a href="./Week4_NLP/0217/BeamSearch_BLEU.md">BeamSearch & BLEU</a>
 
-<a href="./0218/Transformer(Attention is All you need).md">Transformer(Attention is All you need)</a>
+<a href="./Week4_NLP/0218/Transformer(Attention is All you need).md">Transformer(Attention is All you need)</a>
 
-<a href="./0218/Transformer(Attention is All you need).md">Transformer (Multi-head Attention) 업데이트정리해야함...</a>
+<a href="./Week4_NLP/0218/">Transformer (Multi-head Attention) 업데이트정리해야함...</a>
