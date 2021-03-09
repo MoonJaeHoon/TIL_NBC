@@ -381,7 +381,7 @@ Softmax(T=t) Prediction
 
 
 
-### 3.2 Self-training
+### 3.2 Self-training (KL Divergence 안씀, cross entropy만 씀)
 
 Data Augmentation과 Knowledge Distillation, Semi-Supervised Learning을 적절하게 결합한 Self-Training이 Image Net에서 새로운 개평을 열었다.
 
@@ -444,3 +444,6 @@ Data Augmentation과 Knowledge Distillation, Semi-Supervised Learning을 적절�
 > label의 변화도 적을뿐더러 미미한 성능향상이 되지 않을까? 따라서 이후의 iteration에서는 주요한 성능향상의 요인이 **<u>data augumentation</u>**에 의한 것일까
 
 - 어느정도 일리가 있는 것 같다. 따라서 강의자료에도 이러한 iteration을 2-3회 한다고 기술되있는 것으로 보아, 이후의 iteration은 미미한 성능향상을 보일것 같다.
+
+
+
