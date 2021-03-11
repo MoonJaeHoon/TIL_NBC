@@ -38,4 +38,15 @@ feature map size가 절반으로 되는 경우에 time complexity per layer를 �
 
 
 
+> 우선 두번째 질문 부터 답해드리면, 
+>
+> https://stats.stackexchange.com/questions/280179/why-is-resnet-faster-than-vgg/280338
+>
+> 해당 포스트에 FLOP을 비교해서 resnet이 vgg-19에 비해 time complexity가 줄어든 이유를 설명합니다. 요약하자면, computation time은 filter parameter 수 보다는 input size에 더 관련있기 때문입니다.
+
+
+
 출처 : https://www.edwith.org/bcaitech1/forum/53787
+
+
+
