@@ -11,7 +11,7 @@ Semantic Segmentaion은 영상단위로 어떤 분류를 하는 것이 아니라
 <img src="Lecture4_Semantic segmentation.assets/image-20210309211327174.png" alt="image-20210309211327174" style="zoom:67%;" />
 
 - 주의할 점 : 자동차가 여러개 있더라도 모두 같은 카테고리(자동차), 사람이 여러명 있더라도 같은 카테고리(사람)이라고 분류를 하는 Task이다.
-- 목적 자체가 그렇게 설계되었음
+- 원래 Semantic Segmentation 목적 자체가 그렇게 설계되었음
 
 
 
@@ -25,17 +25,14 @@ Semantic Segmentaion은 영상단위로 어떤 분류를 하는 것이 아니라
 
 
 
-> 의료 이미지
+- 의료 이미지
 
-> 자율 주행
+- 자율 주행
 
-> Computational photography
-
-어떤 물체를 바꾸거나 수정할 수가 있음 (포토샵 등을 이용해)
-
-다음과 같이 인물집중 사진으로서 주변환경 흐리게 하는 것도 그 예시
-
-배경이나 인물을 아예 다른 배경화면, 또는 인물로 바꾸거나 하는 것도 그 예시
+- Computational photography
+  - 어떤 물체를 바꾸거나 수정할 수가 있음 (포토샵 등을 이용해)
+  - 다음과 같이 인물집중 사진으로서 주변환경 흐리게 하는 것도 그 예시
+  - 배경이나 인물을 아예 다른 배경화면, 또는 인물로 바꾸거나 하는 것도 그 예시
 
 <img src="Lecture4_Semantic segmentation.assets/image-20210309211737947.png" alt="image-20210309211737947" style="zoom:50%;" />
 
@@ -43,7 +40,7 @@ Semantic Segmentaion은 영상단위로 어떤 분류를 하는 것이 아니라
 
 ## 2. Semantic Segmentation Architectures
 
-Semantic Segmentation Model에는 여러가지가 있다.
+Semantic Segmentation Model은 여러 종류가 있다.
 
 
 
@@ -51,27 +48,29 @@ Semantic Segmentation Model에는 여러가지가 있다.
 
 Semantic Segmentation를 위한 최초의 end-to-end 뉴럴넷이다 
 
+>  여기서 짚고 가야할 부분
+>
 >  end-to-end : 우리가 원하는 Task를 단 하나의 아키텍쳐로 처음부터 끝까지 수행할 수 있는 방법을 말하는 것 같다.
->
-> 이전의 보았던 Alexnet의 경우 결과에서 FC layer Part에서 Flattening Vector를 만들기 때문에 (벡터화시키기 때문에) 입력해상도가 포함되지 않으면 학습되어진 FC layer의 정보를 사용할 수가 없는 한계가 존재했다.
->
-> 입력해상도가 바뀌는 순간 컨볼루션 레이어의 activation map의 dimension이 달라지게 되고 이를 flattening하면 길이가 아예 달라지게 되기 때문이다.
 
 
 
-> 이렇게 학습시 사용했던 이미지와 입력 이미지의 resolution이 resolution이 달라서 문제가 생기는 것을 FCN이 해결하였다.
->
-> FCN은 학습시 사용했던 이미지와 입력 이미지의 resolution이 달라도 문제없이 작동한다(호환성이 높다).
->
-> 입력과 출력 페어만 있으면 신경망 내부가 자동으로 학습되는 구조인 것이다. (이전에는 내부 알고리즘을 직접 작성하고 결합했던 것에 반하여)
+- 이전에 보았던 Alexnet의 경우 결과에서 FC layer Part에서 Flattening Vector를 만들기 때문에 (벡터화시키기 때문에) 입력해상도가 포함되지 않으면 학습되어진 FC layer의 정보를 사용할 수가 없는 한계가 존재했다.
+
+- 입력해상도가 바뀌는 순간 컨볼루션 레이어의 activation map의 dimension이 달라지게 되고 이를 flattening하면 길이가 아예 달라지게 되기 때문이다.
+
+
+
+- 이렇게 학습시 사용했던 이미지와 입력 이미지의 resolution이 resolution이 달라서 문제가 생기는 것을 FCN이 해결하였다.
+
+- FCN은 학습시 사용했던 이미지와 입력 이미지의 resolution이 달라도 문제없이 작동한다(호환성이 높다).
+
+- 입력과 출력 페어만 있으면 신경망 내부가 자동으로 학습되는 구조인 것이다. (이전에는 내부 알고리즘을 직접 작성하고 결합했던 것에 반하여)
 
 
 
 그럼 그림으로 살펴보자.
 
-기존의 CNN은 마지막 부분에 FC layer를 몇 단 두었었는데,
-
-FCN은 FC 대신 Fully convolutional layer만 사용한 것을 볼 수가 있다.
+기존의 CNN은 마지막 부분에 FC layer를 몇 단 두었었는데, FCN은 FC 대신 Fully convolutional layer만 사용한 것을 볼 수가 있다.
 
 이러한 방식이 어떤 차이가 있을까?
 
@@ -159,16 +158,16 @@ Transposed convolution에서 반드시 주의해야 할 점은, **checkboard art
 
 그저 연산 과정에서 잃어버린 정보들을 다시 살리는 일이기 때문이다.
 
-결국, 목표대로 정확한 High-resolution의 output을 얻기 위해서는 두 마리 토끼를 다 잡는 미션을 수행해야 한다.
+결국, 목표대로 정확한 High-resolution의 output을 얻기 위해서는 다음 두가지를 모두 만족해야 한다.
 
-
-
-- **Fine/Low-level/Detail/Local 등 미세한 각 부분의 디테일을 살리면서도**
+- **Fine/Low-level/Detail/Local 등 미세한 각 부분의 디테일을 살리면서도**,
 - **Coarse/Semantic/Holistic/Global, 전체적인 context를 볼 수 있는 넓은 시야를 가져야한다.**
 
-이 두 특징을 모두 가지기위해서 기존의 방법들을 모두 fusion한다.
 
 
+**※ 이 두 가지를 모두 가지기위해서 기존의 방법들을 모두 합쳐서 사용한다.**
+
+<img src="Lecture4_Semantic segmentation.assets/image-20210312032346925.png" alt="image-20210312032346925" style="zoom:67%;" />
 
 1. 높은 layer의 activation map을 upsampling하여 해상도를 크게 끌어올린다.
 2. 이에 맞추어 중간 layer의 activation map을 upsampling하여 가져오고, concat한다.
@@ -211,7 +210,7 @@ FCN과 동일한 시기에 비슷한 내용의 연구도 있었는데, 이 경�
 
 #### 2.2.1 구조
 
-<img src="Lecture4_Semantic segmentation.assets/u-net-architecture.png" alt="u-net-architecture" style="zoom:67%;" />
+<img src="Lecture4_Semantic segmentation.assets/u-net-architecture.png" alt="u-net-architecture" style="zoom: 80%;" />
 
 기존의 CNN 파트와 conv 연산을 적용하여 전체적인 feature map(holistic context)을 뽑아내는 downsampling 부분은 거의 같다. 여기서는 `Contracting path`라고 부른다.
 
@@ -225,9 +224,13 @@ FCN과 동일한 시기에 비슷한 내용의 연구도 있었는데, 이 경�
 
 
 
-```
-이 때 input 이미지와 feature 이미지의 크기는 짝수여야 한다. 만약 홀수라면, Contracting/Expanding 파트에서 나머지 정보들이 유실된다.
-```
+>**※ 주의할 점**
+>
+>이 때 input 이미지와 feature 이미지의 크기는 짝수여야 한다.
+>
+>만약 홀수라면, Contracting/Expanding 파트에서 나머지 정보들이 유실된다는 점을 꼭 기억해야 한다.
+
+
 
 
 
@@ -235,24 +238,26 @@ FCN과 동일한 시기에 비슷한 내용의 연구도 있었는데, 이 경�
 
 Sementic segmentation의 한 획을 그은 모델로, 기존 모델에 비해 다음과 같은 차이점을 가진다.
 
-- **CRFs** 후처리의 존재
-- **Atrous convolution**
+1) **CRFs** 후처리의 존재
 
-
+2) **Atrous convolution**
 
 
 
 > Conditional Random Fields(CRFs)란?
 
-픽셀과 픽셀 사이의 관계를 다 이어주고, regular한 pixel map을 그리드로 본다.
-
-기존의 sementic segmentation에서는 feedforward 구조이므로 피드백이 없어 굉장히 blurry한 output이 나오기 마련인데, CRFs는 기존의 이미지에서 edge같은 경계선들을 활용하여 score map이 경계에 잘 들어맞도록 확산시켜주는 역할을 한다. 이 때 물체의 background와 내부에서 동시에 확산하므로, 결과적으로 경계선이 물체 형태에 맞게 명확히 잡히게 된다.
+- 픽셀과 픽셀 사이의 관계를 다 이어주고, regular한 pixel map을 그리드로 보는 것이다.
+  - 기존의 sementic segmentation에서는 feedforward 구조이므로 피드백이 없어 굉장히 blurry한 output이 나오기 마련인데,
+  - CRFs는 기존의 이미지에서 edge같은 경계선들을 활용하여 score map이 경계에 잘 들어맞도록 확산시켜주는 역할을 한다.
+  - 이 때 물체의 background와 내부에서 동시에 확산하므로, 결과적으로 경계선이 물체 형태에 맞게 명확히 잡히게 된다.
 
 
 
 > Atrous convolution
 
-기존 convolution 필터와 달리, 필터의 수용영역 사이사이에 space를 넣어 spatial context를 캐치하는 방법이다. Dilation factor를 몇번 반복하는 것 만으로 파라미터 수는 늘리지 않으면서 receptive field는 exponential하게 키울 수 있다.
+- 기존 convolution 필터와 달리, 필터의 수용영역 사이사이에 space를 넣어 spatial context를 캐치하는 방법이다.
+
+- Dilation factor를 몇번 반복하는 것 만으로 파라미터 수는 늘리지 않으면서 receptive field는 exponential하게 키울 수 있다.
 
 
 
@@ -262,14 +267,15 @@ Sementic segmentation의 한 획을 그은 모델로, 기존 모델에 비해 �
 
 
 
-기존의 convolution 연산은 하나의 필터를 모든 input 채널에 대입시켰습니다.
+- 기존의 convolution 연산은 하나의 필터를 모든 input 채널에 대입시켰습니다.
 
-그러나 *Depthwise separable convolution*은 이 과정을 둘로 분리하였습니다.
+- 그러나 *Depthwise separable convolution*은 이 과정을 다음의 둘로 분리하였습니다.
+  1. Depthwise convolution : 채널별로 필터를 만들고, 이를 convolution하여 각 채널별로 따로 activation map을 만든다.
+  2. Pointwise convolution : 뽑아낸 값들을 토대로 다시 1x1 conv를 사용함으로써 하나의 값으로 출력이 되도록 만들어준다.
 
-1. Depthwise convolution : 채널별로 필터를 만들고, 이를 convolution하여 채널별로 activation map을 만든다.
-2. Pointwise convolution : 뽑아낸 값들을 토대로 다시 1x1 conv를 사용함으로써 하나의 값으로 출력이 되도록 만들어준다.
 
-이미지를 보면 알 수 있겠지만, convolution의 표현력은 유지하면서 계산량은 훨씬 더 줄어들게 되었다.
+
+**결론 : 위의 이미지를 보면 알 수 있듯, convolution의 표현력은 유지하면서 계산량은 훨씬 더 줄어들게 되었습니다.**
 
 
 
