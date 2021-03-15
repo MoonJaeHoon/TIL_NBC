@@ -1,10 +1,14 @@
 # NBC TIL
 
+
+
 ## 1. Contents
 - 하루하루 내가 배운 내용들을 정리하려 한다.
 - 배운 것을 모두 기록하려 하기보다는 도움이 많이 되고 꼭 기억해야겠다고 생각하는 부분을 중점으로.
 - python의 기초 라이브러리부터 딥러닝 라이브러리까지 능숙하게 다룰 수 있게 되는 것이 목표이며
 - 이를 뒷받침하는 통계(수학)적 지식들과 모델의 개념을 탄탄하게 쌓아나갈 것이다.
+
+
 
 
 
@@ -26,7 +30,7 @@
 
 ### Week3 DL Basic
 ---
-<a href="./0202/Optimization_CV_Ensemble_BatchSize.md" target="_blank">Optimization_CV_Ensemble_BatchSize</a>
+<a href="./Week3_DLBasic/0202/Optimization_CV_Ensemble_BatchSize.md" target="_blank">Optimization_CV_Ensemble_BatchSize</a>
 
 
 
@@ -48,12 +52,16 @@
 
 ### Week5 Graph
 
-
+---
 
 ### Week6 특강(+면접질문 연습)
 
+---
 
 ### Week7 Computer Vision
+
+---
+
 <a href="./Week7_ComputerVision/0308/Lecture1과 3 Image classification.md" target="_blank">Image Classification Model</a>
 
 <a href="./Week7_ComputerVision/0308/Lecture2_Annotation_data_efficient_learning.md" target="_blank">Efficient Learning (Annotation Data)</a>

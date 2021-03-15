@@ -12,19 +12,19 @@ Multi-modal learning은 다양한 데이터 type (이미지와 텍스트, 이미
 
 1. 데이터들이 서로 다른 표현방법을 가지고 있기 때문에 학습이 쉽지 않습니다.
 
-   ![image-20210315033641257](Multi-modal Captioning and speaking.assets/image-20210315033641257.png)
+   ![image-20210315033641257](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315033641257.png)
 
 
 
 2. 서로 다른 데이터들의 양이 unbalanced하고 각각의 feature space도 unbalanced합니다.
 
-   ![image-20210315033720882](Multi-modal Captioning and speaking.assets/image-20210315033720882.png)
+   ![image-20210315033720882](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315033720882.png)
 
 
 
 3. 모델을 사용해서 학습을 할 때 여러 modality를 사용하게될 경우에 여러 modality를 fair하게 참조하지 못하고 **bias**되는 경향이 잇습니다.
 
-   ![image-20210315033752754](Multi-modal Captioning and speaking.assets/image-20210315033752754.png)
+   ![image-20210315033752754](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315033752754.png)
 
 
 
@@ -37,7 +37,7 @@ Multi-modal learning은 다양한 데이터 type (이미지와 텍스트, 이미
 - **Referencing :** 하나의 modality data(빨강)에서 똑같은 modality data(빨강)로 출력하고 싶은데 다른 modality data(파랑)를 참조하는 구조
   - 다른 도메인을 참조하는 방식으로 학습하는 방법
 
-![image-20210315034022169](Multi-modal Captioning and speaking.assets/image-20210315034022169.png)
+![image-20210315034022169](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315034022169.png)
 
 
 
@@ -49,19 +49,19 @@ Multi-modal learning은 다양한 데이터 type (이미지와 텍스트, 이미
 
 각 도메인 데이터의 임베딩 벡터를 구한 후에, 같은 임베딩 공간에 Joint합니다. 이때 **두 개의 feature vector의 dimension은 같아야합니다.** 그렇기 때문에 이미지의 임베딩 벡터는 spatial 정보를 가질 수 없습니다.
 
-<img src="Multi-modal Captioning and speaking.assets/image-20210315034331485.png" alt="image-20210315034331485" style="zoom:80%;" />
+<img src="Lecture9_Multi-modal Captioning and speaking.assets/image-20210315034331485.png" alt="image-20210315034331485" style="zoom:80%;" />
 
 #### 2.1.1 Application - Image tagging
 
 주어진 image를 가지고 tag를 생성할 수 있고, tag를 사용해 image를 찾을 수 있습니다.
 
-![image-20210315034407449](Multi-modal Captioning and speaking.assets/image-20210315034407449.png)
+![image-20210315034407449](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315034407449.png)
 
  
 
 - Image tagging은 pre-trained된 unimodal model (각각의 model)들을 합쳐줍니다.
 
-  <img src="Multi-modal Captioning and speaking.assets/image-20210315034748634.png" alt="image-20210315034748634" style="zoom:80%;" />
+  <img src="Lecture9_Multi-modal Captioning and speaking.assets/image-20210315034748634.png" alt="image-20210315034748634" style="zoom:80%;" />
 
 - text를 하나의 feature vector 형태로 표현해주고, image data 또한 하나의 feature vector 형태로 표현해줍니다.
 
@@ -71,7 +71,7 @@ Multi-modal learning은 다양한 데이터 type (이미지와 텍스트, 이미
 
   - pair를 matching이라고, unpair를 unmatching이라고도 함, 아무튼 유사도를 어떻게 할지 설정하고 학습하는 방법임.
 
-    ![image-20210315035824876](Multi-modal Captioning and speaking.assets/image-20210315035824876.png)
+    ![image-20210315035824876](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315035824876.png)
 
 - 이렇게 distance(유사도)를 기반으로 해서 학습하는 방법을 Metric learning이라고 합니다.
 
@@ -79,7 +79,7 @@ Multi-modal learning은 다양한 데이터 type (이미지와 텍스트, 이미
 
 - 아래 그림과 같은 작업도 가능합니다. dog를 빼고 cat을 더했더니 같은 잔디밭에 고양이가 있는 이미지를 찾았습니다.
 
-![image-20210315035856850](Multi-modal Captioning and speaking.assets/image-20210315035856850.png)
+![image-20210315035856850](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315035856850.png)
 
 
 
@@ -91,7 +91,7 @@ Multi-modal learning은 다양한 데이터 type (이미지와 텍스트, 이미
 
 Image를 넣어줬을 때 그 image에 따른 recipe를 알려주고, recipe를 넣어줬을 때 그에따른 image를 보여줍니다.
 
-![image-20210315040101891](Multi-modal Captioning and speaking.assets/image-20210315040101891.png)
+![image-20210315040101891](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315040101891.png)
 
  
 
@@ -109,7 +109,7 @@ Image를 넣어줬을 때 그 image에 따른 recipe를 알려주고, recipe를 
    - 이는 high-level semantics를 구분해줄 수 있는, 전체 정보 중에서 일부의 정보만이라도 Catch해냈으면 좋겠다는 목적이 담겨있습니다.
    - 예를 들어 fried fish라는 같은 카테고리일 경우 그 중 일부만이라도 캐치하겠다는 것입니다.
 
-![image-20210315040151447](Multi-modal Captioning and speaking.assets/image-20210315040151447.png)
+![image-20210315040151447](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315040151447.png)
 
  
 
@@ -121,7 +121,7 @@ Image를 넣어줬을 때 그 image에 따른 recipe를 알려주고, recipe를 
 
 Image가 주어지면은 그 Image를 잘 설명하는 text discription을 생성해내는 방법입니다.
 
-![image-20210315041301430](Multi-modal Captioning and speaking.assets/image-20210315041301430.png)
+![image-20210315041301430](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315041301430.png)
 
  
 
@@ -134,13 +134,13 @@ Image translation에서는 Image는 CNN을 사용하고, text에는 RNN 구조�
 
 
 
-![image-20210315041347177](Multi-modal Captioning and speaking.assets/image-20210315041347177.png)
+![image-20210315041347177](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315041347177.png)
 
  
 
 **`Show, attend and tell`**은 "Show and tell"에서 Image의 어떤 부분에 attention을 해야하는지를 추가한 방법입니다. **`Show, attend, and tell`**에서는 input image에서 Convolution feature를 뽑기 위해 먼저 input image를 CNN에 넣습니다.
 
-![image-20210315042100715](Multi-modal Captioning and speaking.assets/image-20210315042100715.png)
+![image-20210315042100715](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315042100715.png)
 
 근데 여기서 다른 점은 feature dimension vector로 그냥 출력하는 것이 아닌, 공간 정보를 유추할 수 있는 **14 x 14 feature map을 출력하고, 이 feature map을 RNN에 넣어줍니다.**
 
@@ -154,7 +154,7 @@ Image translation에서는 Image는 CNN을 사용하고, text에는 RNN 구조�
 
 Special한 feature (a)가 들어오게 되면 RNN을 통과시켜서 어디를 referencing해야하는지 heatmap으로 만들어줍니다. 이 **attention과 feature를 잘 결합해서 Z라는 vector**를 만들어줍니다. 이러한 방법은 **Soft attention embedding**이라고 말합니다.
 
-![image-20210315042211990](Multi-modal Captioning and speaking.assets/image-20210315042211990.png)
+![image-20210315042211990](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315042211990.png)
 
  
 
@@ -162,7 +162,7 @@ Special한 feature (a)가 들어오게 되면 RNN을 통과시켜서 어디를 r
 
 - Image가 주어지면은 Feature를 추출해서 LSTM에 넣어줍니다.
 
-![image-20210315043325239](Multi-modal Captioning and speaking.assets/image-20210315043325239.png)
+![image-20210315043325239](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315043325239.png)
 
  
 
@@ -170,7 +170,7 @@ Special한 feature (a)가 들어오게 되면 RNN을 통과시켜서 어디를 r
 
 
 
-![image-20210315043345553](Multi-modal Captioning and speaking.assets/image-20210315043345553.png)
+![image-20210315043345553](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315043345553.png)
 
  
 
@@ -180,7 +180,7 @@ Special한 feature (a)가 들어오게 되면 RNN을 통과시켜서 어디를 r
 
  
 
-![image-20210315043408444](Multi-modal Captioning and speaking.assets/image-20210315043408444.png)
+![image-20210315043408444](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315043408444.png)
 
 
 
@@ -190,7 +190,7 @@ Special한 feature (a)가 들어오게 되면 RNN을 통과시켜서 어디를 r
 
 그리고 나서는 **h1이 어떤 부분을 Referencing할 것인지 S2에게 예측**을 해줍니다.
 
-![image-20210315043504242](Multi-modal Captioning and speaking.assets/image-20210315043504242.png)
+![image-20210315043504242](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315043504242.png)
 
 
 
@@ -204,13 +204,13 @@ S2에서 갈매기의 양 날개 부분을 referencing해서 Feature와 inner pr
 
 y2에는 이전에 출력했던 "A"라는 문자를 넣어주게 됩니다.
 
- ![image-20210315043553762](Multi-modal Captioning and speaking.assets/image-20210315043553762.png)
+ ![image-20210315043553762](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315043553762.png)
 
  
 
 다시 그러면 h2가 z2, y2를 가지고 다음 단어를 prediction하게 됩니다.
 
-![image-20210315043616838](Multi-modal Captioning and speaking.assets/image-20210315043616838.png) 
+![image-20210315043616838](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315043616838.png) 
 
 
 
@@ -218,7 +218,7 @@ y2에는 이전에 출력했던 "A"라는 문자를 넣어주게 됩니다.
 
 이번에는 Text가 주어지면 image를 만들어주는 model입니다. 이때, image는 한 장만 나오는 것이 아니라 여러 장이 나와야합니다.
 
-![image-20210315043737877](Multi-modal Captioning and speaking.assets/image-20210315043737877.png)
+![image-20210315043737877](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315043737877.png)
 
  
 
@@ -240,7 +240,7 @@ y2에는 이전에 출력했던 "A"라는 문자를 넣어주게 됩니다.
 
 그리고 Generator Network에서 사용했던 text 정보를 Discriminator에서 가지고 와서 사용하게 됩니다. 그래서 **이 sentence condition 하에 input 영상이 make sence한 것인가를 판단하도록 learning을 수행**합니다.
 
- ![image-20210315043856958](Multi-modal Captioning and speaking.assets/image-20210315043856958.png)
+ ![image-20210315043856958](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315043856958.png)
 
 
 
@@ -314,7 +314,7 @@ Waveform에서 Spectrogram으로 변환시키기 위해서는 **Fourier transfor
 
 시간 축에 input signal이 주어지게 되면 **Fourier transform을 통해서 각각의 삼각함수가 어느정도 성분으로 들어가 있는지 다 분해**하게 됩니다. 이렇게 **각 주파수 성분을 파악**할 수 있게 됩니다.
 
-![img](https://blog.kakaocdn.net/dn/cKZ7rs/btqZWN8WwHL/F0yhREpTCJ6NRIhvZabkX1/img.png)
+![img](Lecture9_Multi-modal Captioning and speaking.assets/img.png)
 
 
 
@@ -324,7 +324,7 @@ Waveform에서 Spectrogram으로 변환시키기 위해서는 **Fourier transfor
 
 그러면 시간(t)에 따라서 주파수 성분이 어떻게 변해가는지 눈으로 볼 수 있게 됩니다.
 
- ![image-20210315045350942](Multi-modal Captioning and speaking.assets/image-20210315045350942.png)
+ ![image-20210315045350942](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315045350942.png)
 
  
 
@@ -344,7 +344,7 @@ mel spectrogam : 인간이 안쓰는 주파수 영역 (7000-8000) 차이를 줄�
 
 Sound를 통해서 현재의 sound를 어떤 장소에서 일어난지 추측해서 현재 장면을 추측하는 task입니다.
 
-<img src="Multi-modal Captioning and speaking.assets/image-20210315050244530.png" alt="image-20210315050244530" style="zoom:67%;" />
+<img src="Lecture9_Multi-modal Captioning and speaking.assets/image-20210315050244530.png" alt="image-20210315050244530" style="zoom:67%;" />
 
  
 
@@ -376,7 +376,7 @@ CNN은 1D-CNN이며, 맨 마지막에는 2개의 head로 분리해줍니다.
 
 
 
-![image-20210315050352705](Multi-modal Captioning and speaking.assets/image-20210315050352705.png)
+![image-20210315050352705](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315050352705.png)
 
 
 
@@ -394,7 +394,7 @@ CNN은 1D-CNN이며, 맨 마지막에는 2개의 head로 분리해줍니다.
 
 Conv8에 존재하는 head들에서 feature를 추출하기에는 Object distribution과 Scene distribution에 너무 optimizer되어 있기 때문에 pool5 부분이 조금 더 generalizable되어있다고 말할 수 있습니다.
 
-![image-20210315050444030](Multi-modal Captioning and speaking.assets/image-20210315050444030.png)
+![image-20210315050444030](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315050444030.png)
 
 
 
@@ -408,7 +408,7 @@ Conv8에 존재하는 head들에서 feature를 추출하기에는 Object distrib
 
 그래서 Speech2Face Model은 Spectrogram이 input으로 들어가고 Fixed dimension vector가 나오면 Face Decoder에 들어가서 얼굴을 reconstruction해주는 translation 모델입니다.
 
- ![image-20210315050643324](Multi-modal Captioning and speaking.assets/image-20210315050643324.png)
+ ![image-20210315050643324](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315050643324.png)
 
 
 
@@ -422,7 +422,7 @@ VGG-Face Model은 얼굴 image가 들어오면 Fixed dimension vector 형태로 
 
 Face Decoder는 face feature가 들어오면 reconsturction해서 face를 출력하게 됩니다. (pre-trained)
 
-![image-20210315050745206](Multi-modal Captioning and speaking.assets/image-20210315050745206.png)
+![image-20210315050745206](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315050745206.png)
 
  
 
@@ -432,7 +432,7 @@ Face Decoder는 face feature가 들어오면 reconsturction해서 face를 출력
 
 그렇게 되면 Face Decoder는 Face Feature에 호환이 되도록 학습이 되었기 떄문에 추가적인 학습 없이 **"voice encoder에서 출력된 feature"와 "face feature"와 호환이 되기만 하면 Face Decoder에 넣어줄 수 있습니다.**
 
-![image-20210315050824221](Multi-modal Captioning and speaking.assets/image-20210315050824221.png)
+![image-20210315050824221](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315050824221.png)
 
  
 
@@ -446,7 +446,7 @@ Face Decoder는 face feature가 들어오면 reconsturction해서 face를 출력
 
 Image-to-speech synthesis는 **image에서부터 speech를 만드는 방법**입니다.
 
-![image-20210315051120879](Multi-modal Captioning and speaking.assets/image-20210315051120879.png)
+![image-20210315051120879](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315051120879.png)
 
  
 
@@ -460,7 +460,7 @@ Image-to-speech synthesis는 **image에서부터 speech를 만드는 방법**입
 
 
 
-![image-20210315051137237](Multi-modal Captioning and speaking.assets/image-20210315051137237.png)
+![image-20210315051137237](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315051137237.png)
 
 
 
@@ -472,13 +472,13 @@ Learn Units은 Image-to-Unit Model과 Unit-to-Speech Model사이에서 unit이 �
 
 Speech가 들어오면 Unit이 나오는 Network (Speech-to-Unit Model)을 구성해놓고, Unit이 나오면 Learned Units module에 들어가서 사용이 됩니다. 
 
-![image-20210315051151629](Multi-modal Captioning and speaking.assets/image-20210315051151629.png)
+![image-20210315051151629](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315051151629.png)
 
  
 
 그러면 Speech가 **Learned Units**에 들어오면 항상 Unit을 출력할 수 있기 때문에 **Learned Units -> Image, 또는 Learned Units -> Speech 방향으로 해서 input / output 관계로 따로따로 학습이 가능해집니다.** 
 
-![image-20210315051317375](Multi-modal Captioning and speaking.assets/image-20210315051317375.png)
+![image-20210315051317375](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315051317375.png)
 
 
 
@@ -488,7 +488,7 @@ Speech가 들어오면 Unit이 나오는 Network (Speech-to-Unit Model)을 구�
 
 소리를 input으로 넣어주고 image를 넣어주었을 때 이 소리가 어디에서 나는지 image에서 찾는 방법입니다.
 
-![image-20210315051520745](Multi-modal Captioning and speaking.assets/image-20210315051520745.png)
+![image-20210315051520745](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315051520745.png)
 
  
 
@@ -496,7 +496,7 @@ Speech가 들어오면 Unit이 나오는 Network (Speech-to-Unit Model)을 구�
 
 Image는 Visual recogniziation net으로 학습된 Visual net을 사용하고, Audio도 SoundNet처럼 학습된 CNN 구조를 사용하게 됩니다.
 
-<img src="Multi-modal Captioning and speaking.assets/image-20210315051541882.png" alt="image-20210315051541882" style="zoom:67%;" />
+<img src="Lecture9_Multi-modal Captioning and speaking.assets/image-20210315051541882.png" alt="image-20210315051541882" style="zoom:67%;" />
 
  
 
@@ -506,7 +506,7 @@ Image는 Visual recogniziation net으로 학습된 Visual net을 사용하고, A
 
 그러면 **그 내적값이 Localization score로 나타나게 됩니다.**
 
-<img src="Multi-modal Captioning and speaking.assets/image-20210315051619634.png" alt="image-20210315051619634" style="zoom: 80%;" />
+<img src="Lecture9_Multi-modal Captioning and speaking.assets/image-20210315051619634.png" alt="image-20210315051619634" style="zoom: 80%;" />
 
  
 
@@ -518,7 +518,7 @@ Image에서 Audio는 annotation으로 활용이 가능하기 때문입니다.
 
 **Visual Net에서 추출한 Visual feature map을 X 부분까지 가지고 오고, Localization Score를 Weight로 사용합니다.** 그리고 feature map과 Weight를 weighted sum을 해서 pooling을 수행합니다. 그리고 **Attended visual feature**를 생성합니다.
 
-![image-20210315051721033](Multi-modal Captioning and speaking.assets/image-20210315051721033.png)
+![image-20210315051721033](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315051721033.png)
 
 
 
@@ -528,7 +528,7 @@ Image에서 Audio는 annotation으로 활용이 가능하기 때문입니다.
 
 같은 video에서 audio가 나왔다면 가까워지고, 다른 video에서 audio가 나왔다면 멀어지는 형태를 갖습니다.
 
-![image-20210315051929994](Multi-modal Captioning and speaking.assets/image-20210315051929994.png)
+![image-20210315051929994](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315051929994.png)
 
  
 
@@ -550,7 +550,7 @@ Visual 정보를 참조를 해서 speech seperate를 하는 방법입니다.
 
 그리고 Seperated speech spectrogram을 복호화를 해줘서 wavform으로 변환해주면 소리를 들어볼 수 있습니다.
 
- ![image-20210315052044273](Multi-modal Captioning and speaking.assets/image-20210315052044273.png)
+ ![image-20210315052044273](Lecture9_Multi-modal Captioning and speaking.assets/image-20210315052044273.png)
 
 
 
