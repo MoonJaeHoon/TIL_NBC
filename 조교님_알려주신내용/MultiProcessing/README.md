@@ -1,4 +1,4 @@
-
+# 소수찾기 (Multi thread로 처리해보기)
 
 ## 일반 Processing
 
@@ -87,4 +87,4 @@ MultiProcessing으로 수행한 결과가 시간 측면에서 효율적이라는
 
 
 
-**※ 수정필요.. MultiProcessing에서 if 조건문을 조금 다르게 걸어야 할 것 같아보인다.**
+**※ 수정필요.. MultiProcessing의 결과가 내가 원하는 형태가 아니다.. if 조건문을 수정하거나 다른 부분을 조금 건드려야할 듯 해보인다.**

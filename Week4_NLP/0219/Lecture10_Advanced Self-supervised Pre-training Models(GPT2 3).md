@@ -28,7 +28,7 @@ GPT-1과 BERT 이후에 나온 자기지도 사전학습 모델을 알아보자.
 
 ### (GPT-1 대비) 구조상의 변화
 
-![gpt-2](https://blogik.netlify.app/static/3ac1124d41c7ce6a6de54211ce0ef74c/80b2d/gpt-2.png)
+![image-20210315224427949](Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315224427949.png)
 
 - Layer Normalization이 각 sub-block의 입력쪽으로 옮겨졌다(pre-activation residual network와 비슷한 형태).
 - 마지막 self-attention block에서 Layer Normalization이 하나 추가되었다.
@@ -44,17 +44,19 @@ GPT-1과 BERT 이후에 나온 자기지도 사전학습 모델을 알아보자.
 
 ## GPT-3
 
+<img src="Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315224725380.png" alt="image-20210315224725380" style="zoom:80%;" />
+
 가장 최근에 나온 GPT 모델로, 모델의 구조에 변화가 있었다기보다는, **이전과 비교할 수 없을 정도의 attention block을 쌓아 파라미터수를 어마어마하게 많이 늘렸다(150B)**. 또, **배치사이즈도 3.2M정도가 되도록 최대한 키우자 더 좋은 성능**을 보였다고 한다.
 
-![gpt-3-few-shot](https://blogik.netlify.app/static/d51200945978aec912e03f6011da3c6e/21521/gpt-3-few-shot.png)
+<img src="Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315224534582.png" alt="image-20210315224534582" style="zoom:150%;" />
 
 GPT-2에 비해 눈에 띄는 특징은 다음과 같다.
 
 - GPT-2에서는 '가능성'정도로만 보였던 `Zero-shot setting`이 놀라운 수준으로 발전하였다.학습에서 전혀 활용하지 않았던 텍스트를 translation 했을때도 정상적으로 기능한다.
-- 하고자 하는 task(예를 들자면 번역)를 주고, 예시를 주면, 자연어 생성 task로 인식하여 정확도를 평가하고 스스로 학습한다. 이를 **`One-shot`**이라고 한다. 데이터를 단 한 쌍(예시)만 주었다는 말이다.신기한 점은, 모델 자체의 파라미터를 변경시켜가며 학습한 것이 아니라, 데이터를 input 텍스트의 일부로서 제시했는데도 task를 수행했다는 것이다!
+- 하고자 하는 task(예를 들자면 번역)를 주고, 예시를 주면, 자연어 생성 task로 인식하여 정확도를 평가하고 스스로 학습한다. 이를 **`One-shot`**이라고 한다. 데이터를 단 한 쌍(예시)만 주었다는 말이다.신기한 점은, 모델 자체의 파라미터를 변경시켜가며 학습한 것이 아니라, 데이터를 input 텍스트의 일부로서 제시했는데도 task를 수행했다는 것이다
 - 동일한 맥락으로, 몇 개 안되는 예시 데이터를 주고 task를 수행하도록 하는 Few-shot이 가능해졌다.
 
-![gpt-3-few-shot-performance](https://blogik.netlify.app/static/60116e0b144deab5846ef610322313da/2bef9/gpt-3-few-shot-performance.png)
+![image-20210315224758097](Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315224758097.png)
 
 연구 결과에 따르면, 모델 사이즈를 키우면 키울수록, **`Zero/One/Few shot`**의 성능이 계속해서 오른다고 한다.
 
@@ -64,19 +66,15 @@ GPT-2에 비해 눈에 띄는 특징은 다음과 같다.
 
 - BERT에서 큰 버젼과 작은 버젼이 있듯이, ALBERT에도 모델 파라미터 사이즈에 따라 좀 더 큰 모델과 작은 모델이 있다. 물론 더 큰 모델을 사용할 때 좀 더 좋은 성능을 낸다.
 
-이해하기 쉽게 잘 정리된 글이 있으니 아래의 내용들이 이해가 가지 않는다면 이 링크를 참조하자.
-
-[[ALBERT 논문 Review\] ALBERT: A LITE BERT FOR SELF-SUPERVISED LEARNING OF LANGUAGE REPRESENTATIONS](https://y-rok.github.io/nlp/2019/10/23/albert.html)
-
 ### Factorized Embedding Parameterization
 
-![factorized-embedding-parameterization](https://blogik.netlify.app/static/d1f32130e74a44018411d7a41f19984d/2bef9/factorized-embedding-parameterization.png)
+![image-20210315225052411](Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315225052411.png)
 
 기존의 BERT에서 Embedding vector 사이즈 E*E*는 hidden vector size H*H*와 항상 같아야했다. 여러 Attention Block을 쌓기 때문에, 같은 크기로 들어가고 나가야 다음 블록에 동일한 형태로 전달될 수 있다.
 
-문제는, 단어간의 관계를 인코딩하여 저장해야하므로 많은 정보가 들어가는 dependent 벡터 H*H*의 크기를 맞추기 위해, **단어간의 관계를 생각하지 않아도 되는 independent 벡터 E\*E\*가 필요 이상으로 커진다**는 것이다.
+문제는, 단어간의 관계를 인코딩하여 저장해야하므로 많은 정보가 들어가는 dependent 벡터 H*H*의 크기를 맞추기 위해, **단어간의 관계를 생각하지 않아도 되는 independent 벡터 E가 필요 이상으로 커진다**는 것이다.
 
-![albert-fep2](https://blogik.netlify.app/static/dc55109428294d55d3be60ea96110ffa/2bef9/albert-fep2.png)
+![image-20210315225107566](Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315225107566.png)
 
 위 이미지를 보면, BERT에서는 원래 4x1 사이즈의 임베딩 벡터가 H에 맞춰주기 위하여 4x4로 늘어나는 것을 볼 수 있다.
 
@@ -89,20 +87,25 @@ GPT-2에 비해 눈에 띄는 특징은 다음과 같다.
 
 Self-attention block들이 가지는 학습 파라미터들에는 무엇들이 있을까?
 
-- 임베딩된 input 벡터가 Query, Key, Value 각각의 역할을 하도록 변형시켜주는 [W^Q,W^K,W^V][*W**Q*,*W**K*,*W**V*]multi head라면 행렬 세트가 총 head개가 된다.
-- Z^t*Z**t*들을 concat한 후 다시 원래의 Hidden State Vector 크기의 Z*Z*로 줄여주기 위한 W^O*W**O*
+- 임베딩된 input 벡터가 Query, Key, Value 각각의 역할을 하도록 변형시켜주는 가중치 행렬 *W^Q*,*W^K*,*W^V* (세트)
+  - multi head라면 이러한 행렬 세트가 총 head개가 된다.
+- *Z^t*들을 concat한 후 다시 원래의 Hidden State Vector 크기의 Z로 줄여주기 위한 *W^O*
 
 물론, 각각의 Self Attention block마다 이 파라미터값은 모두 다를것이다.
 
 그런데 ALBERT는 서로 다른 Layer, 즉 **서로 다른 Self-Attention Block에 존재하는 파라미터들을 서로 공유**하는 방법을 제시한다. 이를 **`Cross-layer Parameter Sharing`**이라고 한다.
 
-![albert-sharing](https://blogik.netlify.app/static/a3bac524d238aad508f7ecf09fa6c8ab/2bef9/albert-sharing.png)
-
 - **`Shared-FFN`** : Layer 간에 feed-forward network의 파라미터만 공유한다.
 - **`Shared-attention`** : Layer 간에 attention 파라미터들만 공유한다.
 - **`All-shared`** : 둘 다 공유한다.
 
+![image-20210315230543376](Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315230543376.png)
+
+
+
 이처럼 파라미터를 공유하였을 때, **파라미터의 개수는 크게 줄었음에도 불구하고 모델의 성능은 그다지 크게 떨어지지 않았음을 입증**하였다.
+
+
 
 ### Sentence Order Prediction
 
@@ -118,7 +121,7 @@ ALBERT에서는 해당 task의 pretraining을 빼고 좀 더 유의미한 task�
 - 그 문장을 원래의 순서대로 concat했을 때 정방향으로 예측하고, 역순으로 concat했을 때 역방향으로 예측하도록 학습시킨다.(이진분류)
 - 이를 `negative sample`이라고 하는데, 인접 문장이므로 순서와 관계없이 비슷한 단어가 당연히 많이 등장한다.따라서 정말로 논리적인 흐름을 주의깊게 파악해야 task를 풀 수 있는 pretraining 형태가 되었다.
 
-![albert-sop](https://blogik.netlify.app/static/bbb2c2706f67613d7b2146849ebe59b7/2bef9/albert-sop.png)
+![image-20210315230623283](Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315230623283.png)
 
 논문에 첨부된 위의 실험결과를 보면, Next Sentence Prediction(NSP)를 사용했을때는 아예 사용하지 않았을 때와 별 차이가 없거나 오히려 성능이 떨어지기까지 한다. 이에 비해 **`Sentence Order Prediction(SOP)`**는 좀 더 좋은 개선된 성능을 보여주고 있다.
 
@@ -133,7 +136,7 @@ MLM(Masked language Modeling)을 통해 마스킹된 단어를 복원해주는 �
 
 이렇게 모델 학습을 진행할 경우에, Pre-train된 모델로서 사용할 수 있는 부분이 Generator와 Discriminator 두 부분이 된다. 이 중 **`ELECTRA`**는 Discriminator를 가져다가 downstream task에 맞게 fine-tuning하여 사용하는 방식이다.
 
-![electra-performance](https://blogik.netlify.app/static/30a0c7ee8b543008c320d70db20172b3/2bef9/electra-performance.png)
+![image-20210315230712692](Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315230712692.png)
 
 ELECTRA의 논문에 따르면, **대부분의 BERT 모델보다 동일한 학습량 대비 성능이 더 좋다**고 한다.
 
@@ -145,7 +148,7 @@ ELECTRA의 논문에 따르면, **대부분의 BERT 모델보다 동일한 학�
 
 ### DistillBERT
 
-[Huggingface](https://huggingface.co/)에서 2019년도 발표한 모델로, Teacher 모델과 Student 모델로 이루어져있다. 큰 사이즈의 Teacher 모델이 기존의 방식으로 학습을 수행한 후, Student 모델은 더 적은 파라미터로 Teacher 모델의 수행방식을 모사하여 비슷한 성능을 낸다.
+Huggingface에서 2019년도 발표한 모델로, Teacher 모델과 Student 모델로 이루어져있다. 큰 사이즈의 Teacher 모델이 기존의 방식으로 학습을 수행한 후, Student 모델은 더 적은 파라미터로 Teacher 모델의 수행방식을 모사하여 비슷한 성능을 낸다.
 
 - Teacher 모델이 예측한 결과를 Student 모델이 softmax에 주는 ground-truth로 삼아 학습한다.
 
@@ -178,35 +181,9 @@ Knowledge graph를 어떻게 BERT등에 적용시킬 수 있을까에 대한 연
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ---
+
+**+번외로 살펴본 부분**
 
 ## GPT-3는 따로 어떠한 TASK를 위한 학습을 하지 않아도 성능이 뛰어나다.
 

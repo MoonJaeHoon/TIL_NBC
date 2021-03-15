@@ -65,11 +65,11 @@ Pre-trained 된 모델을 사용하는 것이 상대적으로 소량의 labeling
 
 # 2. BERT (Bidectional Trasnformer)
 
-GPT와 아이디어 자체는 동일하지만, 사전 학습시 학습시켜주는 방법에 대한 아이디어가 다르다.
+BERT는 현재 가장 많이 쓰이는 Pre-trained 모델이다. **<u>Masked</u>** **Language Modeling 방식으로 학습**되었으며, 그림상으로는 GPT와 아이디어 자체가 동일해보이지만 다르다.
 
-현재까지도 가장 널리 쓰이는 pretraining 모델로, GPT-1과 마찬가지로 **Language Modeling 방식으로 학습**시켰습니다.
+GPT는 방향성이 없었다는 점을 기억해야 한다. 비슷한 구조 중에는 또한 양방향성 성질을 반영하여 LSTM을 기반으로 한 인코더 ELMO도 있었다.
 
-기존에 다음 단어를 예측하는 등의  LSTM을 기반으로 한 인코더 `ELMo`가 있었으나, LSTM 인코더가 Transformer로 대체되면서 BERT가 가장 많이 쓰인다.
+하지만 현재 추세에서는 LSTM 인코더가 Transformer로 대체되면서 여러 강점을 가진 BERT가 가장 많이 쓰이고 있는 것이다.
 
 ![image-20210315064936702](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315064936702.png)
 
@@ -166,15 +166,23 @@ GPT와 아이디어 자체는 동일하지만, 사전 학습시 학습시켜주�
 
 기존에 특정 Task를 처리하도록 pre-train된 모델을, 다른 task를 수행할 수 있도록 조정하여 주는 과정을 **`미세조정 과정(Fine-tuning Process)`**이라고 한다. 기존의 모델구조를 거의 바꾸지 않고 Output Layer만 바꾸면 되고 추가적인 아주 작은 조정만으로 다른 Task를 수행할 수 있기 때문에 엄청난 강점이 있다(성능 또한 굉장히 좋다)
 
-![image-20210315072425465](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315072425465.png)
+<img src="Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315072425465.png" alt="image-20210315072425465" style="zoom: 200%;" />
 
-​	(a) 문장 두개를 입력받아 분류(NSP, 논리적 모순 예측 등). [SEP]토큰이 추가된 걸 확인할 수 있다.
+​	(a) **Sentence Pair Classification Tasks :** 문장 두개를 입력받아 분류(논리적인 내포관계, 모순관계 등을 예측). [SEP]토큰이 추가되어 문장을 구분할 수 있게 해주고, [CLS] 토큰은 BERT 수행 후 Classification TASK를 수행할 때 사용되는 것을 확인할 수 있다.
 
-​	(b) 문장 하나를 입력받아 감정 등의 분류. 분류 문제의 경우 a,b 모두 [CLS]토큰 위치에서 예측값이 출력되는 것을 확인할 수 있다.
+<img src="Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315202610544.png" alt="image-20210315202610544" style="zoom:67%;" />
 
-​	(c) Question Answering에 사용되는 경우
+​	(b) **Single Senctence Classification Tasks** : 문장 하나를 입력받아 감정 등의 분류. 분류 문제의 경우 a,b 모두 [CLS]토큰 위치에서 예측값이 출력되는 것을 확인할 수 있다.
 
-​	(d) 문장 구성성분의 품사를 예측하는 문제
+<img src="Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315202640407.png" alt="image-20210315202640407" style="zoom:67%;" />
+
+​	(c) **Question Answering Tasks :** 주어진 질문에 답변을 하는 경우이다.
+
+<img src="Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315202715169.png" alt="image-20210315202715169" style="zoom:67%;" />
+
+​	(d) **Single Sentence Tagging Tasks :** 주어진 문장에서 문장 성분 혹은 품사를 예측하는 문제
+
+<img src="Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315202725460.png" alt="image-20210315202725460" style="zoom:67%;" />
 
 
 
@@ -182,28 +190,29 @@ GPT와 아이디어 자체는 동일하지만, 사전 학습시 학습시켜주�
 
 **`OpenAI GPT`**
 
-- **Unidirectional -** 다음 단어를 예측하는것이 task이기 때문에, 다음 단어에 접근을 허용하면 안된다.
-- BookCorpus 데이터로 학습(80억개 단어)
-- 배치 사이즈 32,000개 단어
-- 모든 fine-tuning experiments에 대하여 5e-5라는 동일한 학습률 적용
+- **Unidirectional -** 다음 단어를 예측하는것이 task이기 때문에, 다음 단어(word)에 접근을 허용해선 안되는 구조이다.
+- **Train Data size :** 80억개 단어(BookCorpus 데이터로 학습)
+- **배치 사이즈 :** 32,000개 단어
+- 모든 fine-tuning experiments에 대하여 `5e-5`라는 동일한 학습률 적용
 
 **`BERT`**
 
-- **Bidirectional -** [MASK] 토큰으로 치환된 단어를 예측하기 위하여 앞뒤 문맥을 모두 사용한다.
-- BookCorpus와 Wikipedia 데이터로 학습(250억개 단어)
-- [SEP], [CLS], 세그먼트 임베딩
-- 배치 사이즈 128,000개 단어
+- **Bidirectional -** [MASK] 토큰으로 치환된 단어를 예측하기 위하여 앞뒤 문맥을 모두 사용, 앞뒤 단어에 접근이 허용된다.
+- **Train Data size :** 250억개 단어(BookCorpus와 Wikipedia 데이터로 학습)
+- **배치 사이즈 :** 128,000개 단어
+- [SEP], [CLS] Token을 사용
+- 세그먼트 임베딩을 사용하여 여러 문장이 주어졌을 때 문장을 잘 구분할 수 있음.
 - task에 따라 각기 다른 학습률 적용
 
-일반적으로 기존의 모델들에 비해 BERT가 성능이 전반적으로 좋았다(GLUE 자료 참조)
+일반적으로 기존의 모델들에 비해 BERT가 성능이 전반적으로 좋았다(GLUE Benchmark 참조)
 
-![img](https://media.vlpt.us/images/blush0722/post/73f3cc68-fe8b-4ff4-b08e-a89a2914a567/image.png)
+![image-20210315200829619](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315200829619.png)
 
-> GPT는 주어진 sequence를 encoding 할 때 바로 다음 단어를 예측해야 하는 task를 진행하기 때문에 특정한 time step에서 그 다음에 나타나는 단어로의 접근을 허용하면 안 된다. 그래서 transformer의 decoder처럼 masked self attention을 사용한다.
+> GPT는 주어진 sequence를 encoding 할 때 바로 다음 단어를 예측해야 하는 task를 진행하기 때문에 특정한 time step에서 그 다음에 나타나는 단어로의 접근을 허용하면 안 된다. 그래서 **transformer의 decoder처럼 masked self attention**을 사용한다.
 
-> 
->
-> 그러나 BERT의 경우 mask로 치환된 토큰들을 예측하기 때문에 mask 단어를 포함하여 전체 주어진 모든 단어들에 접근이 가능하다. 그래서 transformer의 encoder에서 사용되는 self attention module을 사용한다.
+
+
+> 그러나 BERT의 경우 mask로 치환된 토큰들을 예측하기 때문에 mask 단어를 포함하여 전체 주어진 모든 단어들에 접근이 가능하다. 그래서 **transformer의 encoder에서 사용되는 self attention module**을 사용한다.
 
 
 
@@ -213,7 +222,7 @@ GPT와 아이디어 자체는 동일하지만, 사전 학습시 학습시켜주�
 
 질의응답의 형태인데 질문만 주어지고 그 질문에 대한 답을 예측하는게 아니라 주어진 지문이 있을 떄 지문을 잘 이해하고 질문에서 필요로 하는 정보를 잘 추출할 수 있는 기계 독해에 기반한 질의응답이다.
 
-![img](https://media.vlpt.us/images/blush0722/post/129a50f2-8d6e-489d-98cd-d88a9fc508fe/image.png)
+![image-20210315201432657](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315201432657.png)
 
 
 
@@ -225,76 +234,71 @@ GPT와 아이디어 자체는 동일하지만, 사전 학습시 학습시켜주�
 
 지문에서 답을 찾을 수 있는 질문만 입력으로 주어진다.
 
-![img](https://media.vlpt.us/images/blush0722/post/6226b1bf-9cde-4cb5-91a6-8ff78fe29022/image.png)
+![image-20210315205648441](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315205648441.png)
 
-- main task를 수행하는 layer가 작동하는 방식
-  먼저 질문과 지문을 <SEP> 토큰으로 이어주고 제일 앞에 <CLS> 토큰을 넣는다. 이 때 각 단어별 최종 encoding 벡터가 나오면 이를 공통된 output layer를 통해서 스칼라 값을 뽑도록 한다.
 
-예를 들어 각각 encoding 벡터가 2차원으로 나오게 된 경우 output layer는 단순히 이 2차원 벡터를 단일한 차원의 스칼라 값으로 변경해주는 Fully Connected Layer가 된다. 이 때 Fully Connected Layer가 학습되는 파라미터가 된다. 각 스칼라 값을 얻은 후에는 softmax를 통과시켜 주고, answer가 시작하는 단어(위 문장에선 first)의 logic 값을 100%에 가까워 지도록 softmax loss를 통해 학습한다. 그리고 answer가 끝나는 단어를 예측하는 또 하나의 output layer를 통해 ground truth 단어를 예측하도록 학습한다.
 
-![img](https://media.vlpt.us/images/blush0722/post/584666ad-912e-427c-be11-bd6a642c97fb/image.png)
+> main task를 수행하는 layer에서는 어떻게 작동할까?
+
+
+
+1. 먼저 질문과 지문을 <SEP> 토큰을 통해 하나의 seq로 concat한 다음, 제일 앞에 <CLS> 토큰을 넣습니다.
+
+2. 그 후 인코딩을 진행하여  각 word별로 최종 encoding 벡터가 Output으로 나왔을 때, 이를 공통된 output layer를 통해서 **scalar 값**을 뽑도록 합니다. 
+   - 즉, encoding vector가 나온 후, 이 vector들을 **scalar값**으로 변경해준다는 것입니다.
+3. scalar값을 각 word별로 얻은 후에는 여러 word들 중에 답에 해당하는 문구가 어느 단어에서 시작하는지 **fully connected layer** <u>***FC1***</u>를 통해 먼저 예측해줍니다.
+   - 예를 들어서, 만약 124개의 단어가 존재하면 (이들을 각각 워드벡터로 인코딩하고 scalar로 변환하면) 124개의 scalar값의 vector가 도출되며
+   - first라는 단어가 정답의 시작에 해당하는 단어이기 때문에 단어별 scalar들 중 "first" 단어에서 softmax의 높은 확률을 가질 수 있도록 **loss**를 통해 학습합니다.
+4. 이후에는 Answering 단어가 끝나는 시점도 예측해주어야 하는데 이 word에 대한 또 다른 **fully connected layer** ***<u>FC2</u>***를 만들고 Softmax를 통과해서 높은 확률의 end 위치를 설정해줍니다.
+   - 위 그림에서는 `shock`이 end위치에 해당하며 역시 이것도 Loss를 통해 학습되게 된다.
+
+![image-20210315210723588](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315210723588.png)
 
 
 
 #### SQuAD 2.0
 
-지문에서 답을 찾을 수 없는 질문도 입력으로 주어진다.
+SQuaAD 2.0에는, SQuaAD 1.1에다가 `지문에서 답을 찾을 수 없는 질문 Dataset`도 입력으로서 추가되어있습니다.
 
-- Use token 0 ([CLS]) to emit logit for “no answer”
-- “No answer” directly competes with answer span
-- Threshold is optimized on dev set
+이런 경우에는 BERT의 Fine-Tuning에서 답이 있는지 없는지를 예측하는 Task가 추가되어야 합니다.
 
-![img](https://media.vlpt.us/images/blush0722/post/7ded550d-1ab0-4b85-9afa-3b03a751d46d/image.png)
+만약 정답이 존재한다면 다음 과정을 수행하고(SQuAD 1.1처럼 진행한다), 그렇지 않으면 종료를 합니다.
 
-[CLS] 토큰을 binary classification을 통해 answer가 지문에 있는지 없는지를 판단하고, 없으면 'no answer'를 출력하고 있으면 SQuAD 1.1 처럼 답의 첫 문장과 끝 문장을 찾는다.
+- 질문과 문단을 종합적으로 보고 판단하기 때문에 CLS 토큰을 활용합니다.
+- 이것 역시 질문과 문단을 concat해서 BERT로 인코딩하여 CLS 토큰을 얻는 것입니다.
+- <CLS> 토큰을 이진분류하는 OutputLayer에 통과시켜 "answer"(정답이 존재), "no answer"(정답이 없음)을 구분합니다. (크로스 엔트로피로 학습합니다.)
+- 정답이 존재하지 않는다면, "no answer"라면 종료한다.
+
+<img src="Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315211428484.png" alt="image-20210315211428484" style="zoom: 80%;" />
+
+- 그리고 만약 "answer"(정답이 존재)라면 SQuAD 1.1을 수행한 방식대로 하면 됩니다. (정답의 첫 단어와 끝 단어를 찾는 과정을 수행)
 
 
 
 ## On SWAG
 
-- Run each Premise + Ending through BERT
-- Produce logit for each pair on token 0 ([CLS])
+**On-SWAG**는 주어진 문장**이 있을 때, **다음에 나타날 법한 문장을 객관식으로 고르는 task 형태의 QA입니다.
 
-**`SWAG`** 에서는 주어진 문장이 있을 때, 다음에 나타날 문장을 객관식으로 고르는 형태의 QA다. 이 경우에도 CLS 토큰을 사용한다.
+- **주어진 문장**과 **(i)**를 <SEP>토큰 이용 concat 해서 BERT 통해 encoding 하고, 나오는 <CLS> token을 사용해서 encoding vector를 fully connected layer를 통해 **scalar값**을 추출합니다.
+  - 사실 <CLS> 토큰은 pre-trained task 중 Next Sentence Prediction을 수행할 때 입력 seq의 context를 담은 tokne으로서 활용됩니다.
+  - 이렇게 seq의 정보를 담고 있기 때문에 OutputLayer의 입력으로 사용되는 것이죠.
+- 문장들 (ii), (iii), (iv)도 각각 질문과 concat해서 벡터로 만든 뒤 역시 FC layer를 거쳐 scalar값을 구해냅니다.
+  - 이것 역시 Sentence Pair인 경우에 해당하므로, <CLS> 토큰의 output hidden state를 Output Layer의 입력으로서 사용하는 과정을 수행합니다.
+- 이렇게 나온 4개의 scala value를 모두 softmax에 통과시켜서 정답에 해당하는 부분의 확률이 높도록 학습시킵니다.
+  - 각 pair 별로 각 <CLS> 토큰에 logit 값을 생성해주는 것입니다.
 
-- 4가지 선택지를 모두 하나씩 질문과 concat하여 벡터화하고, Fully Connected Layer를 통과시켜 예측 스칼라값으로 만든다.
-- 4개의 스칼라값을 모두 softmax에 통과시켜, 정답에 해당하는 값의 확률을 높이도록 학습시킨다.
+![image-20210315213738884](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315213738884.png)
 
-### Ablation Study
+## Ablation Study
 
-[알고리즘이나 모델의 feature를 제거하면서, 그 행위가 성능에 끼치는 영향을 평가하는 방식](https://fintecuriosity-11.tistory.com/73)을 Ablation Study라고 한다.
+알고리즘이나 모델의 feature를 제거하면서, 그 행위가 성능에 끼치는 영향을 평가하는 방식을 Ablation Study라고 한다.
 
-- **Big models help a lot**Layer를 점점 더 쌓고, 파라미터를 늘릴수록, 즉 Big model일수록 더 좋더라는 이야기.데이터셋이 3600개밖에 없더라도 파라미터를 110M→340M 개로 늘리니까 더 좋아졌다.GPU 리소스를 늘리면 늘릴수록 더 높아지더라. 점근선(asymptote)의 형태가 아니더라! 최대한 많이 리소스를 늘려라.
+- Big Model 일수록 (Layer를 더 많이 쌓고 파라미터를 더 많이 늘릴수록) 무조건적으로 더 좋다는 결과를 보여주고 있다.
+  - 데이터셋이 3600개밖에 없는데도 parameter 수를 110M에서 340M으로 끌어올렸을 때가 더 좋아졌다.
+  - 아래 그림처럼 증가하는 경향이 점근선도 없는 형태더라.
+- 그렇기 때문에 GPU 자원을 최대로 이용할 수 있을 때까지 model 크기를 늘릴 수 있다면 늘리는 것이 좋다고 전망된다.
 
-![img](https://media.vlpt.us/images/blush0722/post/fdde37f5-0745-4b9b-b05b-20f2053f0110/image.png)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+![image-20210315221050893](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315221050893.png)
 
 
 
@@ -308,13 +312,13 @@ GPT와 아이디어 자체는 동일하지만, 사전 학습시 학습시켜주�
 
 ---
 
-## Bert의 단점
+## +추가정리(Bert의 단점)
 
 BERT의 Masked Language Model의 단점은 무엇이 있을까요? 사람이 실제로 언어를 배우는 방식과의 차이를 생각해보며 떠올려봅시다
 
 
 
-Byte2Piece를 했을 때,
+Byte2Piece를 사용했을 때,
 
 장 점 이라고 나누었는데 '장'을 masking하면 굉장히 이상한 결과를 내게 된다.
 
