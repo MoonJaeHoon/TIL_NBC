@@ -1,4 +1,5 @@
-일반 Processing
+## 일반 Processing
+
 ```python
 
 import time
@@ -29,7 +30,16 @@ print(f"--- {time.time() - start_time} seconds ---")
 
 ```
 
-MultiProcessing
+```
+--- 156.34380269050598 seconds ---
+```
+
+
+
+
+
+## MultiProcessing
+
 ```py
 from multiprocessing import Pool
 import time
@@ -60,6 +70,10 @@ if __name__ == '__main__':
 print(f"--- {time.time() - start_time} seconds ---")
 ```
 
-MultiProcessing이 더 시간소요가 많다..
+```
+--- 81.36539554595947 seconds ---
+```
 
-수정해볼 필요가 있다.
+
+
+MultiProcessing으로 수행한 결과가 시간 측면에서 효율적이라는 것을 알 수 있었다.

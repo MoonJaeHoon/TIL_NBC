@@ -5,7 +5,6 @@ import os
 # 시작시간
 start_time = time.time()
 
-
 def prime_number(input_number):
     count=0
     for i in range(1,int(input_number**(0.5))+1):
@@ -17,7 +16,7 @@ def prime_number(input_number):
         return
 
 if __name__ == '__main__':
-    input_range = range(1,10**4)
+    input_range = range(1,2*10**6)
     pool = Pool(4)
     pool.map(prime_number, input_range)
 

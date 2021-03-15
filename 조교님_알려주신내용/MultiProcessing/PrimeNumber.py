@@ -18,7 +18,7 @@ def prime_number(input_number):
     return prime_number_list
 
 if __name__ == '__main__':
-    input_number = 10**4
+    input_number = 2*10**6
     answer_list = prime_number(input_number)
     print(answer_list)
 
