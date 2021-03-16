@@ -64,8 +64,12 @@ def prime_number(input_number): # input_number가 들어왔을 때 소수라면 
 
 if __name__ == '__main__':
     input_range = range(2,2*10**6)  # 소수를 찾을 범위를 미리 선언해주었습니다.
+    # input_range = range(1,10)  # 소수를 찾을 범위를 미리 선언해주었습니다.
     pool = Pool(4)  # num_thread = 4로 설정했습니다.
-    answer_list = pool.map(prime_number, input_range) # 선언해놓은 range에서 4개의 thread가 병렬로 수행합니다.
+    
+    # 선언해놓은 range에서 4개의 thread가 병렬로 수행합니다.
+    # list comprehension & if문을 통해 None이 Return된 원소들은 필터링해주었습니다.
+    answer_list = [p for p in pool.map(prime_number, input_range) if p!=None]
     print(answer_list)
 
 
@@ -78,7 +82,7 @@ print(f"--- {time.time() - start_time} seconds ---")
 --- 0.0 seconds ---
 --- 0.0 seconds ---
 --- 0.0 seconds ---
---- 70.1404619216919 seconds ---
+--- 71.20836400985718 seconds ---
 ```
 
 
@@ -87,4 +91,6 @@ MultiProcessing으로 수행한 결과가 시간 측면에서 효율적이라는
 
 
 
-**※ 수정필요.. MultiProcessing의 결과가 내가 원하는 형태가 아니다.. if 조건문을 수정하거나 다른 부분을 조금 건드려야할 듯 해보인다.**
+
+
+**※ 수정완료 : MultiProcessing의 결과가 내가 원하는 형태가 아니라서 list comprehension을 통해 filtering 작업을 거쳤다. 이와 같은 조건문 연산이 추가되었음에도 불구하고 MultiProcessing이 압도적으로 빠르다**
