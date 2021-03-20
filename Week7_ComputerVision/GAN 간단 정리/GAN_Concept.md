@@ -15,9 +15,9 @@ GAN의 개념 중 헷갈릴만한 부분을 정리하였습니다.
 
 
 1. 파랑색으로 밑줄친 log(D(x)) where x~p_data(x)
+2. 파랑색으로 밑줄친 부분을 보면, p_data(x)라는 notation은 original data가 따르는 확률분포를 나타냅니다.
 
 
- - 파랑색으로 밑줄친 부분을 보면, p_data(x)라는 notation은 original data가 따르는 확률분포를 나타냅니다.
  - 해당 original distribution에서 추출된 x 데이터에 대하여 Discriminator를 수행하는데 목적함수를 높이기 위해 노력하기 때문에 original data에 대한 Discriminator 결과가 1에 가까울수록 좋다는 것일 겁니다.
  - 따라서 원래 original data를 Real로 판단할 수 있게 되어야 한다는 뜻입니다.
 
@@ -65,12 +65,5 @@ JSD는 쿨백라이블러 발산을 평균내서 도출할 수 있는 Distance m
 
 
 (쿨백라이블러 발산은 거리 개념처럼 쓰이긴 하지만, 사실 명백히 거리 개념은 아니기 때문에)
-
-
-
-
-
-
-
 
 
