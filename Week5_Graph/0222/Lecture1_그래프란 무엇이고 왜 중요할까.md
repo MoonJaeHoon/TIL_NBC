@@ -12,7 +12,7 @@
 그래프는 **네트워크(Network)**로도 불립니다.
 **정점(Vertex)**은 **노드(Node)**로 **간선**은 **엣지(Edge)** 혹은 **링크(Link)**로도 불립니다.
 
-![img](https://media.vlpt.us/images/blush0722/post/8bdf8cd9-8502-4068-825f-b6d42506b1fd/image.png)
+![image-20210321233303646](Lecture1_그래프란 무엇이고 왜 중요할까.assets/image-20210321233303646.png)
 
 우리 주변에는 많은 복잡계(ComplexSystem)가 있습니다.
 
@@ -45,11 +45,11 @@ A. 그래프(Graph) 입니다!
 
 트위터에서의 공유(Retweet) 관계를 분석하여, 각 사용자의 정치적 성향을 알 수 있을까?
 
-![img](https://media.vlpt.us/images/blush0722/post/32930ab3-cf76-47d8-bc38-7daef000b734/image.png)
+![image-20210321233325515](Lecture1_그래프란 무엇이고 왜 중요할까.assets/image-20210321233325515.png)
 
 단백질의 상호작용을 분석하여 단백질의 역할을 알아낼 수 있을까?
 
-![img](https://media.vlpt.us/images/blush0722/post/e1df2b01-3b69-46f6-a23b-27ef4152c46c/image.png)
+![image-20210321233337881](Lecture1_그래프란 무엇이고 왜 중요할까.assets/image-20210321233337881.png)
 
 
 
@@ -57,7 +57,7 @@ A. 그래프(Graph) 입니다!
 
 페이스북 소셜네트워크는 어떻게 진화할까?
 
-![img](https://media.vlpt.us/images/blush0722/post/8b8a6c4f-d253-423b-930c-d59e292f494a/image.png)
+![image-20210321233350881](Lecture1_그래프란 무엇이고 왜 중요할까.assets/image-20210321233350881.png)
 
 
 
@@ -65,13 +65,13 @@ A. 그래프(Graph) 입니다!
 
 각자에게 필요한 물건은 무엇일까? 어떤 물건을 구매해야 만족도가 높을까?
 
-
+![image-20210321233402907](Lecture1_그래프란 무엇이고 왜 중요할까.assets/image-20210321233402907.png)
 
 ### 군집분석(Community Detection) 문제
 
 연결 관계로부터 사회적무리(Social Circle)을 찾아낼 수 있을까?
 
-![img](https://media.vlpt.us/images/blush0722/post/4e24fb5d-c22d-4c03-bc44-26b7ffb75e0f/image.png)
+![image-20210321233415241](Lecture1_그래프란 무엇이고 왜 중요할까.assets/image-20210321233415241.png)
 
 
 
@@ -79,7 +79,7 @@ A. 그래프(Graph) 입니다!
 
 웹(Web)이라는 거대한 그래프로부터 어떻게 중요한 웹페이지를 찾아낼 수 있을까?
 
-![img](https://media.vlpt.us/images/blush0722/post/b011b35a-0b01-4bbc-b975-1428089d1b9b/image.png)
+![image-20210321233428439](Lecture1_그래프란 무엇이고 왜 중요할까.assets/image-20210321233428439.png)
 
 
 
@@ -87,7 +87,7 @@ A. 그래프(Graph) 입니다!
 
 정보는 네트워크를 통해 어떻게 전달될까? 어떻게 정보 전달을 최대화 할 수 있을까?
 
-![img](https://media.vlpt.us/images/blush0722/post/c59c5964-29df-4e76-a58e-d3cb04beacd2/image.png)
+![image-20210321233439293](Lecture1_그래프란 무엇이고 왜 중요할까.assets/image-20210321233439293.png)
 
 
 
@@ -97,45 +97,28 @@ A. 그래프(Graph) 입니다!
 
 ### 그래프의 유형 및 분류
 
-- 방향
-
-  | 방향이 없는 그래프(Undirected Graph)                         | 방향이 있는 그래프(Directed Graph)                           |
-  | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | 간선에 **방향이 없는** 그래프                                | 간선에 **방향이 있는** 그래프                                |
-  | 협업 관계 그래프                                             | 인용 그래프                                                  |
-  | 페이스북 친구 그래프                                         | 트위터 팔로우 그래프                                         |
-  | ![img](https://media.vlpt.us/images/blush0722/post/ad8bb331-8dea-47d6-be1a-f85b0a3a0cd1/image.png) | ![img](https://media.vlpt.us/images/blush0722/post/34661c7f-f165-46d9-a3ab-d1ff3a6f1e4d/image.png) |
+- 방향 (Undeirected Graph vs Directed Graph)
 
 
+![image-20210321233513783](Lecture1_그래프란 무엇이고 왜 중요할까.assets/image-20210321233513783.png)
 
-- 가중치
-
-  | 가중치가 없는 그래프(Unweighted Graph)                       | 가중치가 있는 그래프(Weighted Graph)                         |
-  | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | 간선에 **가중치가 없는** 그래프                              | 간선에 **가중치가 있는** 그래프                              |
-  | 웹 그래프                                                    | 전화 그래프                                                  |
-  | 페이스북 친구 그래프                                         | 유사도 그래프                                                |
-  | ![img](https://media.vlpt.us/images/blush0722/post/8ccfaf60-49b0-43aa-991c-fd97332885d3/image.png) | ![img](https://media.vlpt.us/images/blush0722/post/653f6347-a9be-453c-adff-5f1af5533cb6/image.png) |
+- 가중치 (Unweighted Graph vs Weighted Graph)
 
 
+![image-20210321233615498](Lecture1_그래프란 무엇이고 왜 중요할까.assets/image-20210321233615498.png)
 
-- 종류
+- 종류 (Unpartite Graph vs Bipartite Graph)
 
-  | 동종 그래프(UnpartiteGraph)                                  | 이종 그래프(Bipartite Graph)                                 |
-  | ------------------------------------------------------------ | ------------------------------------------------------------ |
-  | 동종 그래프는 **단일 종류의 정점**을 가집니다.               | 이종 그래프는 **두 종류의 정점**을 가집니다.                 |
-  |                                                              | 다른 종류의 정점 사이에만 간선이 연결됩니다.                 |
-  | 웹 그래프                                                    | 전자 상거래 구매 내역(사용자, 상품)                          |
-  | 페이스북 친구 그래프                                         | 영화 출연 그래프(배우, 영화)                                 |
-  | ![img](https://media.vlpt.us/images/blush0722/post/983573ed-5877-4347-b36f-7c27edfd472c/image.png) | ![img](https://media.vlpt.us/images/blush0722/post/f4210f56-5926-4f71-ab6b-bec95a24f818/image.png) |
+
+![image-20210321233630967](Lecture1_그래프란 무엇이고 왜 중요할까.assets/image-20210321233630967.png)
 
 
 
 Q. 다음 전자 상거래 구매 내역은 어떤 유형의 그래프일까요?
 
-![img](https://media.vlpt.us/images/blush0722/post/baedea8c-3dbe-4eb6-a1e0-0132cbb33e27/image.png)
+![image-20210321233706051](Lecture1_그래프란 무엇이고 왜 중요할까.assets/image-20210321233706051.png)
 
-A. 방향성이 없고, 가중치가 있는 이종 그래프입니다.
+> A. 방향성이 없고, 가중치가 있는 이종 그래프입니다.
 
 
 
@@ -145,40 +128,24 @@ A. 방향성이 없고, 가중치가 있는 이종 그래프입니다.
 
 보통 정점들의 집합을 *V*, 간선들의 집합을 *E*, 그래프를 *G*=(*V*,*E*) 로 적습니다.
 
-![img](https://media.vlpt.us/images/blush0722/post/ee3a506e-80f1-44d7-9351-6f293ba6e4a0/image.png)
+![image-20210321233738417](Lecture1_그래프란 무엇이고 왜 중요할까.assets/image-20210321233738417.png)
 
 
 
 정점의 **이웃(Neighbor)**은 그 정점과 연결된 다른 정점을 의미합니다.
 
-정점 *V* 의 이웃들의 집합을 보통 *N*(*v*) 혹은 *N**v* 로 적습니다.
+정점 *V* 의 이웃들의 집합을 보통 *N*(*v*) 혹은 $N_v$ 로 적습니다.
 
-예시:
-*N*(1)={2,5}
-*N*(2)={1,3,5}
-*N*(3)={2,4}
-*N*(4)={3,5,6}
-*N*(5)={1,2,4}
-*N*(6)={4}
-
-![img](https://media.vlpt.us/images/blush0722/post/fcf779a2-3e01-41e9-8208-c3aecce8581a/image.png)
+![image-20210321233801643](Lecture1_그래프란 무엇이고 왜 중요할까.assets/image-20210321233801643.png)
 
 
 
 방향성이 있는 그래프에서는 나가는 이웃과 들어오는 이웃을 구분합니다.
 
-정점 *v* 에서 간선이 나가는 이웃(Out-Neighbor)의 집합을 보통 *N**o**u**t*(*v*) 로 적습니다.
-정점 *v* 에서 간선이 들어오는 이웃(In-Neighbor)의 집합을 보통 *N**i**n*​(*v*) 로 적습니다.
+정점 *v* 에서 간선이 나가는 이웃(Out-Neighbor)의 집합을 보통 *N*_out(*v*) 로 적습니다.
+정점 *v* 에서 간선이 들어오는 이웃(In-Neighbor)의 집합을 보통 *N* _in(*v*) 로 적습니다.
 
-예시:
-*N**i**n*​(1)={5}, *N**o**u**t*​(1)={2}
-*N**i**n*​(2)={1,3,5}, *N**o**u**t*​(1)={5}
-*N**i**n*​(3)={}, *N**o**u**t*​(3)={2,4}
-*N**i**n*​(4)={3}, *N**o**u**t*​(4)={5,6}
-*N**i**n*​(5)={2,4}, *N**o**u**t*​(5)={1,2}
-*N**i**n*​(6)={4}, *N**o**u**t*​(6)={}
-
-![img](https://media.vlpt.us/images/blush0722/post/feb24da9-fa91-4db7-9698-7ed52f86c1a7/image.png)
+![image-20210321233840425](Lecture1_그래프란 무엇이고 왜 중요할까.assets/image-20210321233840425.png)
 
 
 
@@ -199,6 +166,10 @@ NetworkX를 이용하여, 그래프를 생성, 변경, 시각화할 수 있습�
 
 자세한 정보는 아래 링크에서 찾을 수 있습니다.
 https://networkx.org/documentation/stable/index.html
+
+본 수업에서는 사용하지 않지만, Snap.py 라는 라이브러리도 많이 사용됩니다.
+
+https://snap.stanford.edu/snappy/
 
 - 필요한 라이브러리를 불러옵니다.
 
