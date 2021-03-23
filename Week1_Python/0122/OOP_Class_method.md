@@ -1,5 +1,5 @@
 # Object Oriented Program
-## 1 객체 (Object)
+## 1. 객체 (Object)
 
 Python에서 생성되는 모든 것이 **`객체`**입니다.
 
