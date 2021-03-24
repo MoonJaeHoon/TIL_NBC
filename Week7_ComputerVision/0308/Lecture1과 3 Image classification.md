@@ -16,7 +16,7 @@
 
 - 거꾸로, 시각적 데이터(visual data)에서 representation을 추출하는 일을 **`Inverse Rendering`**이라고 하며, 컴퓨터 비젼의 task에 해당한다.
 
-# 
+<br>
 
 # Image Classification
 
@@ -24,29 +24,31 @@
 
 극단적으로 생각해보았을 때, 모든 분류 문제는 세상의 모든 시각적 데이터를 가지고 있다면 아주 쉽게 해결된다. 그냥 모든 데이터들 사이에서 비슷한 것들끼리 모으기만 하면 된다.
 
-![k-nn](https://blogik.netlify.app/static/5680ba7394c320efaa16adfe9b5a1cf2/0a47e/k-nn.png)
+![k-nn](Lecture1%EA%B3%BC%203%20Image%20classification.assets/img1.png)
 
 즉, **K Nearest Neighbors(K-NN) 문제**로 해결할 수 있다. K-NN 문제는 단순히 이미지 레이블 데이터 값을 주위의 다른 데이터 레이블들과 비교하여 가장 비슷하다고 판단되는 후보군으로 편입시키는 문제이다. 이렇게 해결하는 분류기가 있다면, 마치 검색엔진처럼 작동한다. 그러나, 이러한 접근 방식은 불가능하다. Time/Memory Complexity 무한대일 것이라는 점과, '비슷하다'는 기준을 어떻게 잡을건지가 모호하다는 것이 결정적인 불가능 요인이다. 따라서 컴퓨터 비젼은 방대한 데이터를 제한된 complexity의 시스템(인공 신경망)이라는 분류기에 녹여넣는 것이 목표이다.
 
-# 
+<br>
 
 ### Fully Connected Layer Network
 
 이런 이미지 분류를 가장 간단한 형태의 인공 신경망 분류기, 즉 **단일 계층의 Fully Connected Layer Network**로 구현했다고 생각해보자.
 
-![fully-connected-layer-network](https://blogik.netlify.app/static/9c28f194fefe28a0fad68d5d88ec2be5/2bef9/fully-connected-layer-network.png)
+![fully-connected-layer-network](Lecture1%EA%B3%BC%203%20Image%20classification.assets/img2.png)
 
 기존의 이미지에 W(weight)를 내적한 것을 다시 이미지로 치환시켜보면, 아래와 같이 실제 레이블과 어느정도 관련이 있는 이미지 형상을 추출할 수 있다. 그러나 이 형태는 너무 흐릿하여 정확도가 떨어진다. **계층을 너무 얕게 쌓았기 때문에 디테일을 충분히 표현할 수 없는 것**이다.
 
-![cropped-fully-connected-layer-network](https://blogik.netlify.app/static/69fce1d11ae55b460b98d0c216c66f99/2bef9/cropped-fully-connected-layer-network.png)
+![cropped-fully-connected-layer-network](Lecture1%EA%B3%BC%203%20Image%20classification.assets/img3.png)
 
 또, 모든 노드들이 출력층으로 전연결(fully-connect)되기 때문에, **전체적인 형상만을 학습**한다. 따라서 만약 이 사진을 잘라낸 사진을 제공하면 인식을 전혀 할 수 없게 된다.
 
-# 
+<br> 
+
+
 
 ## Convolutional Neural Network(CNN)
 
-![fully-vs-locally](https://blogik.netlify.app/static/ec56970b36992c0cc8866dfdaa8965d7/f6386/fully-vs-locally.png)
+![fully-vs-locally](Lecture1%EA%B3%BC%203%20Image%20classification.assets/img4.png)
 
 이러한 전연결 신경망의 한계점을 극복하기 위하여 **`합성곱 신경망(Convolution Neural Network, CNN)`**가 나오게 되었다. CNN은 모든 노드들을 다음 계층으로 전연결시키는 것이 아니라, **국소적인 연결(locally connect)**을 사용한다. 동일한 국소적 sliding window를 이미지의 모든 부분에 대입시켜 feature들을 뽑아냄으로써, 치우쳐 있는 이미지나 잘린 이미지라도 feature를 추출할 수 있고, 파라미터를 재활용하여 메모리도 적게 사용할 수 있다. 이런 장점 때문에 많은 CV task의 backbone으로 활용되고 있다.
 
@@ -56,7 +58,7 @@
 
 ### 간략한 역사 개요
 
-<img src="Lecture1_Image classification01.assets/image-20210312020050751.png" alt="image-20210312020050751" style="zoom:67%;" />
+<img src="Lecture1%EA%B3%BC%203%20Image%20classification.assets/img5.png" alt="image-20210312020050751" style="zoom:67%;" />
 
 
 
@@ -65,7 +67,7 @@
 - 1998년 Yann Lecun비교적 간단하며, 한 글자 정도의 손글씨를 인식하기 위해 사용되었다.
 - 구조 : Conv-Pool-Conv-Pool-FC-FC
 
-<img src="Lecture1_Image classification01.assets/image-20210312020434423.png" alt="image-20210312020434423" style="zoom:67%;" />
+<img src="Lecture1%EA%B3%BC%203%20Image%20classification.assets/img6.png" alt="image-20210312020434423" style="zoom:67%;" />
 
 
 
@@ -81,13 +83,13 @@
 - 논문에는 메모리 문제로 두 GPU에 올려서 학습했으며, 그 당시 명암을 조정하기 위해 사용했던 LRN(Local Response Normalization) 기법은 현재는 사용하지 않는다.
 - 구조 : Conv - Pool - LRN - Conv - Pool - LRN - Conv - Conv - Conv - Pool - FC - FC - FC
 
-<img src="Lecture1_Image classification01.assets/image-20210312020342307.png" alt="image-20210312020342307" style="zoom: 67%;" />
+<img src="Lecture1%EA%B3%BC%203%20Image%20classification.assets/img7.png" alt="image-20210312020342307" style="zoom: 67%;" />
 
 
 
 **※ 알고 넘어가야할 것 : (Receptive Field)** 
 
-![image-20210312020542166](Lecture1_Image classification01.assets/image-20210312020542166.png)
+![image-20210312020542166](Lecture1%EA%B3%BC%203%20Image%20classification.assets/img8.png)
 
 CNN에서 현재 feature map의 픽셀은 이전의 layer로부터 정보를 모아두고 있는 것이다.
 
@@ -109,7 +111,7 @@ CNN에서 현재 feature map의 픽셀은 이전의 layer로부터 정보를 모
 - AlexNet과 VGGNet의 구조비교
   - VGG 뒤의 숫자는 층의 개수를 의미함.
 
-<img src="Lecture1_Image classification01.assets/image-20210312020838774.png" alt="image-20210312020838774" style="zoom:67%;" />
+<img src="Lecture1%EA%B3%BC%203%20Image%20classification.assets/img9.png" alt="image-20210312020838774" style="zoom:67%;" />
 
 
 
@@ -133,7 +135,7 @@ Q) AlexNet에서 VGGNet으로 발전하면서, 더 깊은 네트워크일수록 
 
 > GoogLeNet
 
-![image-20210312021843446](Lecture1_Image classification01.assets/image-20210312021843446.png)
+![image-20210312021843446](Lecture1%EA%B3%BC%203%20Image%20classification.assets/img10.png)
 
 -  **Inception Module** 을 여러 층 쌓는 형태를 제안한다.
 - 하나의 층에서 다양한 크기의 필터를 사용하여 여러 측면에서 보겠다(depth 확장이 아닌 수평확장)
@@ -153,7 +155,7 @@ Q) AlexNet에서 VGGNet으로 발전하면서, 더 깊은 네트워크일수록 
 
   - 중간중간에 loss를 측정해주니까 앞단의 정보를 통한 loss도 모델이 알 수가 있는 것이다. (gradient vanishing 문제를 없앨 수 있는 것이다.)
 
-    <img src="Lecture1_Image classification01.assets/image-20210312022314960.png" alt="image-20210312022314960" style="zoom: 50%;" />
+    <img src="Lecture1%EA%B3%BC%203%20Image%20classification.assets/img11.png" alt="image-20210312022314960" style="zoom: 50%;" />
 
 다시 한번 설명하자면,
 
@@ -170,7 +172,7 @@ Q) AlexNet에서 VGGNet으로 발전하면서, 더 깊은 네트워크일수록 
 
 > ResNet
 
-<img src="Lecture1_Image classification01.assets/image-20210312022714656.png" alt="image-20210312022714656" style="zoom: 33%;" />
+<img src="Lecture1%EA%B3%BC%203%20Image%20classification.assets/img12.png" alt="image-20210312022714656" style="zoom: 33%;" />
 
 
 
@@ -178,7 +180,7 @@ Q) AlexNet에서 VGGNet으로 발전하면서, 더 깊은 네트워크일수록 
 
 - 다른 모델 아키텍쳐와 비교해보자면 다음 그림과 같다 (층이 매우 깊을 수 있는 이유는 Skip connection이 있음, 아래에서 설명)
 
-  ​	<img src="Lecture1_Image classification01.assets/image-20210312022841079.png" alt="image-20210312022841079"  />
+  ​	<img src="Lecture1%EA%B3%BC%203%20Image%20classification.assets/img13.png" alt="image-20210312022841079"  />
 
 
 
@@ -193,7 +195,7 @@ Q) AlexNet에서 VGGNet으로 발전하면서, 더 깊은 네트워크일수록 
 
 **※ 다음 그림을 보면, 층이 깊어도 학습이 추가적으로 더 되질 않음 (만약 Overfitting이라고 할 수 있으려면 Traing error가 줄어야 함.)**
 
-<img src="Lecture1_Image classification01.assets/image-20210312023508594.png" alt="image-20210312023508594" style="zoom:50%;" />
+<img src="Lecture1%EA%B3%BC%203%20Image%20classification.assets/img14.png" alt="image-20210312023508594" style="zoom:50%;" />
 
 
 
@@ -211,7 +213,7 @@ Q) AlexNet에서 VGGNet으로 발전하면서, 더 깊은 네트워크일수록 
 
     
 
-    <img src="Lecture1_Image classification01.assets/image-20210312023720152.png" alt="image-20210312023720152" style="zoom:50%;" />
+    <img src="Lecture1%EA%B3%BC%203%20Image%20classification.assets/img15.png" alt="image-20210312023720152" style="zoom:50%;" />
 
     
 
@@ -229,7 +231,7 @@ Q) AlexNet에서 VGGNet으로 발전하면서, 더 깊은 네트워크일수록 
 
 모델의 전체 구조를 그림으로 보면 다음과 같다.
 
-<img src="Lecture1_Image classification01.assets/image-20210312025422608.png" alt="image-20210312025422608" style="zoom:67%;" />
+<img src="Lecture1%EA%B3%BC%203%20Image%20classification.assets/img16.png" alt="image-20210312025422608" style="zoom:67%;" />
 
 
 
@@ -249,7 +251,7 @@ Q) AlexNet에서 VGGNet으로 발전하면서, 더 깊은 네트워크일수록 
 
 ​	그냥 모조리 다 이어줬음
 
-<img src="Lecture1_Image classification01.assets/image-20210312025932952.png" alt="image-20210312025932952" style="zoom: 50%;" />
+<img src="Lecture1%EA%B3%BC%203%20Image%20classification.assets/image17.png" alt="image-20210312025932952" style="zoom: 50%;" />
 
 - **<u>Dense block</u>** : x identity를 그대로 더하던 ResNet의 Residual block과 달리, 각 layer의 output을 채널 축 방향으로 concatenation한다.
   - 기울기 소실 문제 해결
@@ -266,7 +268,7 @@ Q) AlexNet에서 VGGNet으로 발전하면서, 더 깊은 네트워크일수록 
 
 
 
-<img src="Lecture1_Image classification01.assets/image-20210312030239133.png" alt="image-20210312030239133" style="zoom:50%;" />
+<img src="Lecture1%EA%B3%BC%203%20Image%20classification.assets/img17.png" alt="image-20210312030239133" style="zoom:50%;" />
 
 - 다시 말하자면 depth를 높이거나 connection을 사용하지 않고, 채널간의 관계를 모델링하여 중요한 특징에 Attention할 수 있도록 만드는 방법.
 - Attention 생성 방법
@@ -277,7 +279,7 @@ Q) AlexNet에서 VGGNet으로 발전하면서, 더 깊은 네트워크일수록 
 
 > EfficientNet
 
-<img src="Lecture1_Image classification01.assets/image-20210312030645377.png" alt="image-20210312030645377" style="zoom:67%;" />
+<img src="Lecture1%EA%B3%BC%203%20Image%20classification.assets/img18.png" alt="image-20210312030645377" style="zoom:67%;" />
 
 - 기존에 네트워크 성능을 높이는 방법에는
   - depth scaling
@@ -292,7 +294,7 @@ Q) AlexNet에서 VGGNet으로 발전하면서, 더 깊은 네트워크일수록 
 
 >Deformable Convolution Network
 
-<img src="Lecture1_Image classification01.assets/image-20210312030843499.png" alt="image-20210312030843499" style="zoom:50%;" />
+<img src="Lecture1%EA%B3%BC%203%20Image%20classification.assets/img19.png" alt="image-20210312030843499" style="zoom:50%;" />
 
 - 불규칙적인 2D 이미지에 대한 convolution이다.
 - 사람이나 동물등의 사진은 팔다리가 어떤 형태로 있느냐에 따라 각기 다른 모양을 가진다.
@@ -301,7 +303,9 @@ Q) AlexNet에서 VGGNet으로 발전하면서, 더 깊은 네트워크일수록 
 - 기존의 convolution 필터에 추가로 2D offset map을 추정하기 위한 branch가 따로 결합되어있다.
 - conv 연산의 결과에 offset field를 추가시키면, offset된 feature map이 나온다.
 
-# 
+<br> 
+
+
 
 간단하게 요약하자면 다음과 같으며, 자세히 알고싶다면 논문을 참고해야 할 것이다.
 
