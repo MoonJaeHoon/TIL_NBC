@@ -8,23 +8,23 @@
 
 Conditional generative model은 조건(condition)d이 주어졌을 때 영상, sample을 생성하는 모델입니다. 따라서 user의 조작이 더 쉬어졌습니다.
 
- ![image-20210315002840715](Lecture8_cGAN (Conditional generative model).assets/image-20210315002840715.png)
+ ![image-20210315002840715](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img1.png)
 
 
 
 
 
-> **GAN 개념 돌아보기 (아래 그림)**
+> **GAN 개념 돌아보기 (아래 그림을 통해 간단하게 이해해봐도 좋다)**
 >
-> 참고 : <a href="../GAN 간단 정리/GAN_Concept.md" target="_blank">GAN 개념정리</a>
+> +추가로 보고싶다면, 참고 : <a href="../GAN 간단 정리/GAN_Concept.md" target="_blank">GAN 개념정리</a>
 
 
 
-![image-20210315002940262](Lecture8_cGAN (Conditional generative model).assets/image-20210315002940262.png)
+![image-20210315002940262](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img2.png)
 
 
 
-![image-20210315001927717](Lecture8_cGAN (Conditional generative model).assets/image-20210315001927717.png)
+![image-20210315001927717](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img3.png)
 
  
 
@@ -34,7 +34,7 @@ Conditional GAN이 기존 GAN과 다른점은 C라는 Conditional input을 넣�
 
  
 
-![image-20210315003132645](Lecture8_cGAN (Conditional generative model).assets/image-20210315003132645.png)
+![image-20210315003132645](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img4.png)
 
 > 응용 작업들
 
@@ -42,9 +42,9 @@ Conditional GAN이 기존 GAN과 다른점은 C라는 Conditional input을 넣�
 
 게임 테마 제작. 인게임의 새로운 테마를 제작할 때 디자인 비용이 대폭 감소할 것이다.
 
-<img src="Lecture8_cGAN (Conditional generative model).assets/image-20210315003602112.png" alt="image-20210315003602112" style="zoom:80%;" />
+<img src="Lecture8_cGAN%20(Conditional%20generative%20model).assets/img5.png" alt="image-20210315003602112" style="zoom:80%;" />
 
-<img src="Lecture8_cGAN (Conditional generative model).assets/image-20210315003621002.png" alt="image-20210315003621002" style="zoom: 67%;" />
+<img src="Lecture8_cGAN%20(Conditional%20generative%20model).assets/img6.png" alt="image-20210315003621002" style="zoom: 67%;" />
 
 
 
@@ -55,7 +55,7 @@ Conditional GAN의 예시에는 Super resolution 기법이 있습니다.
 - **input :** Low resolution image (저해상도 image)
 - **output :** high resoulution image (고해상도 image)
 
-![image-20210315003243566](Lecture8_cGAN (Conditional generative model).assets/image-20210315003243566.png)
+![image-20210315003243566](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img7.png)
 
 > Super Resolution GAN의 구조
 
@@ -65,7 +65,7 @@ Conditional GAN의 예시에는 Super resolution 기법이 있습니다.
 
 Ground Truth로는 실제의 high resolution image를 주어서 Discrimitor가 현재 주어진 생성 image가 실제 high resolution image와 **비슷한 통계적 특성을 갖는지** 확인합니다.(Discriminator)
 
- ![image-20210315004123913](Lecture8_cGAN (Conditional generative model).assets/image-20210315004123913.png)
+ ![image-20210315004123913](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img8.png)
 
 
 
@@ -75,7 +75,7 @@ Ground Truth로는 실제의 high resolution image를 주어서 Discrimitor가 �
 
  원래는 Regression을 사용했었는데 Discrimitor가 아니라 MAE / MSE 등의 평가지표를 사용했습니다. **<u>이는 문제점이 있어서</u>** GAN 메커니즘 등장 이후로는 GAN을 거의 모두가 이용한다.
 
-![image-20210315003822617](Lecture8_cGAN (Conditional generative model).assets/image-20210315003822617.png)
+![image-20210315003822617](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img9.png)
 
 
 
@@ -91,7 +91,7 @@ MAE나 MSE 등의 평균을 이용한 Loss를 이용하는 경우의 문제점�
 
 입력 이미지의 해상도를 높였을 때와 비슷한 <font color='red'>**ground truth**</font>들이 아래와 같이 분포한다고 하면, Loss가 가장 작은 정답을 예측하려면 모든 ground truth와 동떨어진 <font color='skyblue'>**중간 지점의 뭉개진 이미지**</font>를 구하게 된다.
 
-![image-20210315004439232](Lecture8_cGAN (Conditional generative model).assets/image-20210315004439232.png)
+![image-20210315004439232](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img10.png)
 
 반면에 GAN의 Discrimitor는 그 전에 봤었던 real data와 생성된 data를 구분 못하게 하는 것만 목적이므로 가장 <font color='khaki'>**비슷한 real data만 따라하게**</font> 됩니다. 그러면 Discrimitor의 loss가 낮아지게 됩니다.
 
@@ -103,7 +103,7 @@ MAE나 MSE 등의 평균을 이용한 Loss를 이용하는 경우의 문제점�
 
 다음 그림과 같이 검정색과 하얀색 이미지(Real Image)가 있는 경우가 바로 그 예시일 것이다.
 
-![image-20210315005418231](Lecture8_cGAN (Conditional generative model).assets/image-20210315005418231.png)
+![image-20210315005418231](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img11.png)
 
  
 
@@ -115,7 +115,7 @@ MAE나 MSE 등의 평균을 이용한 Loss를 이용하는 경우의 문제점�
 
 Image translation은 한 Image style을 다른 image style로 변환하는 방법입니다.
 
- ![image-20210315005602108](Lecture8_cGAN (Conditional generative model).assets/image-20210315005602108.png)
+ ![image-20210315005602108](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img12.png)
 
  
 
@@ -127,7 +127,7 @@ Pix2Pix는 Image translation이라는 task를 CNN 구조를 이용해서 학습�
 
 Pix2Pix는 Loss function을 다음과 같이 정의했습니다.
 
- ![image-20210315005635555](Lecture8_cGAN (Conditional generative model).assets/image-20210315005635555.png)
+ ![image-20210315005635555](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img13.png)
 
 
 
@@ -151,13 +151,13 @@ Pix2Pix는 Loss function을 다음과 같이 정의했습니다.
 
  GAN Loss에서 G(x,z)와 같이 z만 들어간 것이 아닌 x까지 들어갔다는 점입니다.
 
-![image-20210315010121702](Lecture8_cGAN (Conditional generative model).assets/image-20210315010121702.png)
+![image-20210315010121702](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img14.png)
 
 
 
 L1 loss와 GAN loss를 같이 사용하게 되면 아래 그림과 같이 스타일이 유지되면서 sharp하게 사진이 나오는 것을 알 수 있습니다.
 
-![image-20210315010331585](Lecture8_cGAN (Conditional generative model).assets/image-20210315010331585.png)
+![image-20210315010331585](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img15.png)
 
 
 
@@ -175,7 +175,7 @@ Pix2Pix는 **pairwise data**가 필요합니다.
 
 - 아래 그림처럼, X라는 style의 data와 Y라는 style의 data는 서로 직접적인 연관이나 대응관계 없이 주어졌을 때 활용하는 방법입니다. 
 
-![image-20210315010602704](Lecture8_cGAN (Conditional generative model).assets/image-20210315010602704.png)
+![image-20210315010602704](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img16.png)
 
 
 
@@ -185,11 +185,11 @@ Pix2Pix는 **pairwise data**가 필요합니다.
 
 - 원본 사진을 모네스타일의 이미지로 변경한 후, 다시 원본스타일의 이미지로 변경해서, 원본 사진과 비교한다.
 
-<img src="Lecture8_cGAN (Conditional generative model).assets/image-20210315010916710.png" alt="image-20210315010916710" style="zoom:150%;" />
+<img src="Lecture8_cGAN%20(Conditional%20generative%20model).assets/img17.png" alt="image-20210315010916710" style="zoom:150%;" />
 
 - 원본 사진을 일반 말의 이미지로 변경한 후, 다시 원본스타일의 이미지로 변경해서, 원본 사진과 비교한다.
 
-<img src="Lecture8_cGAN (Conditional generative model).assets/image-20210315010930783.png" alt="image-20210315010930783" style="zoom:150%;" />
+<img src="Lecture8_cGAN%20(Conditional%20generative%20model).assets/img18.png" alt="image-20210315010930783" style="zoom:150%;" />
 
 
 
@@ -197,7 +197,7 @@ Pix2Pix는 **pairwise data**가 필요합니다.
 
 CycleGAN에는 GAN Loss + **Cycle-consistency loss**가 추가되었습니다.
 
- ![image-20210315011108322](Lecture8_cGAN (Conditional generative model).assets/image-20210315011108322.png)
+ ![image-20210315011108322](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img19.png)
 
 
 
@@ -214,7 +214,7 @@ CycleGAN에는 GAN Loss + **Cycle-consistency loss**가 추가되었습니다.
 3. Y -> X로 F (또다른 generator)를 통해서 생성을 합니다.
 4. D_X는 X를 dicrimitor합니다.
 
-![image-20210315011309169](Lecture8_cGAN (Conditional generative model).assets/image-20210315011309169.png)
+![image-20210315011309169](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img20.png)
 
  
 
@@ -230,7 +230,7 @@ X -> Y로 가고 다시 Y -> X로 갈 때 **`X`**와 **`다시 돌아온 X`**에
 
 즉, `x`가 `x^hat`과 동일해야한다는 것입니다. (즉,  self-supervised)
 
-![image-20210315011925245](Lecture8_cGAN (Conditional generative model).assets/image-20210315011925245.png)
+![image-20210315011925245](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img21.png)
 
  
 
@@ -262,7 +262,7 @@ Perceptual loss는 high quality output을 만들기 위한 방법 중 하나입�
   - 이때, Loss Network model 자체는 <font color='red'>update하지 않습니다</font>.(Pre-trained로 가져와서 fixed로서 씀)
 - Style Target과 Content Target을 통해 학습하게 됩니다.
 
- ![image-20210315012442800](Lecture8_cGAN (Conditional generative model).assets/image-20210315012442800.png)
+ ![image-20210315012442800](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img22.png)
 
  
 
@@ -278,7 +278,7 @@ Perceptual loss는 high quality output을 만들기 위한 방법 중 하나입�
    - 이 둘을 단순히 그냥 비교하는 것이 아니라, **`X`를 Pre-trained VGG에 넣어서 feature map** 뽑고, **`y^c`도 Pre-trained VGG에 넣고 뽑은 feature map** 사이를 비교해서 L2 Loss를 구하게 됩니다.
    - Loss로부터 역전파를 하여 `y^hat`을 업데이트하게 됩니다. (정확히는 Image Transform Net의 f_{W}가 바뀌게 되는 것.)
 
-   ![image-20210315023238717](Lecture8_cGAN (Conditional generative model).assets/image-20210315023238717.png)
+   ![image-20210315023238717](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img23.png)
 
  
 
@@ -298,7 +298,7 @@ Perceptual loss는 high quality output을 만들기 위한 방법 중 하나입�
 >
 > - 예를 들어서, 아래 그림과 같이 Feature Maps가 뽑혔다고 생각해봅시다. (W X H, channel : c)
 >
->   ![image-20210315030405614](Lecture8_cGAN (Conditional generative model).assets/image-20210315030405614.png)
+>   ![image-20210315030405614](Lecture8_cGAN%20(Conditional%20generative%20model).assets/img24.png)
 >
 >   - 스타일을 고려하고 싶다는 뜻은 다시 생각해보면, 각 위치마다 (픽셀마다라고 이해했다) 정보가 다른 것을 계산해서 고려하는 것이 아니라 **영상의 전체적인 Style을 고려하고 싶다**는 뜻일 것입니다.
 >
@@ -313,7 +313,7 @@ Perceptual loss는 high quality output을 만들기 위한 방법 중 하나입�
 >     - 예를 들어, 채널1이 내포하고 있는 style 특징이 원이 등장하는 부분을 캐치하고 있는 것이고, 채널2가 내포하고 있는 style 특징이 가로선이 등장하는 부분을 캐치하고 있는 것이라고 해보겠습니다.
 >     - 그리고 직접 그린 다음 그림처럼 채널1과 채널2 사이의 내적이 나타내는 element가 높다면 이 영상은 style 적으로 원과 가로선이 같이 나타나는 빈도가 높다는 것입니다.
 >
->     <img src="Lecture8_cGAN (Conditional generative model).assets/image-20210315030905524.png" alt="image-20210315030905524" style="zoom: 67%;" />
+>     <img src="Lecture8_cGAN%20(Conditional%20generative%20model).assets/img25.png" alt="image-20210315030905524" style="zoom: 67%;" />
 >
 > - 이렇게 나온 결과 matrix를 gram matrix라고 하며, 하나의 feature map에서만 이렇게 구하는 것이 아니라 여러개의 feature map으로부터 여러개의 gram matrix를 구할 수 있을 것이고 이를 gram matrices라고 부른다.
 >

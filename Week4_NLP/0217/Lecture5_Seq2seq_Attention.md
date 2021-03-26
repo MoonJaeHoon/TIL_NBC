@@ -1,10 +1,10 @@
-# 1. Seq2Seq Model
+1. Seq2Seq Model
 
 
 
 ## 1.1 RNN을 이용한 seq2seq
 
-![image-20210217143346857](Seq2seq_Attention.assets/image-20210217143346857.png)
+![image-20210217143346857](Lecture5_Seq2seq_Attention.assets/img1.png)
 
 - Seq2seq는 RNN의 종류 중 입력도 sequence, 출력도 sequence인 many to many RNN에 해당합니다.
 
@@ -14,7 +14,7 @@
 
 ## 1.2 Seq2Seq의 구조
 
-![image-20210217143445223](Seq2seq_Attention.assets/image-20210217143445223.png)
+![image-20210217143445223](Lecture5_Seq2seq_Attention.assets/img2.png)
 
 - 입력문장을 읽어들이는 RNN 부분을 ENCODER, 출력문장을 순차적으로 하나하나씩 생성하는 RNN 부분을 DECODER라고 부릅니다.
 
@@ -56,7 +56,7 @@
 
 ## 2.1 Attention 메커니즘의 구조
 
-![image-20210217150237070](Seq2seq_Attention.assets/image-20210217150237070.png)
+![image-20210217150237070](Lecture5_Seq2seq_Attention.assets/img3.png)
 
 - 위의 그림은 프랑스어를 영어로 번역하는 예시
 
@@ -73,7 +73,7 @@
 
   - Attention Distribution 값이 아래와 같이 (0.85,0.08,0.04,0.03)구해졌다면, `h1(e)`라는 ENCODER의 첫번째 time step hidden state vector에 가장 많은 가중치를 주게 되는 역할을 하게 된다.
 
-  <img src="Seq2seq_Attention.assets/image-20210217151255364.png" alt="image-20210217151255364" style="zoom: 67%;" />
+  <img src="Lecture5_Seq2seq_Attention.assets/img4.png" alt="image-20210217151255364" style="zoom: 67%;" />
 
 
 
@@ -88,7 +88,7 @@
 
 > 1) DECODER의 첫번째 time-step에 해당하는 context vector(가중평균벡터)를 구하고 DECODER의 첫번째 output을 구하는 과정.
 
-<img src="Seq2seq_Attention.assets/image-20210217152211960.png" alt="image-20210217152211960" style="zoom:80%;" />
+<img src="Lecture5_Seq2seq_Attention.assets/img5.png" alt="image-20210217152211960" style="zoom:80%;" />
 
 
 
@@ -99,37 +99,37 @@
 
 
 
-<img src="Seq2seq_Attention.assets/image-20210217152346354.png" alt="image-20210217152346354" style="zoom:80%;" />
+<img src="Lecture5_Seq2seq_Attention.assets/img6.png" alt="image-20210217152346354" style="zoom:80%;" />
 
 
 
 > 3) 세번째 단어를 예측해내는 그림
 
-<img src="Seq2seq_Attention.assets/image-20210217192519962.png" alt="image-20210217192519962" style="zoom:80%;" />
+<img src="Lecture5_Seq2seq_Attention.assets/img7.png" alt="image-20210217192519962" style="zoom:80%;" />
 
 > 4) 네번째 단어를 예측해내는 그림
 
-<img src="Seq2seq_Attention.assets/image-20210217192127586.png" alt="image-20210217192127586" style="zoom:80%;" />
+<img src="Lecture5_Seq2seq_Attention.assets/img8.png" alt="image-20210217192127586" style="zoom:80%;" />
 
 > 5) 5번째 단어를 예측해내는 그림
 
-![image-20210217192207408](Seq2seq_Attention.assets/image-20210217192207408.png)
+![image-20210217192207408](Lecture5_Seq2seq_Attention.assets/img9.png)
 
 > 6) 6번째 단어를 예측해내는 그림
 
-<img src="Seq2seq_Attention.assets/image-20210217192242815.png" alt="image-20210217192242815" style="zoom:80%;" />
+<img src="Lecture5_Seq2seq_Attention.assets/img10.png" alt="image-20210217192242815" style="zoom:80%;" />
 
 
 
 ## 2.2 Attention 메커니즘의 역전파
 
-![image-20210217192800412](Seq2seq_Attention.assets/image-20210217192800412.png)
+![image-20210217192800412](Lecture5_Seq2seq_Attention.assets/img11.png)
 
 - DECODER RNN의 해당 time-step의 hidden state vector(여기선 `any`에 의해 만들어진 hidden state `h5(d)`)는 1)Output 단어를 예측하는 데, 2) Encoder에서 어떤 단어를 중점적으로 볼지 정하는데 사용된다.
 
 
 
-![image-20210217193520361](Seq2seq_Attention.assets/image-20210217193520361.png)
+![image-20210217193520361](Lecture5_Seq2seq_Attention.assets/img12.png)
 
 - ENCODER 부분의 역전파 부분에 대해 생각해보자. 만약 context vector를 구성하는데 있어 `les`가 중요하다고 표현하는 context vector로 잘못 생성한 경우, 원하는 정보가 선택될 수 있도록 업데이트된다.
 
@@ -143,7 +143,7 @@
 
 - 하지만, Test시에 실제 모델을 사용하여 단어를 하나씩 생성하게 될 때에는 아래와 같이 Ground truth를 줄 수 없고, 이전의 input값을 사용하게 된다.
 
-![image-20210217193936805](Seq2seq_Attention.assets/image-20210217193936805.png)
+![image-20210217193936805](Lecture5_Seq2seq_Attention.assets/img13.png)
 
 
 
@@ -164,7 +164,7 @@
 >
 > 이렇게 유사도를 구하는 부분을 다르게 변화시켜 Attention Score를 다르게 도출해내는 다양한 어텐션 메커니즘들이 존재한다.
 
-![image-20210217200748107](Seq2seq_Attention.assets/image-20210217200748107.png)
+![image-20210217200748107](Lecture5_Seq2seq_Attention.assets/img14.png)
 
 
 
@@ -174,26 +174,26 @@
 
 ### 2.4.1 원래의 내적연산 (dot product)
 
-<img src="Seq2seq_Attention.assets/image-20210217201148247.png" alt="image-20210217201148247" style="zoom:67%;" />
+<img src="Lecture5_Seq2seq_Attention.assets/img15.png" alt="image-20210217201148247" style="zoom:67%;" />
 
 
 
 ### 2.4.2 확장된 형태의 내적연산인(Generalized dot product)
 
-<img src="Seq2seq_Attention.assets/image-20210217201305661.png" alt="image-20210217201305661" style="zoom:67%;" />
+<img src="Lecture5_Seq2seq_Attention.assets/img16.png" alt="image-20210217201305661" style="zoom:67%;" />
 
 - 원래의 내적연산에서 두번째 Dimension에 가중치 4가 추가된 것임을 알 수 있다.
 
 - 해당 W matrix를 한번더 일반화하여 연산해보자.
 
-<img src="Seq2seq_Attention.assets/image-20210217201811736.png" alt="image-20210217201811736" style="zoom:67%;" />
+<img src="Lecture5_Seq2seq_Attention.assets/img17.png" alt="image-20210217201811736" style="zoom:67%;" />
 
 - 앞서 계산했던 부분에서 추가된 부분은 `(-8)X3X2`와 `7X1X(-5)`부분이다.
   - (1,3)은 Decoder의 time-step 단어에 해당하는 hidden state, (2,-5)는 Encoder의 time-step 단어에 해당하는 hidden state이며 이 둘의 유사도(Score)를 구하는 과정임을 기억하자.
   - 같은 디멘젼끼리만의 내적연산이 이루어지던 것을, 다른 디멘젼끼리의 연산까지 고려할 수 있다는 점 (Decoder 1번째와 Encoder 2번째, Decoder 2번째와 Encoder 1번째)
   - 따라서 해당 W Matrix를 학습 가능한 파라미터(a,b,c,d)로 이루어진 행렬이라 생각한다면 이 파라미터들을 조정함으로써 더욱 유연하고 적절하게 유사도를 구해낼 수 있다는 장점이 생기는 것이다.
 
-<img src="Seq2seq_Attention.assets/image-20210217202240141.png" alt="image-20210217202240141" style="zoom:67%;" />
+<img src="Lecture5_Seq2seq_Attention.assets/img18.png" alt="image-20210217202240141" style="zoom:67%;" />
 
 
 
@@ -203,13 +203,15 @@
 
 - 단층 퍼셉트론
 
-![image-20210217203236042](Seq2seq_Attention.assets/image-20210217203236042.png)
+
+
+![image-20210217203236042](Lecture5_Seq2seq_Attention.assets/img19.png)
 
 
 
 - 다층 퍼셉트론
 
-![image-20210217203657801](Seq2seq_Attention.assets/image-20210217203657801.png)
+![image-20210217203657801](Lecture5_Seq2seq_Attention.assets/img20.png)
 
 
 
@@ -225,7 +227,7 @@
 
 
 
-![image-20210217204539595](Seq2seq_Attention.assets/image-20210217204539595.png)
+![image-20210217204539595](Lecture5_Seq2seq_Attention.assets/img21.png)
 
 
 
@@ -242,7 +244,7 @@
 
   
 
-  ![image-20210217205249300](Seq2seq_Attention.assets/image-20210217205249300.png)
+  ![image-20210217205249300](Lecture5_Seq2seq_Attention.assets/img22.png)
 
   
 
@@ -258,7 +260,7 @@
 
   - 아래와 같이 번역 태스크를 진행함에 있어서 언어에 따라 문법의 어순이 다른 것까지 고려하여 중요한 부분을 알아서 가중치를 많이 주고 번역해냈음을 알 수 있다.
 
-  ![image-20210217210209583](Seq2seq_Attention.assets/image-20210217210209583.png)
+  ![image-20210217210209583](Lecture5_Seq2seq_Attention.assets/img23.png)
 
   
 
@@ -268,5 +270,5 @@
 
   - 아래와 같이 하나의 단어를 Decoding 해낼 때 여러개의 Encoder상의 단어를 비중두어 사용하는 경우도 있고, Encoder 내의 한 단어가 여러 단어들로 Decoding 되는데 중점적으로 사용되는 경우가 있다.
 
-  ![image-20210217210704273](Seq2seq_Attention.assets/image-20210217210704273.png)
+  ![image-20210217210704273](Lecture5_Seq2seq_Attention.assets/img24.png)
 

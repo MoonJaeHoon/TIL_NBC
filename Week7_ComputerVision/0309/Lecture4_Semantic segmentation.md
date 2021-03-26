@@ -8,7 +8,7 @@ Semantic Segmentaion은 영상단위로 어떤 분류를 하는 것이 아니라
 
 
 
-<img src="Lecture4_Semantic segmentation.assets/image-20210309211327174.png" alt="image-20210309211327174" style="zoom:67%;" />
+<img src="Lecture4_Semantic%20segmentation.assets/img1.png" alt="image-20210309211327174" style="zoom:67%;" />
 
 - 주의할 점 : 자동차가 여러개 있더라도 모두 같은 카테고리(자동차), 사람이 여러명 있더라도 같은 카테고리(사람)이라고 분류를 하는 Task이다.
 - 원래 Semantic Segmentation 목적 자체가 그렇게 설계되었음
@@ -21,7 +21,7 @@ Semantic Segmentaion은 영상단위로 어떤 분류를 하는 것이 아니라
 
 ## 1.2 Semantic Segmentation 적용분야
 
-<img src="Lecture4_Semantic segmentation.assets/image-20210309211505745.png" alt="image-20210309211505745" style="zoom:67%;" />
+<img src="Lecture4_Semantic%20segmentation.assets/img2.png" alt="image-20210309211505745" style="zoom:67%;" />
 
 
 
@@ -34,7 +34,7 @@ Semantic Segmentaion은 영상단위로 어떤 분류를 하는 것이 아니라
   - 다음과 같이 인물집중 사진으로서 주변환경 흐리게 하는 것도 그 예시
   - 배경이나 인물을 아예 다른 배경화면, 또는 인물로 바꾸거나 하는 것도 그 예시
 
-<img src="Lecture4_Semantic segmentation.assets/image-20210309211737947.png" alt="image-20210309211737947" style="zoom:50%;" />
+<img src="Lecture4_Semantic%20segmentation.assets/img3.png" alt="image-20210309211737947" style="zoom:50%;" />
 
 
 
@@ -74,7 +74,7 @@ Semantic Segmentation를 위한 최초의 end-to-end 뉴럴넷이다
 
 이러한 방식이 어떤 차이가 있을까?
 
-<img src="Lecture4_Semantic segmentation.assets/fully-connected-vs-fully-convolutional.png" alt="fully-connected-vs-fully-convolutional" style="zoom:67%;" />
+<img src="Lecture4_Semantic%20segmentation.assets/img4.png" alt="fully-connected-vs-fully-convolutional" style="zoom:67%;" />
 
 - Fully **connected** layer :  어떤 고정된 vector가 input으로 주어지면, output도 fixed vector (flattened vector)로 처리된다. 즉, 공간 정보를 고려하지 않습니다.
 
@@ -82,13 +82,13 @@ Semantic Segmentation를 위한 최초의 end-to-end 뉴럴넷이다
 
 
 
-![fully-connected](Lecture4_Semantic segmentation.assets/fully-connected.png)
+![fully-connected](Lecture4_Semantic%20segmentation.assets/img5.png)
 
 - Fully connected layer는 각 채널들을 일직선으로 쭉 펴서(flatten) concat합니다.
 
 
 
-<img src="Lecture4_Semantic segmentation.assets/fully-convolutional.png" alt="fully-convolutional" style="zoom:67%;" />
+<img src="Lecture4_Semantic%20segmentation.assets/img6.png" alt="fully-convolutional" style="zoom:67%;" />
 
 - 이와 달리, Fully convolutional layer는 각 채널에서 같은 feature로 분류되는 vector(즉, 같은 위치의 벡터)들을 묶어 m개의 1x1 필터와 conv 연산(내적)을 수행하여, m개의 채널을 가지는 feature map을 구성합니다.
 - 이 때, conv 연산이므로 sliding window 방식을 사용하고 이 때문에 좀 더 spatial한 데이터가 유지된다는 장점이 있습니다.
@@ -108,13 +108,13 @@ Semantic Segmentation를 위한 최초의 end-to-end 뉴럴넷이다
 
 위의 저해상도 문제를 피하기 위해 사용하는 방법이다
 
-<img src="Lecture4_Semantic segmentation.assets/upsampling.png" alt="upsampling" style="zoom:67%;" />
+<img src="Lecture4_Semantic%20segmentation.assets/img7.png" alt="upsampling" style="zoom:67%;" />
 
 
 
 - 고해상도 이미지 input에 Conv 연산과 Pooling을 거치면서, 출력값은 자연스럽게 저해상도로 Downsampling된다. 이를 마지막에 고해상도로 키워주는 연산이 Upsampling이다. 방법은 여러가지가 있지만, 최근에는 대표적으로 2가지가 사용된다.
 
-<img src="Lecture4_Semantic segmentation.assets/transposed-convolution.png" alt="transposed-convolution" style="zoom:67%;" />
+<img src="Lecture4_Semantic%20segmentation.assets/img8.png" alt="transposed-convolution" style="zoom:67%;" />
 
 `Transposed convolution` : swapping the forward and backward passes of convolution
 
@@ -140,7 +140,7 @@ Transposed convolution에서 반드시 주의해야 할 점은, **checkboard art
 
 `Upsample and convolution` : Decompose into spatial upsampling and featrue convolutoin
 
-<img src="Lecture4_Semantic segmentation.assets/upsample-and-convolution.png" alt="upsample-and-convolution" style="zoom:67%;" />
+<img src="Lecture4_Semantic%20segmentation.assets/img9.png" alt="upsample-and-convolution" style="zoom:67%;" />
 
 
 
@@ -167,7 +167,7 @@ Transposed convolution에서 반드시 주의해야 할 점은, **checkboard art
 
 **※ 이 두 가지를 모두 가지기위해서 기존의 방법들을 모두 합쳐서 사용한다.**
 
-<img src="Lecture4_Semantic segmentation.assets/image-20210312032346925.png" alt="image-20210312032346925" style="zoom:67%;" />
+<img src="Lecture4_Semantic%20segmentation.assets/img10.png" alt="image-20210312032346925" style="zoom:67%;" />
 
 1. 높은 layer의 activation map을 upsampling하여 해상도를 크게 끌어올린다.
 2. 이에 맞추어 중간 layer의 activation map을 upsampling하여 가져오고, concat한다.
@@ -210,7 +210,7 @@ FCN과 동일한 시기에 비슷한 내용의 연구도 있었는데, 이 경�
 
 #### 2.2.1 구조
 
-<img src="Lecture4_Semantic segmentation.assets/u-net-architecture.png" alt="u-net-architecture" style="zoom: 80%;" />
+<img src="Lecture4_Semantic%20segmentation.assets/img11.png" alt="u-net-architecture" style="zoom: 80%;" />
 
 기존의 CNN 파트와 conv 연산을 적용하여 전체적인 feature map(holistic context)을 뽑아내는 downsampling 부분은 거의 같다. 여기서는 `Contracting path`라고 부른다.
 
@@ -263,7 +263,7 @@ Sementic segmentation의 한 획을 그은 모델로, 기존 모델에 비해 �
 
 > Depthwise separable convolution
 
-<img src="Lecture4_Semantic segmentation.assets/depthwise-covolution.png" alt="depthwise convolution" style="zoom:67%;" />
+<img src="Lecture4_Semantic%20segmentation.assets/img12.png" alt="depthwise convolution" style="zoom:67%;" />
 
 
 

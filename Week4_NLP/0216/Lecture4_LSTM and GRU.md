@@ -6,7 +6,7 @@
 
 hidden state를 단기(short-term)기억소자로 볼 수 있고, 보다 먼 timestep(long-term)의 정보까지 잘 반영하도록 만들었기 때문에 이러한 이름이 붙었다.
 
-# 
+<br>
 
 ### 구조
 

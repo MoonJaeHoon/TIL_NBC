@@ -28,7 +28,7 @@ GPT-1과 BERT 이후에 나온 자기지도 사전학습 모델을 알아보자.
 
 ### (GPT-1 대비) 구조상의 변화
 
-![image-20210315224427949](Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315224427949.png)
+![image-20210315224427949](Lecture10_Advanced%20Self-supervised%20Pre-training%20Models(GPT2%203).assets/img1.png)
 
 - Layer Normalization이 각 sub-block의 입력쪽으로 옮겨졌다(pre-activation residual network와 비슷한 형태).
 - 마지막 self-attention block에서 Layer Normalization이 하나 추가되었다.
@@ -44,11 +44,11 @@ GPT-1과 BERT 이후에 나온 자기지도 사전학습 모델을 알아보자.
 
 ## GPT-3
 
-<img src="Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315224725380.png" alt="image-20210315224725380" style="zoom:80%;" />
+<img src="Lecture10_Advanced%20Self-supervised%20Pre-training%20Models(GPT2%203).assets/img2.png" alt="image-20210315224725380" style="zoom:80%;" />
 
 가장 최근에 나온 GPT 모델로, 모델의 구조에 변화가 있었다기보다는, **이전과 비교할 수 없을 정도의 attention block을 쌓아 파라미터수를 어마어마하게 많이 늘렸다(150B)**. 또, **배치사이즈도 3.2M정도가 되도록 최대한 키우자 더 좋은 성능**을 보였다고 한다.
 
-<img src="Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315224534582.png" alt="image-20210315224534582" style="zoom:150%;" />
+<img src="Lecture10_Advanced%20Self-supervised%20Pre-training%20Models(GPT2%203).assets/img3.png" alt="image-20210315224534582" style="zoom:150%;" />
 
 GPT-2에 비해 눈에 띄는 특징은 다음과 같다.
 
@@ -56,7 +56,7 @@ GPT-2에 비해 눈에 띄는 특징은 다음과 같다.
 - 하고자 하는 task(예를 들자면 번역)를 주고, 예시를 주면, 자연어 생성 task로 인식하여 정확도를 평가하고 스스로 학습한다. 이를 **`One-shot`**이라고 한다. 데이터를 단 한 쌍(예시)만 주었다는 말이다.신기한 점은, 모델 자체의 파라미터를 변경시켜가며 학습한 것이 아니라, 데이터를 input 텍스트의 일부로서 제시했는데도 task를 수행했다는 것이다
 - 동일한 맥락으로, 몇 개 안되는 예시 데이터를 주고 task를 수행하도록 하는 Few-shot이 가능해졌다.
 
-![image-20210315224758097](Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315224758097.png)
+![image-20210315224758097](Lecture10_Advanced%20Self-supervised%20Pre-training%20Models(GPT2%203).assets/img4.png)
 
 연구 결과에 따르면, 모델 사이즈를 키우면 키울수록, **`Zero/One/Few shot`**의 성능이 계속해서 오른다고 한다.
 
@@ -68,13 +68,13 @@ GPT-2에 비해 눈에 띄는 특징은 다음과 같다.
 
 ### Factorized Embedding Parameterization
 
-![image-20210315225052411](Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315225052411.png)
+![image-20210315225052411](Lecture10_Advanced%20Self-supervised%20Pre-training%20Models(GPT2%203).assets/img5.png)
 
 기존의 BERT에서 Embedding vector 사이즈 E*E*는 hidden vector size H*H*와 항상 같아야했다. 여러 Attention Block을 쌓기 때문에, 같은 크기로 들어가고 나가야 다음 블록에 동일한 형태로 전달될 수 있다.
 
 문제는, 단어간의 관계를 인코딩하여 저장해야하므로 많은 정보가 들어가는 dependent 벡터 H*H*의 크기를 맞추기 위해, **단어간의 관계를 생각하지 않아도 되는 independent 벡터 E가 필요 이상으로 커진다**는 것이다.
 
-![image-20210315225107566](Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315225107566.png)
+![image-20210315225107566](Lecture10_Advanced%20Self-supervised%20Pre-training%20Models(GPT2%203).assets/img6.png)
 
 위 이미지를 보면, BERT에서는 원래 4x1 사이즈의 임베딩 벡터가 H에 맞춰주기 위하여 4x4로 늘어나는 것을 볼 수 있다.
 
@@ -99,7 +99,7 @@ Self-attention block들이 가지는 학습 파라미터들에는 무엇들이 �
 - **`Shared-attention`** : Layer 간에 attention 파라미터들만 공유한다.
 - **`All-shared`** : 둘 다 공유한다.
 
-![image-20210315230543376](Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315230543376.png)
+![image-20210315230543376](Lecture10_Advanced%20Self-supervised%20Pre-training%20Models(GPT2%203).assets/img7.png)
 
 
 
@@ -121,7 +121,7 @@ ALBERT에서는 해당 task의 pretraining을 빼고 좀 더 유의미한 task�
 - 그 문장을 원래의 순서대로 concat했을 때 정방향으로 예측하고, 역순으로 concat했을 때 역방향으로 예측하도록 학습시킨다.(이진분류)
 - 이를 `negative sample`이라고 하는데, 인접 문장이므로 순서와 관계없이 비슷한 단어가 당연히 많이 등장한다.따라서 정말로 논리적인 흐름을 주의깊게 파악해야 task를 풀 수 있는 pretraining 형태가 되었다.
 
-![image-20210315230623283](Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315230623283.png)
+![image-20210315230623283](Lecture10_Advanced%20Self-supervised%20Pre-training%20Models(GPT2%203).assets/img8.png)
 
 논문에 첨부된 위의 실험결과를 보면, Next Sentence Prediction(NSP)를 사용했을때는 아예 사용하지 않았을 때와 별 차이가 없거나 오히려 성능이 떨어지기까지 한다. 이에 비해 **`Sentence Order Prediction(SOP)`**는 좀 더 좋은 개선된 성능을 보여주고 있다.
 
@@ -136,7 +136,7 @@ MLM(Masked language Modeling)을 통해 마스킹된 단어를 복원해주는 �
 
 이렇게 모델 학습을 진행할 경우에, Pre-train된 모델로서 사용할 수 있는 부분이 Generator와 Discriminator 두 부분이 된다. 이 중 **`ELECTRA`**는 Discriminator를 가져다가 downstream task에 맞게 fine-tuning하여 사용하는 방식이다.
 
-![image-20210315230712692](Lecture10_Advanced Self-supervised Pre-training Models(GPT2 3).assets/image-20210315230712692.png)
+![image-20210315230712692](Lecture10_Advanced%20Self-supervised%20Pre-training%20Models(GPT2%203).assets/img9.png)
 
 ELECTRA의 논문에 따르면, **대부분의 BERT 모델보다 동일한 학습량 대비 성능이 더 좋다**고 한다.
 

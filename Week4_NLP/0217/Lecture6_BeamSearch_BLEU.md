@@ -16,7 +16,7 @@ Beam Search 방법을 알아보기에 앞서 이전에는 다음과 같은 방�
   - 다음 예시를 보면 `he hit` 까지는 잘 맞췄지만 `he hit a`의 a 부분에서 잘못 예측하을 하였다. 하지만 Greedy Decoding은 뒤로 돌아가거나 이를 무르지 못하는 방법론이다.
   - 이와 같은 방법론은 이전 time-step의 단어가 예측이 잘못된 경우, 굉장히 엉뚱하고 잘못된 예측을 하게 되므로 수정이 필요하다.
 
-<img src="BeamSearch_BLEU.assets/image-20210217212946548.png" alt="image-20210217212946548" style="zoom:80%;" />
+<img src="Lecture6_BeamSearch_BLEU.assets/img1.png" alt="image-20210217212946548" style="zoom:80%;" />
 
 
 
@@ -31,7 +31,7 @@ Beam Search 방법을 알아보기에 앞서 이전에는 다음과 같은 방�
 
 
 
-![image-20210217213736686](BeamSearch_BLEU.assets/image-20210217213736686.png)
+![image-20210217213736686](Lecture6_BeamSearch_BLEU.assets/img2.png)
 
 - 결국 Exhaustive Search라는 관점에서 문장생성을 하게 된다면 문장을 여러가지 다 만들어놓고 이들 중 가장 높은 확률의 문장을 선택하게 된다.
   -  y1까지의 단어는 매우 큰 확률값이 되도록 예측해놓아도 뒤에서 노력하여 만들어낸 y2, .. yT 에 대한 확률값까지 고려하면 전체 joint 확률값이 상대적으로 작을 수 있게 된다.
@@ -67,9 +67,9 @@ Beam Search는 위의 Greedy Decoding 방법과 Exhaustive Search 방법의 중�
 
 
 
-![image-20210217215755030](BeamSearch_BLEU.assets/image-20210217215755030.png)
+![image-20210217215755030](Lecture6_BeamSearch_BLEU.assets/img3.png)
 
-![image-20210217220915022](BeamSearch_BLEU.assets/image-20210217220915022.png)
+![image-20210217220915022](Lecture6_BeamSearch_BLEU.assets/img4.png)
 
 
 
@@ -85,7 +85,7 @@ Beam Size가 2인 경우를 생각해보자. (k=2)
 >
 > k=2 개의 Hypotheses를 고려하게 됨.
 >
-> <img src="BeamSearch_BLEU.assets/image-20210217221724331.png" alt="image-20210217221724331" style="zoom:80%;" />
+> <img src="Lecture6_BeamSearch_BLEU.assets/img5.png" alt="image-20210217221724331" style="zoom:80%;" />
 
 
 
@@ -93,7 +93,7 @@ Beam Size가 2인 경우를 생각해보자. (k=2)
 >
 > 현재 k^2=4 개의 Hypotheses를 고려하게 되었지만 k=2로 정해두었으므로 2개만을 고르게 됨.
 >
-> <img src="BeamSearch_BLEU.assets/image-20210217222157291.png" alt="image-20210217222157291" style="zoom:67%;" />
+> <img src="Lecture6_BeamSearch_BLEU.assets/img6.png" alt="image-20210217222157291" style="zoom:67%;" />
 
 
 
@@ -101,7 +101,7 @@ Beam Size가 2인 경우를 생각해보자. (k=2)
 >
 >이번에도 4개의 Hypotheses를 고려하게 되었지만 Top2를 고르게 됨.
 >
-><img src="BeamSearch_BLEU.assets/image-20210217222337267.png" alt="image-20210217222337267" style="zoom:67%;" />
+><img src="Lecture6_BeamSearch_BLEU.assets/img7.png" alt="image-20210217222337267" style="zoom:67%;" />
 
 
 
@@ -109,7 +109,7 @@ Beam Size가 2인 경우를 생각해보자. (k=2)
 >
 > 다음과 같이 반복...
 >
-> ![image-20210217222446761](BeamSearch_BLEU.assets/image-20210217222446761.png)
+> ![image-20210217222446761](Lecture6_BeamSearch_BLEU.assets/img8.png)
 
 
 
@@ -121,7 +121,7 @@ Beam Size가 2인 경우를 생각해보자. (k=2)
 
 
 
-![image-20210217222601098](BeamSearch_BLEU.assets/image-20210217222601098.png)
+![image-20210217222601098](Lecture6_BeamSearch_BLEU.assets/img9.png)
 
 ```
 Beam Search는 동일하지 않게, 각기 다른 time-step에서 END token을 생성하는 여러가지의 가설들이 생기게 됩니다.
@@ -131,7 +131,7 @@ Beam Search는 동일하지 않게, 각기 다른 time-step에서 END token을 �
 
 
 
-![image-20210217223202427](BeamSearch_BLEU.assets/image-20210217223202427.png)
+![image-20210217223202427](Lecture6_BeamSearch_BLEU.assets/img10.png)
 
 ``` 
 T라는 사전에 지정한 종료 time-step에 도달했을 때 멈추거나,
@@ -144,7 +144,7 @@ T라는 사전에 지정한 종료 time-step에 도달했을 때 멈추거나,
 
 > Beam serach Stopping 후, 마무리 작업은 어떻게 하게 되는가?
 
-![image-20210217223447299](BeamSearch_BLEU.assets/image-20210217223447299.png)
+![image-20210217223447299](Lecture6_BeamSearch_BLEU.assets/img11.png)
 
 ```
 가장 점수(joint Probability)가 높은 가설의 문장을 골라야 한다.
@@ -168,7 +168,7 @@ BLEU SCORE를 살펴보기 전 다른 Metric은 어떤 위험이 있는지 알�
 
 아래와 같이 각 time-step마다 정답을 맞췄는지를 고려하는 Metric은 성능 평가에 있어 실수를 범하게 된다.
 
-<img src="BeamSearch_BLEU.assets/image-20210217224635832.png" alt="image-20210217224635832" style="zoom:67%;" />
+<img src="Lecture6_BeamSearch_BLEU.assets/img12.png" alt="image-20210217224635832" style="zoom:67%;" />
 
 
 
@@ -184,13 +184,13 @@ BLEU SCORE를 살펴보기 전 다른 Metric은 어떤 위험이 있는지 알�
 >
 > - F-measure 값은 Precision과 Recall 값의 조화평균으로부터 생성되는 정확도
 >
->   <img src="BeamSearch_BLEU.assets/image-20210217224151635.png" alt="image-20210217224151635" style="zoom:80%;" />
+>   <img src="Lecture6_BeamSearch_BLEU.assets/img13.png" alt="image-20210217224151635" style="zoom:80%;" />
 
 
 
 - 평균들 중 가장 작은 조화평균
 
-<img src="BeamSearch_BLEU.assets/image-20210217230232945.png" alt="image-20210217230232945" style="zoom: 50%;" />
+<img src="Lecture6_BeamSearch_BLEU.assets/img14.png" alt="image-20210217230232945" style="zoom: 50%;" />
 
 
 
@@ -201,7 +201,7 @@ BLEU SCORE를 살펴보기 전 다른 Metric은 어떤 위험이 있는지 알�
 >
 > 
 >
-> <img src="BeamSearch_BLEU.assets/image-20210217230647620.png" alt="image-20210217230647620" style="zoom:67%;" />
+> <img src="Lecture6_BeamSearch_BLEU.assets/img15.png" alt="image-20210217230647620" style="zoom:67%;" />
 
 
 
@@ -211,7 +211,7 @@ BLEU SCORE를 살펴보기 전 다른 Metric은 어떤 위험이 있는지 알�
 
 
 
-![image-20210217232130605](BeamSearch_BLEU.assets/image-20210217232130605.png)
+![image-20210217232130605](Lecture6_BeamSearch_BLEU.assets/img16.png)
 
 ```
 산술평균보다는 쫌 작은 값의 기하평균을 고려하였습니다.
@@ -266,7 +266,7 @@ brevity penalty (짧은 문장에 대한 Penalty)
 
 - n-gram 각각에 대해 Score를 계산해보면 다음과 같이 나옵니다.
 
-![image-20210217234356519](BeamSearch_BLEU.assets/image-20210217234356519.png)
+![image-20210217234356519](Lecture6_BeamSearch_BLEU.assets/img17.png)
 
 
 
@@ -276,7 +276,7 @@ brevity penalty (짧은 문장에 대한 Penalty)
 
 예시로 4-gram을 직접 다음과 같이 구해보았습니다. (Model1 = 1/6), (Model2 = 0)
 
-![image-20210217235422877](BeamSearch_BLEU.assets/image-20210217235422877.png)
+![image-20210217235422877](Lecture6_BeamSearch_BLEU.assets/img18.png)
 
 > 결국,
 >

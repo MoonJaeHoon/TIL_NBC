@@ -6,9 +6,11 @@
 
 
 
-> 논문에 나와있는 Transformer의 구조는 다음과 같다.
+> **미리보기**
+>
+> : 논문에 나와있는 Transformer의 구조는 다음과 같다.
 
-<img src="Transformer(Attention is All you need).assets/image-20210218130648317.png" alt="image-20210218130648317" style="zoom:80%;" />
+<img src="Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img1.png" alt="image-20210218130648317" style="zoom:80%;" />
 
 
 
@@ -22,7 +24,7 @@ RNN을 이용한 Encoder는 `I` `go` `home` 각각의 단어에 잘 맞는 정�
 
 `home`에 `I`와 `go`의 정보가 전달되는 구조인데, 이는 앞선 time-step에서의 정보가 유실되는 현상이 일어날 수 있음 (Lorg term Dependecy, Gradinet Vanishing, Exploding 등)
 
-![image-20210218135422231](Transformer(Attention is All you need).assets/image-20210218135422231.png)
+![image-20210218135422231](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img2.png)
 
 
 
@@ -32,7 +34,7 @@ RNN을 이용한 Encoder는 `I` `go` `home` 각각의 단어에 잘 맞는 정�
 - 왼쪽의 Forward에서는 `I`와 `go` 두 단어를 이용하여 hidden state 값, Backward는 `home`과 `go` 두단어를 이용하여 hidden state값을 구하게 된다.
 - 이 둘을 concat하여 두배의 차원에 해당하는 벡터를 `go`가 가지게 된다.
 
-![image-20210218135641921](Transformer(Attention is All you need).assets/image-20210218135641921.png)
+![image-20210218135641921](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img3.png)
 
 
 
@@ -47,7 +49,7 @@ RNN을 이용한 Encoder는 `I` `go` `home` 각각의 단어에 잘 맞는 정�
 - 앞서 배웠던 Attention 에서처럼 Attention Score , Attention Distribution 등을 구하는 과정이 보입니다.
 - 여기서도 input과 output(hidden state) 벡터의 차원이 같음을 볼 수 있다.
 
-![image-20210218142023104](Transformer(Attention is All you need).assets/image-20210218142023104.png)
+![image-20210218142023104](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img4.png)
 
 
 
@@ -62,7 +64,7 @@ Transformer에서는 이를 현재 time-step의 input 값 x_t로 대체하여 �
 
 
 
-![image-20210218142556373](Transformer(Attention is All you need).assets/image-20210218142556373.png)
+![image-20210218142556373](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img5.png)
 
 
 
@@ -81,7 +83,7 @@ Transformer에서는 이를 현재 time-step의 input 값 x_t로 대체하여 �
 
 
 
-<img src="Transformer(Attention is All you need).assets/image-20210218152330731.png" alt="image-20210218152330731" style="zoom:67%;" />
+<img src="Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img6.png" alt="image-20210218152330731" style="zoom:67%;" />
 
 ### 1.2.2 Query, Key, Value
 
@@ -118,7 +120,7 @@ Transformer에서는 이를 현재 time-step의 input 값 x_t로 대체하여 �
 
 
 
-![image-20210315223306151](Transformer(Attention is All you need).assets/image-20210315223306151.png)
+![image-20210315223306151](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img7.png)
 
 ​	1) 결국 이런식으로 각기 다른 역할을 하게 선형변환해준 Query와 Key Vector를 이용하여 Attention Score(유사도)를 구해냅니다.
 
@@ -141,7 +143,7 @@ Transformer에서는 이를 현재 time-step의 input 값 x_t로 대체하여 �
 >
 > - 결국 RNN 기반 모델의 문제가 되었던 Long-time Dependancy에 상관없이 집중해야할 정보를 무리없이 선택할 수 있습니다.
 
-![image-20210219123410712](Transformer(Attention is All you need).assets/image-20210219123410712.png)
+![image-20210219123410712](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img8.png)
 
 
 
@@ -149,7 +151,7 @@ Transformer에서는 이를 현재 time-step의 input 값 x_t로 대체하여 �
 
 (사용되는 Matrix를 한눈에 나타낸 그림)
 
-![image-20210315223559967](Transformer(Attention is All you need).assets/image-20210315223559967.png)
+![image-20210315223559967](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img9.png)
 
 
 $$
@@ -173,7 +175,7 @@ $$
 
 - Value vector는 별개의 Dimension을 가질 수 있다.
 
-![image-20210219124452572](Transformer(Attention is All you need).assets/image-20210219124452572.png)
+![image-20210219124452572](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img10.png)
 
 
 
@@ -183,7 +185,7 @@ $$
 
 
 
-![image-20210219142750937](Transformer(Attention is All you need).assets/image-20210219142750937.png)
+![image-20210219142750937](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img11.png)
 
 
 
@@ -209,7 +211,7 @@ $$
 
 
 
-<img src="Transformer(Attention is All you need).assets/image-20210219143759628.png" alt="image-20210219143759628"  />
+<img src="Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img12.png" alt="image-20210219143759628"  />
 
 ```
 결국 위의 그림에서 Attention의 결과를 보면 행은 Q, 열은 d_v의 차원을 가지고 있습니다.
@@ -222,7 +224,7 @@ $$
 - 이렇게 함으로써 하나의 query vector 내에서 k의 개수(k1, k2, k3, k4이므로 여기선 4)만큼의 가중치를 구할 수 있게 된다.
   - 아래 예시를 보면 이해가 될 것이다. (0.2+0.1+0.4+0.3=1)
 
-![image-20210219143919966](Transformer(Attention is All you need).assets/image-20210219143919966.png)
+![image-20210219143919966](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img13.png)
 
 
 
@@ -233,7 +235,7 @@ $$
 - 다음과 같이 결국 결과 Matrix는 각각의 Query Vector에 대한 Output Vector를 계산하여 저장하고 있는 형태라는 것을 알 수가 있습니다.
 - Matrix 형태로 연산을 하는 이유는 GPU와 같은 장치를 통한 병렬처리가 가능하다는 장점을 가지게 해주기 때문입니다.
 
-![image-20210219145215404](Transformer(Attention is All you need).assets/image-20210219145215404.png)
+![image-20210219145215404](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img14.png)
 
 
 
@@ -245,7 +247,7 @@ Q와 K의 내적연산을 한 결과는 임의의 조정이 필요한 결과값�
 - query와 key 벡터가 2차원일 경우 내적연산의 결과로 생성된 ax+by라는 확률변수의 분산은 2라는 상대적으로 매우 작은 값이 나오게 됩니다. (Case1)
 - 그리고 만약 query와 key 벡터의 차원이 100이라면 다음과 같이 분산=100(표준편차=10)이 나오고 차원이 커질수록 분산이 매우 큰 값을 가지게 되는 문제가 생깁니다. (Case2)
 
-<img src="Transformer(Attention is All you need).assets/image-20210219151244246.png" alt="image-20210219151244246" style="zoom:50%;" />
+<img src="Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img15.png" alt="image-20210219151244246" style="zoom:50%;" />
 
 
 
@@ -268,11 +270,11 @@ Q와 K의 내적연산을 한 결과는 임의의 조정이 필요한 결과값�
   - 위의 (a,b)와 (x,y)에 대한 예시에서는 루트(2)로 나누어주게 됨. (분산은 2로 나누어준 값이 될 것이다)
   - 또한 100차원의 예시에 대해서는 루트(100)으로 나누어줍니다. (분산은 10으로 나누어준 값이 될 것입니다.)
 
-![image-20210315223156909](Transformer(Attention is All you need).assets/image-20210315223156909.png)
+![image-20210315223156909](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img16.png)
 
 
 
-![image-20210315231115242](Transformer(Attention is All you need).assets/image-20210315231115242.png)
+![image-20210315231115242](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img17.png)
 
 
 
@@ -280,7 +282,7 @@ Q와 K의 내적연산을 한 결과는 임의의 조정이 필요한 결과값�
 
 **`Multi-Head Attention`**은 기존의 Attention 모듈을 좀 더 유용하게 확장한 모듈이다.
 
-<img src="Transformer(Attention is All you need).assets/image-20210315231233002.png" alt="image-20210315231233002" style="zoom:80%;" />
+<img src="Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img18.png" alt="image-20210315231233002" style="zoom:80%;" />
 
 <img src="Transformer(Attention is All you need).assets/image-20210315231348345.png" alt="image-20210315231348345" style="zoom:67%;" />
 
@@ -300,11 +302,11 @@ Q와 K의 내적연산을 한 결과는 임의의 조정이 필요한 결과값�
 
 아래 그림과 같이 8개의 Head 수만큼 Attention을 동시에 수행하게 되면 (Z0, ... Z7)이 나오게 됩니다.
 
-![image-20210315231723460](Transformer(Attention is All you need).assets/image-20210315231723460.png)
+![image-20210315231723460](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img19.png)
 
 이렇게 나온 (Z0, ... Z7)를 W^O로 linear transformation을 하여 하나의 Output Z를 만드는 형태로 진행된다.
 
-![image-20210315231746208](Transformer(Attention is All you need).assets/image-20210315231746208.png)
+![image-20210315231746208](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img20.png)
 
 
 
@@ -332,7 +334,7 @@ Q와 K의 내적연산을 한 결과는 임의의 조정이 필요한 결과값�
 
 위와 같이 정의할 때, 기존 layer들의 연산량은 다음과 같다.
 
-![image-20210315234748837](Transformer(Attention is All you need).assets/image-20210315234748837.png)
+![image-20210315234748837](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img21.png)
 
 
 
@@ -346,7 +348,7 @@ Total Computational Complexity per Layer를 의미
 
   - Q º K^T  = (*n*×*d*)×(*d*×*n*)
 
-    ![image-20210316002012950](Transformer(Attention is All you need).assets/image-20210316002012950.png)
+    ![image-20210316002012950](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img22.png)
 
   - Q와 K를 내적하므로 계산되는 연산량은 *d*이고, 이를 모든 각 길이 *n*의 제곱만큼 계산해야 하므로
 
@@ -356,7 +358,7 @@ Total Computational Complexity per Layer를 의미
 
   - W_{hh} º h_{t-1}  = (d×*d*)×(*d*×*1*)
 
-    ![image-20210316004322242](Transformer(Attention is All you need).assets/image-20210316004322242.png)
+    ![image-20210316004322242](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img23.png)
 
   - time step의 개수가 *n*이고, 매 time step마다 (*d*×*d*) 크기의 *W_{hh}*를 곱한다. 
 
@@ -398,7 +400,7 @@ Long-term dependency와 관련이 있는 지표입니다.
 
 ### Encoder 구조
 
-![image-20210316005601498](Transformer(Attention is All you need).assets/image-20210316005601498.png)
+![image-20210316005601498](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img24.png)
 
 
 
@@ -408,7 +410,7 @@ Long-term dependency와 관련이 있는 지표입니다.
 
 그럼 그 연산 이후에 진행되는 **Add&Norm** 층은 어떤 역할일까?
 
-![image-20210316010416692](Transformer(Attention is All you need).assets/image-20210316010416692.png)
+![image-20210316010416692](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img25.png)
 
 > Add - **Residual Connection**
 
@@ -448,7 +450,7 @@ Long-term dependency와 관련이 있는 지표입니다.
 
 - Layer Normalization
 
-  ![image-20210316014557758](Transformer(Attention is All you need).assets/image-20210316014557758.png)
+  ![image-20210316014557758](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img26.png)
 
   - Batch Norm과 방법은 똑같이 수행하지만, 여러 layer가 붙어있는 행렬을 대상으로, 한 layer마다 수행한다.
   - affine transformation은 각 layer의 동일한 node 기준으로 수행한다.(normalization이 column 단위였다면 affine transformation은 row 별)
@@ -462,7 +464,7 @@ Add&Norm 구간을 거치고 나온 output은 다시 Fully connected layer(Feed 
 
 ### Positional Encoding
 
-<img src="Transformer(Attention is All you need).assets/image-20210316013422451.png" alt="image-20210316013422451" style="zoom:150%;" />
+<img src="Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img27.png" alt="image-20210316013422451" style="zoom:150%;" />
 
 
 
@@ -482,7 +484,7 @@ RNN과 달리 self-attention 모듈 기반의 Block Based Model로 인코딩하�
 
 - 이 때, unique한 값은 주기를 다르게 한 sin cos 함수를 활용한다. 주기함수는 입력값 x의 위치에 따라 출력값이 변하기 때문이다.
 
-  ![image-20210316012632270](Transformer(Attention is All you need).assets/image-20210316012632270.png)
+  ![image-20210316012632270](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img28.png)
 
 - 단, 하나의 주기함수만 사용하면 동일한 함수값을 가지는 구간이 생기므로, **서로 다른 여러 주기함수의 출력값들을 모두 합쳐서 사용**한다.
 
@@ -497,7 +499,7 @@ RNN과 달리 self-attention 모듈 기반의 Block Based Model로 인코딩하�
 
 ### Warm-Up Learning Rate Scheduler
 
-![image-20210316010138178](Transformer(Attention is All you need).assets/image-20210316010138178.png)
+![image-20210316010138178](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img29.png)
 
 기존의 모델에서 학습률(learning rate)는 하이퍼파라미터로, 학습 내내 고정되어있는 값이었다. 그러나 학습의 과정동안 효율적인 학습률은 계속 바뀌기 마련이므로, 이를 학습 과정 내에서 효과적으로 바꾸어 줄 수 있는 방식으로 **`Learning Rate Scheduler`**가 나오게 되었다.
 
@@ -505,11 +507,11 @@ RNN과 달리 self-attention 모듈 기반의 Block Based Model로 인코딩하�
 
 ### Transformer: Encoder Self-Attention Visualization
 
-<img src="Transformer(Attention is All you need).assets/image-20210316010653779.png" alt="image-20210316010653779" style="zoom:80%;" />
+<img src="Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img30.png" alt="image-20210316010653779" style="zoom:80%;" />
 
 위 그림은 making을 Query로 사용할 때 Attention이 어떻게 반영되는지 보여준다. 이 때 빨간색으로 테두리되어 있는 부분은 ***Head_1***의 Attention이 반영된 부분을 나타낸다. 즉, 각 Head의 Attention을 다르게 반영한다는 듯이다. 처음 5개 정도의 Head에는 more과 difficult에 Attention이 많이 되고 있다. 또한 자기자신(marketing)을 Attention하는 Head가 존재하기도 하고, 시기 정보(2009)를 Attention하는 Head가 존재하는 것도 확인된다.
 
-<img src="Transformer(Attention is All you need).assets/image-20210316010723454.png" alt="image-20210316010723454" style="zoom:80%;" />
+<img src="Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img31.png" alt="image-20210316010723454" style="zoom:80%;" />
 
 위 그림에서 its가 Query로 사용되면, its가 Law를 가리키고 있다고 보여주는 Attention Head와 its를 한정해주는 application에 Attention Head가 동작하는 것이 확인 된다.
 
@@ -519,7 +521,7 @@ RNN과 달리 self-attention 모듈 기반의 Block Based Model로 인코딩하�
 
 ## 디코더 구조와 Masked
 
-![image-20210316005627761](Transformer(Attention is All you need).assets/image-20210316005627761.png)
+![image-20210316005627761](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img32.png)
 
 Outputs가 디코더의 입력으로 들어올 때, 기존의 ground truth 문장에서 앞쪽에는 `<SOS>` 토큰을 붙여 들어오므로, 한칸 밀린(shfited right) 형태로 들어오게 된다.
 
@@ -533,11 +535,11 @@ Outputs가 디코더의 입력으로 들어올 때, 기존의 ground truth 문�
 
 Self-Attention 모델에서, 임의의 단어 a는 Q와 K의 내적을 통해 자신과 모든 단어들의 관계를 다 알수 있다. 이 때, 학습 당시에는 배치 프로세싱을 위해 a 뒤의 단어들까지 모두 고려하도록 학습이 진행되나, 사실 **실제 디코딩 상황을 고려한다면 a 뒤의 단어를 알아서는 안된다**. 이는 뒤의 단어를 추론해야 하는 상황에서 뒤에 어떤 단어가 있는지 미리 알고있는 일종의 cheating 상황이기 때문이다. 이러면 당연히 학습이 제대로 되지 않게 되어버릴 것이다.
 
-![image-20210316011234087](Transformer(Attention is All you need).assets/image-20210316011234087.png)
+![image-20210316011234087](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img33.png)
 
 디코더 과정의 이미지 중 **`Masked Self-attention`**이 이를 해결하기 위한 방법으로, 기존의 attention 모듈에서 Q, K 내적과 softmax를 통과한 값에서 현재 단어 a의 뒤에 있는 단어들을 key 값으로 계산된 셀들을 모두 삭제한다. `Mask` 라는 단어는 이처럼 **뒤쪽의 정보를 가린다(mask)**는 의미다.
 
-<img src="Transformer(Attention is All you need).assets/image-20210316005732735.png" alt="image-20210316005732735" style="zoom: 67%;" />
+<img src="Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img34.png" alt="image-20210316005732735" style="zoom: 67%;" />
 
 
 
@@ -545,11 +547,11 @@ Self-Attention 모델에서, 임의의 단어 a는 Q와 K의 내적을 통해 �
 
 
 
-![image-20210316010926404](Transformer(Attention is All you need).assets/image-20210316010926404.png)
+![image-20210316010926404](Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img35.png)
 
 
 
-<img src="Transformer(Attention is All you need).assets/image-20210316010946690.png" alt="image-20210316010946690" style="zoom:80%;" />
+<img src="Lecture7&8_Transformer(Attention%20is%20All%20you%20need).assets/img36.png" alt="image-20210316010946690" style="zoom:80%;" />
 
 따라서 이 셀들의 정보를 그대로 둔 채로 학습시키지 못하도록 해당 값들을 0으로 대체한다. 그 이후, 남은 주대각선 이하의 셀들만 가지고, row단위로 총합이 1이 되도록 normalize 한 정보를 최종 output으로 내보낸다.
 

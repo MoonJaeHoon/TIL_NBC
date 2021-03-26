@@ -6,7 +6,7 @@ Object detection, 객체 검출은 CV에서 가장 시장수요가 높은 task �
 
 
 
-<img src="Lecture5_Object detection.assets/image-20210312035302191.png" alt="image-20210312035302191" style="zoom: 50%;" />
+<img src="Lecture5_Object%20detection.assets/img1.png" alt="image-20210312035302191" style="zoom: 50%;" />
 
 <img src="Lecture5_Object detection.assets/image-20210312035225432.png" alt="image-20210312035225432" style="zoom: 25%;" />
 
@@ -16,7 +16,7 @@ Object detection, 객체 검출은 CV에서 가장 시장수요가 높은 task �
 
 기존의 Semantic Segmentation과 2가지(**`Instance segmentation`**, **`Panoptic segementation`**)의 차이점은, 전자는 class를 구별하지만 후자는 개체를 구별한다는 데에 있다(Instance를 구별하는가?)
 
-<img src="Lecture5_Object detection.assets/image-20210312035428188.png" alt="image-20210312035428188" style="zoom: 67%;" />
+<img src="Lecture5_Object%20detection.assets/img2.png" alt="image-20210312035428188" style="zoom: 67%;" />
 
 - 예를 들어, **`Semantic Segmentation`**은 이미지에 나온 모든 사람들을 '사람'이라는 하나의 class로 묶어서 동일하게 취급하는데에 비하여,
 - **`Instance segmentation`**, **`Panoptic segementation`**는 Alex, Chris 등으로 각각 다른 사람으로 구별한다.
@@ -40,7 +40,7 @@ Object detection, 객체 검출은 CV에서 가장 시장수요가 높은 task �
 
 
 
-<img src="Lecture5_Object detection.assets/image-20210312035647286.png" alt="image-20210312035647286" style="zoom:50%;" />
+<img src="Lecture5_Object%20detection.assets/img3.png" alt="image-20210312035647286" style="zoom:50%;" />
 
 - 영역 내의 수평선/수직선 등의 분포를 모델링하고, linear classifier의 weight를 학습시켜 visualization했다.
 
@@ -51,7 +51,7 @@ Object detection, 객체 검출은 CV에서 가장 시장수요가 높은 task �
 
 ## Selective Search
 
-<img src="Lecture5_Object detection.assets/image-20210312035845679.png" alt="image-20210312035845679" style="zoom:67%;" />
+<img src="Lecture5_Object%20detection.assets/img4.png" alt="image-20210312035845679" style="zoom:67%;" />
 
 1.  Over-segmentation : 영상을 비슷한 색끼리 잘게 분할을 하는 방법
 
@@ -89,7 +89,7 @@ Object detection, 객체 검출은 CV에서 가장 시장수요가 높은 task �
 
 -  CNN에 적절한 input size로 warped 시킨 후, CNN에 넣고 classification 수행 (classifier는 SVM 사용)
 
-<img src="Lecture5_Object detection.assets/image-20210312040231778.png" alt="image-20210312040231778" style="zoom: 67%;" />
+<img src="Lecture5_Object%20detection.assets/img5.png" alt="image-20210312040231778" style="zoom: 67%;" />
 
 ### 작동 과정
 
@@ -111,7 +111,7 @@ Object detection, 객체 검출은 CV에서 가장 시장수요가 높은 task �
 
 따라서 R-CNN의 단점을 보완하기 위해 영상 전체에 대한 feature를 한번에 추출하고, 이렇게 미리 검출된 feature map에 ROI를 수행하여 객체를 검출하는 **`Fast R-CNN`**이 등장했다.
 
-<img src="Lecture5_Object detection.assets/image-20210312044757204.png" alt="image-20210312044757204" style="zoom:67%;" />
+<img src="Lecture5_Object%20detection.assets/img6.png" alt="image-20210312044757204" style="zoom:67%;" />
 
 ### 작동방식
 
@@ -123,7 +123,7 @@ Object detection, 객체 검출은 CV에서 가장 시장수요가 높은 task �
 
    - Fully convolutional Network는 입력 사이즈를 따로 warping하지 않아도 feature map을 추출할 수 있다.
 
-     <img src="Lecture5_Object detection.assets/image-20210312044740089.png" alt="image-20210312044740089" style="zoom: 67%;" />
+     <img src="Lecture5_Object%20detection.assets/img7.png" alt="image-20210312044740089" style="zoom: 67%;" />
 
    
 
@@ -131,7 +131,7 @@ Object detection, 객체 검출은 CV에서 가장 시장수요가 높은 task �
 
    - (ROI는 Region proposal이 제시한 **`물체의 후보 위치들`**이라고 이해하면 될듯)
 
-     <img src="Lecture5_Object detection.assets/image-20210312044836566.png" alt="image-20210312044836566" style="zoom: 67%;" />
+     <img src="Lecture5_Object%20detection.assets/img8.png" alt="image-20210312044836566" style="zoom: 67%;" />
 
      
 
@@ -142,7 +142,7 @@ Object detection, 객체 검출은 CV에서 가장 시장수요가 높은 task �
    - 이미지 분류 : softmax에 통과시킨다.
    - 정확한 BB(Bounding Box) 위치 찾기 : bbox regressor에 통과시킨다. (좌표, 너비, 높이 등 정교한 위치를 찾으려 회귀함)
 
-   <img src="Lecture5_Object detection.assets/image-20210312045027415.png" alt="image-20210312045027415" style="zoom:67%;" />
+   <img src="Lecture5_Object%20detection.assets/img9.png" alt="image-20210312045027415" style="zoom:67%;" />
 
 
 
@@ -168,7 +168,7 @@ $$
 IoU = \frac{Area\ of\ Overlap(교집합)}{Area\ of\ Union(합집합)}
 $$
 
-<img src="Lecture5_Object detection.assets/image-20210312054955786.png" alt="image-20210312054955786" style="zoom: 67%;" />
+<img src="Lecture5_Object%20detection.assets/img10.png" alt="image-20210312054955786" style="zoom: 67%;" />
 
 #### 2) Anchor boxes
 
@@ -183,7 +183,7 @@ $$
 - box의 개수와 종류는 우리가 정하는 하이퍼파라미터이긴 하다.
   - Faster R-CNN에서는 서로 다른 ratio 3개와 서로다른 scale 3개, 총 9개의 anchor box를 설정했습니다.
 
-<img src="Lecture5_Object detection.assets/image202103120549.png" alt="img" style="zoom: 80%;" />
+<img src="Lecture5_Object%20detection.assets/img11.png" alt="img" style="zoom: 80%;" />
 
 ### Faster R-CNN의 작동방식
 
@@ -199,13 +199,13 @@ $$
 
 시간이 오래 걸리고, 일종의 3rd-party 알고리즘이었던 Selective search 방식을 **`Region Proposal Network(RPN)`**으로 대체하였다.
 
-<img src="Lecture5_Object detection.assets/image-20210312060516048.png" alt="image-20210312060516048" style="zoom: 50%;" />
+<img src="Lecture5_Object%20detection.assets/img12.png" alt="image-20210312060516048" style="zoom: 50%;" />
 
 - 영상 하나에서부터 공유되는 feature map을 뽑은 후, RPN에서 Region Proposal을 여러개 하게 되고, 뽑아진 Region Porposal을 가지고 ROI pooling을 수행합니다.
 
 
 
-![image-20210312061712724](Lecture5_Object detection.assets/image-20210312061712724.png)
+![image-20210312061712724](Lecture5_Object%20detection.assets/img13.png)
 
 > 위의 그림을 예시로 봅시다.
 
@@ -225,7 +225,7 @@ conv feature map을 256D로 뽑아내면, 다음의 두 score를 만들어낸다
 
 그래서 NMS라는 과정을 수행합니다.
 
-<img src="Lecture5_Object detection.assets/image-20210312061733278.png" alt="image-20210312061733278" style="zoom: 80%;" />
+<img src="Lecture5_Object%20detection.assets/img14.png" alt="image-20210312061733278" style="zoom: 80%;" />
 
 - **NMS**는 이 중 하나를 정확히 특정하기 위해서 그럴듯한 BB를 모두 가져다놓고 다른 박스와의 IOU를 측정해 너무 많이 겹치는(ex-IoU≥50%) 것들을 모두 제거하는 방식입니다.
   - 제일 높은 점수의 박스를 고르고 이것과 다른 박스들 간의 IOU를 각각 모두 구합니다.
@@ -241,7 +241,7 @@ conv feature map을 256D로 뽑아내면, 다음의 두 score를 만들어낸다
 
 
 
-<img src="Lecture5_Object detection.assets/image-20210312061745787.png" alt="image-20210312061745787" style="zoom: 80%;" />
+<img src="Lecture5_Object%20detection.assets/img15.png" alt="image-20210312061745787" style="zoom: 80%;" />
 
 
 
@@ -251,7 +251,7 @@ conv feature map을 256D로 뽑아내면, 다음의 두 score를 만들어낸다
 
 two-stage detecor와는 다르게, 정확도를 조금 포기하더라도 속도를 올리는 데에 초점을 맞춘 **real-time detector**입니다.
 
-<img src="Lecture5_Object detection.assets/image-20210312064732618.png" alt="image-20210312064732618" style="zoom:67%;" />
+<img src="Lecture5_Object%20detection.assets/img16.png" alt="image-20210312064732618" style="zoom:67%;" />
 
 
 
@@ -267,7 +267,7 @@ two-stage detecor와는 다르게, 정확도를 조금 포기하더라도 속도
 
 ### 작동방식
 
-<img src="Lecture5_Object detection.assets/image-20210312064847189.png" alt="image-20210312064847189" style="zoom: 80%;" />
+<img src="Lecture5_Object%20detection.assets/img17.png" alt="image-20210312064847189" style="zoom: 80%;" />
 
 1. 이미지를 그리드로 나눈다.
 2. 각 grid에 대해서 score를 예측한다.B개의 Bounding box마다 박스 정보 4개(x,y,w,h)와 confident score(objectiveness score) 1개를 예측한다.class score(class probability)도 따로 예측한다.
@@ -285,7 +285,7 @@ two-stage detecor와는 다르게, 정확도를 조금 포기하더라도 속도
 
 #### 예시보기
 
-<img src="Lecture5_Object detection.assets/image-20210312071010559.png" alt="image-20210312071010559" style="zoom:67%;" />
+<img src="Lecture5_Object%20detection.assets/img18.png" alt="image-20210312071010559" style="zoom:67%;" />
 
 - YOLO Architecture의 구성은 일반 CNN의 구성과 거의 동일합니다.
 
@@ -296,7 +296,7 @@ two-stage detecor와는 다르게, 정확도를 조금 포기하더라도 속도
 
   - channel의 개수 = (`x`, `y`, `w`, `h`, `obj score`) : 5개 x B : 2개 + class : 20개 = 30으로 나오게 됩니다. (5B+C)
 
-<img src="Lecture5_Object detection.assets/image-20210312065125538.png" alt="image-20210312065125538" style="zoom:67%;" />
+<img src="Lecture5_Object%20detection.assets/img19.png" alt="image-20210312065125538" style="zoom:67%;" />
 
 
 
@@ -312,7 +312,7 @@ SSD는 Multi-scale object를 더 잘 처리하기 위해서 중간 feature를 �
 
 아래 그림과 같이 8 x 8 feature map에서는 bounding box가 작은 크기를 갖게 되고, 4 x 4 feature map에서는 bounding box가 큰 크기를 가지게 됩니다. 즉, 각 feature map마다 해상도에 적절한 bounding box의 크기들을 예측할 수 있도록 만들었습니다.
 
-![image-20210312065532521](Lecture5_Object detection.assets/image-20210312065532521.png)
+![image-20210312065532521](Lecture5_Object%20detection.assets/img20.png)
 
 
 
@@ -320,7 +320,7 @@ SSD는 Multi-scale object를 더 잘 처리하기 위해서 중간 feature를 �
 
 
 
-![image-20210312065614047](Lecture5_Object detection.assets/image-20210312065614047.png)
+![image-20210312065614047](Lecture5_Object%20detection.assets/img21.png)
 
 
 
@@ -335,7 +335,7 @@ SSD는 Multi-scale object를 더 잘 처리하기 위해서 중간 feature를 �
 
 >SSD는 YOLO보다 빠른 속도, 더 좋은 성능을 보입니다.
 
-![image-20210312065631649](Lecture5_Object detection.assets/image-20210312065631649.png)
+![image-20210312065631649](Lecture5_Object%20detection.assets/img22.png)
 
 
 
@@ -353,7 +353,7 @@ Focal loss를 왜 쓰는데?
 
 - 이 문제는 전체 사진에서 Postive 부분은 엄청 적은 반면에 배경과 같은 유용하지 못한 정보들은 엄청나게 많은 계수 문제로 Class imbalance 문제를 발생시키게 됩니다.
 
-  ![image-20210312065725764](Lecture5_Object detection.assets/image-20210312065725764.png)
+  ![image-20210312065725764](Lecture5_Object%20detection.assets/img23.png)
 
 - 모든 Single-stage detector들이 이 문제를 가지고 있습니다.
 
@@ -381,7 +381,7 @@ Focal loss를 왜 쓰는데?
 
 그림으로 이해해보겠습니다.
 
-![image-20210312065736299](Lecture5_Object detection.assets/image-20210312065736299.png)
+![image-20210312065736299](Lecture5_Object%20detection.assets/img24.png)
 
 - 여기서 파란색 선은 Cross Entropy이며, Truth class에 대한 score가 높게 나와서 정답을 잘 맞추게 되는 영역 (well-classificated examples)은 낮은 Loss값을 반환하고, 맞추지 못한 부분은 큰 Loss값을 반환합니다.
 
@@ -399,13 +399,13 @@ Pyramid 구조를 가져서 low level의 feature와 high level의 feature를 잘
 
 (c)와 (d)는 class head와 box head가 따로따로 구성이 되어서 classification과 box regression을 각 위치마다 densely하게 수행하게 됩니다.
 
-<img src="Lecture5_Object detection.assets/image-20210312074145049.png" alt="image-20210312074145049" style="zoom: 80%;" />
+<img src="Lecture5_Object%20detection.assets/img25.png" alt="image-20210312074145049" style="zoom: 80%;" />
 
 
 
 > RetinaNet은 SSD보다 빠른 속도를 가지면서 높은 성능을 보였습니다
 
-<img src="Lecture5_Object detection.assets/image-20210312065813639.png" alt="image-20210312065813639" style="zoom: 80%;" />
+<img src="Lecture5_Object%20detection.assets/img26.png" alt="image-20210312065813639" style="zoom: 80%;" />
 
 
 
@@ -419,7 +419,7 @@ Pyramid 구조를 가져서 low level의 feature와 high level의 feature를 잘
 
 > 구조는 다음과 같다.
 
-![image-20210312065934584](Lecture5_Object detection.assets/image-20210312065934584.png)
+![image-20210312065934584](Lecture5_Object%20detection.assets/img27.png)
 
 
 
@@ -445,4 +445,4 @@ Pyramid 구조를 가져서 low level의 feature와 high level의 feature를 잘
 
 
 
-![image-20210312065948512](Lecture5_Object detection.assets/image-20210312065948512.png)
+![image-20210312065948512](Lecture5_Object%20detection.assets/img28.png)

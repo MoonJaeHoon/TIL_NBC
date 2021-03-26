@@ -1,3 +1,5 @@
+
+
 # Visualizing CNN
 
 CNN visualization은 CNN를 시각화하는 방법입니다.
@@ -16,7 +18,7 @@ Visualization은 CNN에서 Debugging tool 역할을 합니다.
 
 
 
-![image-20210312082114598](Lecture6_CNN visualization.assets/image-20210312082114598.png)
+![image-20210312082114598](Lecture6_CNN%20visualization.assets/img1.png)
 
  
 
@@ -27,7 +29,7 @@ Visualization은 CNN에서 Debugging tool 역할을 합니다.
 
 - 또한, Filter visualization에다가 Convolution을 취한 Activation map에서는 영상의 각도에 해당하는 결과나 소소한 detail, 색깔로 경계선을 구분한 결과 등을 알 수 있습니다. 
 
-<img src="Lecture6_CNN visualization.assets/image-20210312103432436.png" alt="image-20210312103432436" style="zoom:67%;" />
+<img src="Lecture6_CNN%20visualization.assets/img2.png" alt="image-20210312103432436" style="zoom:67%;" />
 
  
 
@@ -42,7 +44,7 @@ Visualization은 CNN에서 Debugging tool 역할을 합니다.
 - Analysis of model behaviors : 모델 자체의 특성을 분석
 - Model decision explanation : 하나의 입력 데이터에서부터 모델이 어떤 결론을 내었을 때 어디서 그러한 결론으로 도출되었는지 출력을 분석
 
-![image-20210312082517258](Lecture6_CNN visualization.assets/image-20210312082517258.png)
+![image-20210312082517258](Lecture6_CNN%20visualization.assets/img3.png)
 
  
 
@@ -61,7 +63,7 @@ Visualization은 CNN에서 Debugging tool 역할을 합니다.
 
 ##### 2.1.1 Nearest neighbors (NN) Search
 
- ![image-20210312082818569](Lecture6_CNN visualization.assets/image-20210312082818569.png)
+ ![image-20210312082818569](Lecture6_CNN%20visualization.assets/img4.png)
 
 - DB가 먼저 존재하고, 그 데이터 베이스 내에 분석을 위한 예제 데이터를 많이 준비해놓는다.
 - Query Data가 들어오면 그 Query 영상과 이웃 영상을 찾기 위해 DB를 찾는다.
@@ -84,17 +86,17 @@ Visualization은 CNN에서 Debugging tool 역할을 합니다.
 
 > High Dimensional의 Feature Space로 Image를 옮겨서 유사도를 측정한다.
 
-<img src="Lecture6_CNN visualization.assets/image-20210312100834634.png" alt="image-20210312100834634" style="zoom: 50%;" />
+<img src="Lecture6_CNN%20visualization.assets/img5.png" alt="image-20210312100834634" style="zoom: 50%;" />
 
 - Query image들을 Fully Connected Layer 이전단계까지 forward를 시키고 나온 결과물을 featrue space에 찍는다.
 
-<img src="Lecture6_CNN visualization.assets/image-20210312100906186.png" alt="image-20210312100906186" style="zoom:50%;" />
+<img src="Lecture6_CNN%20visualization.assets/img6.png" alt="image-20210312100906186" style="zoom:50%;" />
 
 - Query 뿐만 아니라 DB에 저장된 예시 Image Database에 있는 Image도 마찬가지로 작업을 진행한다.
 
 
 
-<img src="Lecture6_CNN visualization.assets/image-20210312103347834.png" alt="image-20210312103347834" style="zoom:67%;" />
+<img src="Lecture6_CNN%20visualization.assets/img7.png" alt="image-20210312103347834" style="zoom:67%;" />
 
 - Feature Vector끼리 유사도를 측정해서 Nearest Neighbors를 적용한다.
 
@@ -120,7 +122,7 @@ Visualization은 CNN에서 Debugging tool 역할을 합니다.
 
 - 따라서 차원 축소를 통해 눈으로 쉽게 확인 가능하게 만들어줍니다.
 
-![image-20210312085931660](Lecture6_CNN visualization.assets/image-20210312085931660.png)
+![image-20210312085931660](Lecture6_CNN%20visualization.assets/img8.png)
 
 
 
@@ -133,7 +135,7 @@ Visualization은 CNN에서 Debugging tool 역할을 합니다.
 
 example)
 
-![image-20210312103315164](Lecture6_CNN visualization.assets/image-20210312103315164.png)
+![image-20210312103315164](Lecture6_CNN%20visualization.assets/img9.png)
 
 - 위는 0-9까지의 class로 이루어진 MNIST들의 feature들을 2차원 상으로 추출한 것입니다.
 - 비슷한 class들끼리 분포가 잘되어있는 것을 알 수 있습니다.
@@ -155,7 +157,7 @@ Middle&High level를 해석하는 해석방법이다.
 
 
 
-<img src="Lecture6_CNN visualization.assets/image-20210312103731957.png" alt="image-20210312103731957" style="zoom:67%;" />
+<img src="Lecture6_CNN%20visualization.assets/img10.png" alt="image-20210312103731957" style="zoom:67%;" />
 
  
 
@@ -167,7 +169,7 @@ Middle&High level를 해석하는 해석방법이다.
 
 ##### 2.2.2 Maximally activating patches
 
-<img src="Lecture6_CNN visualization.assets/image-20210312104050117.png" alt="image-20210312104050117" style="zoom:67%;" />
+<img src="Lecture6_CNN%20visualization.assets/img11.png" alt="image-20210312104050117" style="zoom:67%;" />
 
 역할을 파악하고 싶은 특정 Channel을 고르고 이미지의 랜덤 부분을 입력으로 줌,  높은 activation 나온 순으로 보여줌
 
@@ -183,13 +185,13 @@ Middle&High level를 해석하는 해석방법이다.
 >
 > - 역할을 파악하고 싶은 특정 Channel을 고릅니다. (conv5의 14 채널을 골랐음)
 >
->   <img src="Lecture6_CNN visualization.assets/image-20210312104654564.png" alt="image-20210312104654564" style="zoom:50%;" />
+>   <img src="Lecture6_CNN%20visualization.assets/img12.png" alt="image-20210312104654564" style="zoom:50%;" />
 >
 > - BackBone Network에 예제데이터를 넣고 각 layer의 Activation map을 다 뽑음. 
 >   
 >   - Mid에 있는 우리가 워하는 14 채널의 정보를 가지고 오기 위해서는 Mid Channel에 있는 activation map을 추출해야 합니다.
 >
-> <img src="Lecture6_CNN visualization.assets/image-20210312104958039.png" alt="image-20210312104958039" style="zoom:50%;" />
+> <img src="Lecture6_CNN%20visualization.assets/img13.png" alt="image-20210312104958039" style="zoom:50%;" />
 >
 > 
 >
@@ -203,7 +205,7 @@ Middle&High level를 해석하는 해석방법이다.
 >
 >   - 이후는 위에서 해석했던 대로.
 >
->   <img src="Lecture6_CNN visualization.assets/image-20210312105324726.png" alt="image-20210312105324726" style="zoom:67%;" />
+>   <img src="Lecture6_CNN%20visualization.assets/img14.png" alt="image-20210312105324726" style="zoom:67%;" />
 >
 > 
 
@@ -220,7 +222,7 @@ Middle&High level를 해석하는 해석방법이다.
 - 계속해서 예제데이터를 가지고 처리해왔는데, 이번엔 data 없이 모델에 저장된 Class 자체에서 visualization하는 방법입니다.
 - 주어진 클래스에 제일 비슷하게 나오는 이미지를 학습시키는 것(모델은 고정시키고)
 
- <img src="Lecture6_CNN visualization.assets/image-20210312114036366.png" alt="image-20210312114036366" style="zoom: 80%;" />
+ <img src="Lecture6_CNN%20visualization.assets/img15.png" alt="image-20210312114036366" style="zoom: 80%;" />
 
 위 그림을 통해 Network가 상상하고 있는 이미지를 분석해보면
 
@@ -244,7 +246,9 @@ Middle&High level를 해석하는 해석방법이다.
 - *`argmax f_{dog}(I)`* : dog 관련 score가 최대가 되는 I의 값
 - *`Reg(I)`* : Regularzation(정규화) 부분
 
- <img src="Lecture6_CNN visualization.assets/image-20210312102837400.png" alt="image-20210312102837400" style="zoom:50%;" />
+ 
+
+<img src="Lecture6_CNN visualization.assets/image-20210312102837400.png" alt="image-20210312102837400" style="zoom:50%;" />
 
 
 
@@ -252,7 +256,9 @@ Middle&High level를 해석하는 해석방법이다.
 
 제곱이 붙었기 때문에 argmax를 구할 때 `I`의 크기가 0이 될수록 유리해집니다. (그러면 argmax값이 커짐)
 
- <img src="Lecture6_CNN visualization.assets/image-20210312102907275.png" alt="image-20210312102907275" style="zoom:50%;" />
+ 
+
+<img src="Lecture6_CNN visualization.assets/image-20210312102907275.png" alt="image-20210312102907275" style="zoom:50%;" />
 
 
 
@@ -266,7 +272,7 @@ Middle&High level를 해석하는 해석방법이다.
 
 (1) **빈 image** 또는 **random값으로 초기화된 image**를 넣어서 최종 prediction score을 받아옵니다.
 
-<img src="Lecture6_CNN visualization.assets/image-20210312115550555.png" alt="image-20210312115550555" style="zoom:50%;" />
+<img src="Lecture6_CNN%20visualization.assets/img16.png" alt="image-20210312115550555" style="zoom:50%;" />
 
  
 
@@ -274,25 +280,25 @@ Middle&High level를 해석하는 해석방법이다.
 
 - Tip) Loss를 측정할 때, <u>**Score값에 마이너스를 붙여서 내려가는 방향**</u>으로 만들어놓고 gradient를 계산하면 이전 neural network에서 학습했던 gradient descent 알고리즘을 그대로 사용할 수 있습니다.
 
-<img src="Lecture6_CNN visualization.assets/image-20210312115611972.png" alt="image-20210312115611972" style="zoom:50%;" />
+<img src="Lecture6_CNN%20visualization.assets/img17.png" alt="image-20210312115611972" style="zoom:50%;" />
 
  
 
 (3) image를 update해줍니다.
 
-<img src="Lecture6_CNN visualization.assets/image-20210312115643675.png" alt="image-20210312115643675" style="zoom:50%;" />
+<img src="Lecture6_CNN%20visualization.assets/img18.png" alt="image-20210312115643675" style="zoom:50%;" />
 
  
 
 (4) 이 update 과정을 가지고 (1)을 다시 반복합니다.
 
-<img src="Lecture6_CNN visualization.assets/image-20210312115657068.png" alt="image-20210312115657068" style="zoom:50%;" />
+<img src="Lecture6_CNN%20visualization.assets/img19.png" alt="image-20210312115657068" style="zoom:50%;" />
 
  
 
 (5) 이 과정을 여러번 반복하게 되면 target class에 들어있던 이미지의 형태를 구할 수 있습니다.
 
-<img src="Lecture6_CNN visualization.assets/image-20210312115844049.png" alt="image-20210312115844049" style="zoom: 67%;" />
+<img src="Lecture6_CNN%20visualization.assets/img20.png" alt="image-20210312115844049" style="zoom: 67%;" />
 
  
 
@@ -324,7 +330,7 @@ Middle&High level를 해석하는 해석방법이다.
 
 - 이렇게 Occlusion 패치를 다양한 부분에 가려본 후, 패치의 위치에 따라 변하는 지도를 그릴 수 있습니다.
 
-![image-20210312122017543](Lecture6_CNN visualization.assets/image-20210312122017543.png)
+![image-20210312122017543](Lecture6_CNN%20visualization.assets/img21.png)
 
  
 
@@ -340,7 +346,7 @@ gradient ascent를 이용하여 클래스 이미지를 생성했던 방법과 �
 
 - 다음 예시 사진에서는 흰색 부분이 물체 검출에 민감한 부분이고, Model이 흰색 부분을 보고 최종 score를 결정합니다. 
 
-<img src="Lecture6_CNN visualization.assets/image-20210312122342406.png" alt="image-20210312122342406" style="zoom: 67%;" />
+<img src="Lecture6_CNN%20visualization.assets/img22.png" alt="image-20210312122342406" style="zoom: 67%;" />
 
  
 
@@ -350,7 +356,7 @@ gradient ascent를 이용하여 클래스 이미지를 생성했던 방법과 �
 >
 > 1) 먼저, 강아지 사진(우리가 원하는 도메인)을 넣게되면 해당 Class의 score가 나오게 됩니다.
 >
-> <img src="Lecture6_CNN visualization.assets/image-20210312123621269.png" alt="image-20210312123621269" style="zoom:50%;" />
+> <img src="Lecture6_CNN%20visualization.assets/img23.png" alt="image-20210312123621269" style="zoom:50%;" />
 >
 > 
 >
@@ -362,7 +368,7 @@ gradient ascent를 이용하여 클래스 이미지를 생성했던 방법과 �
 >   - 따라서 왼쪽으로 역전파되어와서 +건 -건 상관없이 그 크기에 비례하게만큼 하얗게 변화를 주어야 한다는 말이다.
 > - 따라서 부호보다는 크기가 더 중요해서 gradient에 제곱이나 절대값을 취해줍니다
 >
-> ![img](https://blog.kakaocdn.net/dn/cMXDRR/btqZJ6uAx3l/24hH1KI0TFjBWG1iHVvNH1/img.png)
+> ![img](Lecture6_CNN%20visualization.assets/img24.png)
 >
 > 
 >
@@ -401,7 +407,7 @@ gradient ascent를 이용하여 클래스 이미지를 생성했던 방법과 �
 >
 > ※ Saliency Map vs Deconvolution
 >
-> <img src="Lecture6_CNN visualization.assets/image-20210312174650809.png" alt="image-20210312174650809" style="zoom:67%;" />
+> <img src="Lecture6_CNN%20visualization.assets/img25.png" alt="image-20210312174650809" style="zoom:67%;" />
 >
 > 
 >
@@ -409,7 +415,7 @@ gradient ascent를 이용하여 클래스 이미지를 생성했던 방법과 �
 >
 > 수식으로 보자면 다음과 같이 나타낼 수 있을 것이다.
 >
-> <img src="Lecture6_CNN visualization.assets/image-20210312174920941.png" alt="image-20210312174920941" style="zoom:50%;" />
+> <img src="Lecture6_CNN%20visualization.assets/img26.png" alt="image-20210312174920941" style="zoom:50%;" />
 >
 > 
 >
@@ -437,13 +443,13 @@ gradient ascent를 이용하여 클래스 이미지를 생성했던 방법과 �
 
 - 이 과정을 **Guided backpropagation**이라고 합니다.
 
- <img src="Lecture6_CNN visualization.assets/image-20210312175522813.png" alt="image-20210312175522813" style="zoom:80%;" />
+ <img src="Lecture6_CNN%20visualization.assets/img27.png" alt="image-20210312175522813" style="zoom:80%;" />
 
  
 
 > 다음 그림에서는 **Guided backpropagation**을 사용하면 Backpropagation이나 Deconvolution을 수행한 것보다 훨씬 직관적으로 잘 나오는 것을 보여주고 있습니다.
 
- ![image-20210312175704319](Lecture6_CNN visualization.assets/image-20210312175704319.png)
+ ![image-20210312175704319](Lecture6_CNN%20visualization.assets/img28.png)
 
 
 
@@ -459,19 +465,19 @@ gradient ascent를 이용하여 클래스 이미지를 생성했던 방법과 �
 
 CAM은 사용하게되면 어떤 부분을 참조해서 어떤 결과가 나왔는지 보기 좋은 heatmap 형태로 표현해줍니다.
 
-![image-20210312180151035](Lecture6_CNN visualization.assets/image-20210312180151035.png)
+![image-20210312180151035](Lecture6_CNN%20visualization.assets/img29.png)
 
 - CAM 아키텍쳐는 CNN의 일부를 개조해서 만들어집니다.
 - CNN의 conv파트를 최종적으로 통과하고 FC layer에 진입하기 전, 즉 CAM은 CNN에서 마지막으로 나온 Convolution Feature map을 FC layer를 바로 통과하지 않고 Global average pooling(GAP) layer를 통과하도록 바꿔주어야합니다.
 - 마지막으로는 역시 FC layer를 하나 통과하여 Classification Task을 수행하는 구조입니다.
 
-![image-20210312180550750](Lecture6_CNN visualization.assets/image-20210312180550750.png)
+![image-20210312180550750](Lecture6_CNN%20visualization.assets/img30.png)
 
  
 
 > 수식은 다음과 같습니다.
 
-<img src="Lecture6_CNN visualization.assets/image-20210312180418316.png" alt="image-20210312180418316" style="zoom: 80%;" />
+<img src="Lecture6_CNN%20visualization.assets/img31.png" alt="image-20210312180418316" style="zoom: 80%;" />
 
 *`c`* : 하나의 Class
 
@@ -501,7 +507,7 @@ CAM은 사용하게되면 어떤 부분을 참조해서 어떤 결과가 나왔�
 
 > 위의 연산들은 모두 선형 연산이므로 다음과 같이 순서를 바꾸어줄 수가 있을 겁니다.
 >
-> <img src="Lecture6_CNN visualization.assets/image-20210313054239063.png" alt="image-20210313054239063" style="zoom:67%;" />
+> <img src="Lecture6_CNN%20visualization.assets/img32.png" alt="image-20210313054239063" style="zoom:67%;" />
 >
 > - 위의 <font color="red">**빨간색 파트를 CAM이라고 부릅니다.**</font> 
 >
@@ -509,7 +515,7 @@ CAM은 사용하게되면 어떤 부분을 참조해서 어떤 결과가 나왔�
 >
 > - 이것을 영상에서 처리해 Visualization하면 하단과 같은 히트맵처럼 나오게 되는 것입니다.
 >
->   ![image-20210313054446561](Lecture6_CNN visualization.assets/image-20210313054446561.png)
+>   ![image-20210313054446561](Lecture6_CNN%20visualization.assets/img33.png)
 >
 > 
 >
@@ -524,7 +530,7 @@ CAM은 사용하게되면 어떤 부분을 참조해서 어떤 결과가 나왔�
 >   - 구했던 히트맵을 통해 간단히 object detection도 가능한 것이다.
 >     - **그것도 위치에 대한 어떤 annotation 정보도 주지 않았는데 위치를 찾아주고 있는 셈이다.**
 >
-> <img src="Lecture6_CNN visualization.assets/image-20210313055448702.png" alt="image-20210313055448702" style="zoom: 67%;" />
+> <img src="Lecture6_CNN%20visualization.assets/img34.png" alt="image-20210313055448702" style="zoom: 67%;" />
 >
 > 
 >
@@ -542,23 +548,21 @@ CAM은 사용하게되면 어떤 부분을 참조해서 어떤 결과가 나왔�
 >
 >   - 예를 들어서 AlexNet을 보면, 네트워크 구조의 마지막 부분에서  Flattening을 적용하고 FC layer에 집어넣어주는 식입니다.
 >
->     ![image-20210313062359061](Lecture6_CNN visualization.assets/image-20210313062359061.png)
+>     ![image-20210313062359061](Lecture6_CNN%20visualization.assets/img35.png)
 >
 > - 그렇다면 이 모델을 활용하여 CAM하려면, 우리는 아래와 같이 FC layer로 구조를 변경한 후에 재학습을 해야 사용이 가능하다는 것입니다.
 >
->   ![image-20210313061351318](Lecture6_CNN visualization.assets/image-20210313061351318.png)
+>  ![image-20210313061351318](Lecture6_CNN%20visualization.assets/img36.png)
 >
 >   **※ 하지만, 이렇게 모델구조를 바꾸게 되면 파라미터도 바뀌는 등 성능이 떨어져버리게 되는 결과가 초래된다.**
 >
 > 
 >
 > - 즉, 구조를 수정하지 않고 CAM을 추출하는 것이 중요하게 될 것이고 이를 위해선 AlexNet 아키텍쳐보단 GoogleNet, ResNet을 쓰면 된다.
+>- **CAM을 활용하고 싶다면, <u>GoogLeNet이나 ResNet</u>의 구조에서는 마지막에 원래부터 Global average pooling이 들어가있기 때문에 CAM을 추출하기에 유용한 구조입니다.**
+> - 즉, 구조를 수정하지 않고 CAM을 추출하는 것이 가능합니다. ​
 >
-> - **CAM을 활용하고 싶다면, <u>GoogLeNet이나 ResNet</u>의 구조에서는 마지막에 원래부터 Global average pooling이 들어가있기 때문에 CAM을 추출하기에 유용한 구조입니다.**
->
-> - 즉, 구조를 수정하지 않고 CAM을 추출하는 것이 가능합니다.
->
->   ​	 <img src="Lecture6_CNN visualization.assets/image-20210313062747675.png" alt="image-20210313062747675"  />
+> <img src="Lecture6_CNN%20visualization.assets/img37.png" alt="image-20210313062747675"  />
 
 
 
@@ -578,7 +582,7 @@ CAM은 사용하게되면 어떤 부분을 참조해서 어떤 결과가 나왔�
 
   예시)
 
-  <img src="Lecture6_CNN visualization.assets/image-20210313060042790.png" alt="image-20210313060042790" style="zoom: 80%;" />
+  <img src="Lecture6_CNN%20visualization.assets/img38.png" alt="image-20210313060042790" style="zoom: 80%;" />
 
 
 
@@ -595,49 +599,33 @@ CAM은 사용하게되면 어떤 부분을 참조해서 어떤 결과가 나왔�
 
 
 > **수식설명**
-> $$
-> y^c\ : 현재\ task에서\ 해석하고\ 싶은\ 결과\ (class에\ 대한\ score)
-> $$
 >
-> $$
-> A_{ij}^k\ :\ Conv\ Layer의\ k번째\ feature\ map\
-> $$
+> $\alpha_k^c :\ C 클래스를\ 판별하는\ 것에\ 있어서\ \\
+> k번째\ feature\ map의\ 중요성을\ 나타내주는\ 가중치이다$
 >
-> $$
-> \frac{\part{y^c}}{\part A_{ij}^k}:\ back\ progagation의\ gradients
-> $$
+> $y^c\ : 현재\ task에서\ 해석하고\ 싶은\ 결과\ (class에\ 대한\ score)$
 >
-> $$
-> Z
-> : 
-> i
-> ×
-> j
->  크기의\ 모든\ pixel\ 수\ (receptive\ field의\ 크기)
-> $$
+> $A_{ij}^k\ :\ Conv\ Layer의\ k번째\ feature\ map$
 >
-> $$
-> \frac{1}{Z} \sum_i \sum_j \frac{\part{y^c}}{\part A_{ij}^k}
-> :\ Global\ average\ pooling
-> $$
+> $\frac{\part{y^c}}{\part A_{ij}^k}:\ back\ progagation의\ gradients$
 >
-> $$
-> \alpha_k^c :\ C 클래스를\ 판별하는\ 것에\ 있어서\ \\
-> k번째\ feature\ map의\ 중요성을\ 나타내주는\ 가중치이다.
-> $$
+> $Z: i×j크기의\ 모든\ pixel\ 수\ (receptive\ field의\ 크기)$
 >
-> - <img src="Lecture6_CNN visualization.assets/image-20210313060446760.png" alt="image-20210313060446760" style="zoom: 67%;" />
+> $\frac{1}{Z} \sum_i \sum_j \frac{\part{y^c}}{\part A_{ij}^k}
+> :\ Global\ average\ pooling$
+>
+> <img src="Lecture6_CNN%20visualization.assets/img39.png" alt="image-20210313060446760" style="zoom: 67%;" />
 
 > 
 >
-> - 클래스 c에 대한 스코어 값  `y^c`가 나오면 이로부터 Loss를 구합니다.
+> - 클래스 c에 대한 스코어 값  y^c가 나오면 이로부터 Loss를 구합니다.
 > - 이것에 대한 역전파를 통해  각 채널(c)과 피쳐맵(k번째)에 대한 weight (알파 {k} {c})가 각각 구해집니다.
 >   - 알파를 구하는 과정에서 역전파를 통해 gradient를 사용하면 결과에 영향을 많이 미친 부분에 중요도를 더 높게 줄 수가 있는 것임.
 > - 새로이 구한 weight(알파)와 Activation map A^k를 선형결합하여 ReLU를 적용합니다.
 >   - 양수값만 사용하겠다는 뜻
 > - 이를 히트맵으로 표현하면 Grad-CAM이 됩니다.
 >
-> ![image-20210313200109764](Lecture6_CNN visualization.assets/image-20210313200109764.png)
+> ![image-20210313200109764](Lecture6_CNN%20visualization.assets/img40.png)
 >
 > 
 >
@@ -657,7 +645,7 @@ CAM은 사용하게되면 어떤 부분을 참조해서 어떤 결과가 나왔�
 >
 > 이와 같은 과정처럼 기존 Pretrained된 모델의 아키텍쳐를 따로 변경할 필요가 없기 때문에, 영상인식 Task에 한정될 필요 없이 거의 모든 Task에 사용되는 것을 볼 수 있습니다. (Image Classification, Image Captioning, Visual QA 등)
 >
-> <img src="Lecture6_CNN visualization.assets/image-20210313204235356.png" alt="image-20210313204235356" style="zoom:80%;" />
+> <img src="Lecture6_CNN%20visualization.assets/img41.png" alt="image-20210313204235356" style="zoom:80%;" />
 
 
 
@@ -682,7 +670,7 @@ CAM은 사용하게되면 어떤 부분을 참조해서 어떤 결과가 나왔�
 - 다음은 왜 7인지, 왜 1이 아닌지, 왜 2가 아닌지 분석해본다.
 - 어느 부분때문에 7로 판단했고, 어느 부분 때문에 1이 아니라고 판단했는지 등을 나타내주고 있다.
 
-<img src="Lecture6_CNN visualization.assets/image-20210313204300593.png" alt="image-20210313204300593" style="zoom:80%;" />
+<img src="Lecture6_CNN%20visualization.assets/img42.png" alt="image-20210313204300593" style="zoom:80%;" />
 
 
 
@@ -693,7 +681,7 @@ CAM은 사용하게되면 어떤 부분을 참조해서 어떤 결과가 나왔�
 - 만약 우리가 문(door)과 관련된 히든 노드(채널)를 찾아놨고, GAN으로 생성된 이미지에 문이 없을 경우
 - 문(door)의 위치에 해당하는 공간에다가 door를 담당하는 채널(hidden node)을 집어넣는, 그걸로 마스킹을 해주는 식으로 유저가 수정할 수 있다는 것이다.
 
-<img src="Lecture6_CNN visualization.assets/image-20210313204321107.png" alt="image-20210313204321107" style="zoom: 67%;" />
+<img src="Lecture6_CNN%20visualization.assets/img43.png" alt="image-20210313204321107" style="zoom: 67%;" />
 
 
 
@@ -712,7 +700,7 @@ CAM은 사용하게되면 어떤 부분을 참조해서 어떤 결과가 나왔�
 -  픽셀 정보는 CAM이 가지고 있는 것임.(GAP 적용되기 전 부분이 x,y 픽셀 정보를 가지고 있는 것임.)
 - 아래에서 그림을 보면서 GAP가 채널정보를 어케 들고 있는지 추가적으로 자세히 설명해보겠다.
 
-<img src="Lecture6_CNN visualization.assets/image-20210312002010388.png" alt="image-20210312002010388" style="zoom: 50%;" />
+<img src="Lecture6_CNN%20visualization.assets/img44.png" alt="image-20210312002010388" style="zoom: 50%;" />
 
 
 

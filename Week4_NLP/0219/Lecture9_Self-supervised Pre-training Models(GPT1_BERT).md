@@ -29,7 +29,7 @@
 
 ### 모델 구조와 작동 과정
 
-![image-20210315055309507](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315055309507.png)
+![image-20210315055309507](Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img1.png)
 
 - 입력 출력 시퀀스가 별도로 있지 않고, **대량의 웹 데이터**로부터 추출한 문장을 토대로 기존의 **Language Modeling Task 방식**으로 12개의 self-attention 블록이 학습되는 형식이다.
 
@@ -59,7 +59,7 @@
 
 Pre-trained 된 모델을 사용하는 것이 상대적으로 소량의 labeling된 Data로 특정 Task를 수행하기 위해 modeling 된 모델들보다 정확도가 훨씬 높다는 것을 알 수 있습니다.
 
-![image-20210315064256429](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315064256429.png)
+![image-20210315064256429](Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img2.png)
 
 
 
@@ -71,13 +71,13 @@ GPT는 방향성이 없었다는 점을 기억해야 한다. 비슷한 구조 �
 
 하지만 현재 추세에서는 LSTM 인코더가 Transformer로 대체되면서 여러 강점을 가진 BERT가 가장 많이 쓰이고 있는 것이다.
 
-![image-20210315064936702](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315064936702.png)
+![image-20210315064936702](Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img3.png)
 
 
 
 ## Masked Language Model (MLM)
 
-<img src="Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315071610781.png" alt="image-20210315071610781" style="zoom: 67%;" />
+<img src="Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img4.png" alt="image-20210315071610781" style="zoom: 67%;" />
 
 사실 언어는 앞 뒤 문맥을 다 봐야하는 것인데, 기존의 Language Model은 왼쪽(전) 또는 오른쪽(후)만의 정보를 이용해왔다. 이런 맥락에서 등장한 것이 BERT의 pre-training 방식인 **`Masked Language Model(MLM)`**이다.
 
@@ -105,7 +105,7 @@ GPT는 방향성이 없었다는 점을 기억해야 한다. 비슷한 구조 �
 
 ### Next Sentence Prediction
 
-<img src="Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315071610781.png" alt="image-20210315071610781" style="zoom: 67%;" />
+<img src="Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img5.png" alt="image-20210315071610781" style="zoom: 67%;" />
 
 
 
@@ -153,7 +153,7 @@ GPT는 방향성이 없었다는 점을 기억해야 한다. 비슷한 구조 �
 
   - 따라서 Segment Embedding을 추가함으로써 **A문장과 B문장을 나눠줍니다.**
 
-    ![image-20210315072805164](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315072805164.png)
+    ![image-20210315072805164](Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img6.png)
 
 - Pre-trained task
 
@@ -166,23 +166,23 @@ GPT는 방향성이 없었다는 점을 기억해야 한다. 비슷한 구조 �
 
 기존에 특정 Task를 처리하도록 pre-train된 모델을, 다른 task를 수행할 수 있도록 조정하여 주는 과정을 **`미세조정 과정(Fine-tuning Process)`**이라고 한다. 기존의 모델구조를 거의 바꾸지 않고 Output Layer만 바꾸면 되고 추가적인 아주 작은 조정만으로 다른 Task를 수행할 수 있기 때문에 엄청난 강점이 있다(성능 또한 굉장히 좋다)
 
-<img src="Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315072425465.png" alt="image-20210315072425465" style="zoom: 200%;" />
+<img src="Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img7.png" alt="image-20210315072425465" style="zoom: 200%;" />
 
 ​	(a) **Sentence Pair Classification Tasks :** 문장 두개를 입력받아 분류(논리적인 내포관계, 모순관계 등을 예측). [SEP]토큰이 추가되어 문장을 구분할 수 있게 해주고, [CLS] 토큰은 BERT 수행 후 Classification TASK를 수행할 때 사용되는 것을 확인할 수 있다.
 
-<img src="Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315202610544.png" alt="image-20210315202610544" style="zoom:67%;" />
+<img src="Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img8.png" alt="image-20210315202610544" style="zoom:67%;" />
 
 ​	(b) **Single Senctence Classification Tasks** : 문장 하나를 입력받아 감정 등의 분류. 분류 문제의 경우 a,b 모두 [CLS]토큰 위치에서 예측값이 출력되는 것을 확인할 수 있다.
 
-<img src="Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315202640407.png" alt="image-20210315202640407" style="zoom:67%;" />
+<img src="Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img9.png" alt="image-20210315202640407" style="zoom:67%;" />
 
 ​	(c) **Question Answering Tasks :** 주어진 질문에 답변을 하는 경우이다.
 
-<img src="Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315202715169.png" alt="image-20210315202715169" style="zoom:67%;" />
+<img src="Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img10.png" alt="image-20210315202715169" style="zoom:67%;" />
 
 ​	(d) **Single Sentence Tagging Tasks :** 주어진 문장에서 문장 성분 혹은 품사를 예측하는 문제
 
-<img src="Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315202725460.png" alt="image-20210315202725460" style="zoom:67%;" />
+<img src="Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img11.png" alt="image-20210315202725460" style="zoom:67%;" />
 
 
 
@@ -206,7 +206,7 @@ GPT는 방향성이 없었다는 점을 기억해야 한다. 비슷한 구조 �
 
 일반적으로 기존의 모델들에 비해 BERT가 성능이 전반적으로 좋았다(GLUE Benchmark 참조)
 
-![image-20210315200829619](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315200829619.png)
+![image-20210315200829619](Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img12.png)
 
 > GPT는 주어진 sequence를 encoding 할 때 바로 다음 단어를 예측해야 하는 task를 진행하기 때문에 특정한 time step에서 그 다음에 나타나는 단어로의 접근을 허용하면 안 된다. 그래서 **transformer의 decoder처럼 masked self attention**을 사용한다.
 
@@ -222,7 +222,7 @@ GPT는 방향성이 없었다는 점을 기억해야 한다. 비슷한 구조 �
 
 질의응답의 형태인데 질문만 주어지고 그 질문에 대한 답을 예측하는게 아니라 주어진 지문이 있을 떄 지문을 잘 이해하고 질문에서 필요로 하는 정보를 잘 추출할 수 있는 기계 독해에 기반한 질의응답이다.
 
-![image-20210315201432657](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315201432657.png)
+![image-20210315201432657](Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img13.png)
 
 
 
@@ -234,7 +234,7 @@ GPT는 방향성이 없었다는 점을 기억해야 한다. 비슷한 구조 �
 
 지문에서 답을 찾을 수 있는 질문만 입력으로 주어진다.
 
-![image-20210315205648441](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315205648441.png)
+![image-20210315205648441](Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img14.png)
 
 
 
@@ -252,7 +252,7 @@ GPT는 방향성이 없었다는 점을 기억해야 한다. 비슷한 구조 �
 4. 이후에는 Answering 단어가 끝나는 시점도 예측해주어야 하는데 이 word에 대한 또 다른 **fully connected layer** ***<u>FC2</u>***를 만들고 Softmax를 통과해서 높은 확률의 end 위치를 설정해줍니다.
    - 위 그림에서는 `shock`이 end위치에 해당하며 역시 이것도 Loss를 통해 학습되게 된다.
 
-![image-20210315210723588](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315210723588.png)
+![image-20210315210723588](Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img15.png)
 
 
 
@@ -269,7 +269,7 @@ SQuaAD 2.0에는, SQuaAD 1.1에다가 `지문에서 답을 찾을 수 없는 질
 - <CLS> 토큰을 이진분류하는 OutputLayer에 통과시켜 "answer"(정답이 존재), "no answer"(정답이 없음)을 구분합니다. (크로스 엔트로피로 학습합니다.)
 - 정답이 존재하지 않는다면, "no answer"라면 종료한다.
 
-<img src="Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315211428484.png" alt="image-20210315211428484" style="zoom: 80%;" />
+<img src="Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img16.png" alt="image-20210315211428484" style="zoom: 80%;" />
 
 - 그리고 만약 "answer"(정답이 존재)라면 SQuAD 1.1을 수행한 방식대로 하면 됩니다. (정답의 첫 단어와 끝 단어를 찾는 과정을 수행)
 
@@ -287,7 +287,7 @@ SQuaAD 2.0에는, SQuaAD 1.1에다가 `지문에서 답을 찾을 수 없는 질
 - 이렇게 나온 4개의 scala value를 모두 softmax에 통과시켜서 정답에 해당하는 부분의 확률이 높도록 학습시킵니다.
   - 각 pair 별로 각 <CLS> 토큰에 logit 값을 생성해주는 것입니다.
 
-![image-20210315213738884](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315213738884.png)
+![image-20210315213738884](Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img17.png)
 
 ## Ablation Study
 
@@ -298,7 +298,7 @@ SQuaAD 2.0에는, SQuaAD 1.1에다가 `지문에서 답을 찾을 수 없는 질
   - 아래 그림처럼 증가하는 경향이 점근선도 없는 형태더라.
 - 그렇기 때문에 GPU 자원을 최대로 이용할 수 있을 때까지 model 크기를 늘릴 수 있다면 늘리는 것이 좋다고 전망된다.
 
-![image-20210315221050893](Lecture9_Self-supervised Pre-training Models(GPT1_BERT).assets/image-20210315221050893.png)
+![image-20210315221050893](Lecture9_Self-supervised%20Pre-training%20Models(GPT1_BERT).assets/img18.png)
 
 
 

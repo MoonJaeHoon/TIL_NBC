@@ -6,7 +6,7 @@
 
 Camerea는 3D 장면을 2D image로 projection 시키는 물체입니다.
 
-![image-20210316023025360](Lecture10_3D understanding.assets/image-20210316023025360.png)
+![image-20210316023025360](Lecture10_3D%20understanding.assets/img1.png)
 
  
 
@@ -16,7 +16,7 @@ Camerea는 3D 장면을 2D image로 projection 시키는 물체입니다.
 
 그래서 2D image에서 3D를 구하는 방법은 Triangulation이라는 방법에 의존하게 됩니다.
 
-![image-20210316023050989](Lecture10_3D understanding.assets/image-20210316023050989.png)
+![image-20210316023050989](Lecture10_3D%20understanding.assets/img2.png)
 
 
 
@@ -26,7 +26,7 @@ Camerea는 3D 장면을 2D image로 projection 시키는 물체입니다.
 
 2D image는 각각의 pixel에 대해 RGB value를 가지고 2D array에 저장이 됩니다.
 
-![image-20210316023108129](Lecture10_3D understanding.assets/image-20210316023108129.png)
+![image-20210316023108129](Lecture10_3D%20understanding.assets/img3.png)
 
 
 
@@ -45,7 +45,9 @@ Camerea는 3D 장면을 2D image로 projection 시키는 물체입니다.
 - **Mesh (Graph CNN) :** (x,y,z) 형태로 표현된 vertex와 그 것들을 잇는 edge로 만들어진 graph 표현
 - **Implict shape :** 고차원의 Function 형태로 3D를 표현, 그리고 0과 교차하는 부분을 확인하면 3D가 나옴
 
-![image-20210316023126295](Lecture10_3D understanding.assets/image-20210316023126295.png)
+
+
+![image-20210316023126295](Lecture10_3D%20understanding.assets/img4.png)
 
 
 
@@ -55,7 +57,9 @@ Camerea는 3D 장면을 2D image로 projection 시키는 물체입니다.
 
  
 
-### ShapeNet : 55개의 category에 대해 51,300개의 object![image-20210316023155110](Lecture10_3D understanding.assets/image-20210316023155110.png)
+### ShapeNet : 55개의 category에 대해 51,300개의 object
+
+![image-20210316023155110](Lecture10_3D%20understanding.assets/img5.png)
 
  
 
@@ -65,7 +69,7 @@ Fine-grained dataset (하나의 object들의 detail(손잡이 등)에 대해 ann
 
 26,671개의 3D model 중 573,585개의 part instances들을 가지고 있습니다.
 
-![image-20210316023217364](Lecture10_3D understanding.assets/image-20210316023217364.png)
+![image-20210316023217364](Lecture10_3D%20understanding.assets/img6.png)
 
 
 
@@ -79,7 +83,7 @@ Fine-grained dataset (하나의 object들의 detail(손잡이 등)에 대해 ann
 
 indoor image를 3D 모델을 통해서 시뮬레이션 데이터로 가지고 있습니다.
 
-![image-20210316023232291](Lecture10_3D understanding.assets/image-20210316023232291.png)
+![image-20210316023232291](Lecture10_3D%20understanding.assets/img7.png)
 
 
 
@@ -89,7 +93,7 @@ RGB-Depth pair의 dataset이며 250만개를 가지고 있습니다.
 
 실제 scan본 1500개를 가지고 있습니다.
 
-![image-20210316023249671](Lecture10_3D understanding.assets/image-20210316023249671.png)
+![image-20210316023249671](Lecture10_3D%20understanding.assets/img8.png)
 
  
 
@@ -97,7 +101,7 @@ RGB-Depth pair의 dataset이며 250만개를 가지고 있습니다.
 
 대부분의 outdoor 3D dataset은 자율주행 자동차에 사용하는 dataset입니다.
 
-![image-20210316023308261](Lecture10_3D understanding.assets/image-20210316023308261.png)
+![image-20210316023308261](Lecture10_3D%20understanding.assets/img9.png)
 
  
 
@@ -111,7 +115,7 @@ RGB-Depth pair의 dataset이며 250만개를 가지고 있습니다.
 
 2D CNN을 사용해서 label 정보를 얻는 것처럼 3D도 3D 전용 CNN을 사용해서 label 정보를 얻습니다.
 
-![image-20210316023329907](Lecture10_3D understanding.assets/image-20210316023329907.png)
+![image-20210316023329907](Lecture10_3D%20understanding.assets/img10.png)
 
  
 
@@ -121,7 +125,7 @@ RGB-Depth pair의 dataset이며 250만개를 가지고 있습니다.
 
 대부분 자율주행에서 object들을 detection할 때 사용됩니다.
 
-![image-20210316023345159](Lecture10_3D understanding.assets/image-20210316023345159.png)
+![image-20210316023345159](Lecture10_3D%20understanding.assets/img11.png)
 
  
 
@@ -131,7 +135,7 @@ RGB-Depth pair의 dataset이며 250만개를 가지고 있습니다.
 
 물체의 구조를 나눌 때 많이 사용됩니다.
 
-![image-20210316023359830](Lecture10_3D understanding.assets/image-20210316023359830.png)
+![image-20210316023359830](Lecture10_3D%20understanding.assets/img12.png)
 
  
 
@@ -143,7 +147,7 @@ RGB-Depth pair의 dataset이며 250만개를 가지고 있습니다.
 
 2D image를 input으로 받아서 3D mesh 형태로 output이 나옵니다. 
 
-![image-20210316023413584](Lecture10_3D understanding.assets/image-20210316023413584.png)
+![image-20210316023413584](Lecture10_3D%20understanding.assets/img13.png)
 
  
 
@@ -151,7 +155,7 @@ Mask R-CNN의 head를 mesh 형태로 변환함으로써 구현할 수 있습니�
 
 따라서 Mask R-CNN 구조에서 **3D branch head를 추가**해줍니다.
 
-![image-20210316023451557](Lecture10_3D understanding.assets/image-20210316023451557.png)
+![image-20210316023451557](Lecture10_3D%20understanding.assets/img14.png)
 
  
 
@@ -163,4 +167,4 @@ Mask R-CNN의 head를 mesh 형태로 변환함으로써 구현할 수 있습니�
 
 Sub-problem들은 물리적으로 의미있는 disentanglement(분리)를 하는 형태로 구성되게 됩니다.
 
-![image-20210316023509294](Lecture10_3D understanding.assets/image-20210316023509294.png)
+![image-20210316023509294](Lecture10_3D%20understanding.assets/img15.png)
