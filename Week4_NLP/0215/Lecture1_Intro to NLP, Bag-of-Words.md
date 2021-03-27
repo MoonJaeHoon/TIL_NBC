@@ -1,4 +1,4 @@
-## 1️⃣ **NLP 종류**
+## 1. **NLP 종류**
 
  
 
@@ -38,28 +38,18 @@ NLP는 컴퓨터가 주어진 단어나 문장, 긴 문단을 이해하는 **Nau
 
   
 
-  - **NER :** **단일 단어 혹은 여러 단어로 이루어진 고유명사를 인식하는 task
-
-    **
-
+  - **NER :** **단일 단어 혹은 여러 단어로 이루어진 고유명사를 인식하는 task**
   - **POS :** **Word들이 문장 내에서의 품사(부사, 형용사, 명사)나 성분이 무엇인지 알아내는 task**
-
-  - **Noun-phrase chunking
-
-    **
-
+  - **Noun-phrase chunking**
   - **Dependency parsing
     **
-
-  - **Coreference resolution
-
-    **
+  - **Coreference resolution**
 
 - Sentence level
 
-  - **Sentimentation analysis : 가진 문장이 긍정 또는 부정인지 예측하는 task
+  - **Sentimentation analysis : 가진 문장이 긍정 또는 부정인지 예측하는 task**
 
-    **ex) I like movie - 긍정, I hate movie - 부정, This movie is not bad - 부정 아님
+    ex) I like movie - 긍정, I hate movie - 부정, This movie is not bad - 부정 아님
 
     
 
@@ -71,9 +61,11 @@ NLP는 컴퓨터가 주어진 단어나 문장, 긴 문단을 이해하는 **Nau
 
 - Multi-sentence and paragraph level
 
-  - **Entailment prediction : 두 문장 간의 논리적인 내포 혹은 모순 관계를 예측
+  - **Entailment prediction : 두 문장 간의 논리적인 내포 혹은 모순 관계를 예측**
 
-    **"어제 John이 결혼을 했다" , "어제 최소한 한 명은 결혼을 했다"
+    ex)
+
+    "어제 John이 결혼을 했다" , "어제 최소한 한 명은 결혼을 했다"
     두 문장 간에는 첫 문장이 참인 경우에 두 번째 문장은 자동으로 참입니다.
 
     하지만 "어제 한 명도 결혼하지 않았다"는
@@ -81,15 +73,15 @@ NLP는 컴퓨터가 주어진 단어나 문장, 긴 문단을 이해하는 **Nau
 
     
 
-  - **Question answering
+  - **Question answering**
 
-    **ex) Google에서 예전에 문장이 들어간 정보만 찾아주었다면, 질문의 의도를 정확히 파악하고 검색 결과를 정확히 나타내 주는 것
+    ex) Google에서 예전에 문장이 들어간 정보만 찾아주었다면, 질문의 의도를 정확히 파악하고 검색 결과를 정확히 나타내 주는 것
 
     
 
-  - **Dialog systems
+  - **Dialog systems**
 
-    **ex) 챗봇과 같이 대화를 수행
+    ex) 챗봇과 같이 대화를 수행
 
   - **Summarization**
 
@@ -103,11 +95,11 @@ NLP는 컴퓨터가 주어진 단어나 문장, 긴 문단을 이해하는 **Nau
 
  
 
--  **빅데이터 분석과 연관
+-  **빅데이터 분석과 연관**
 
-  **텍스트 및 문서 데이터에서 유용한 정보를 추출합니다.
-  **
-  **
+  **텍스트 및 문서 데이터에서 유용한 정보를 추출합니다.**
+
+  
 
 - **Document clustering (Topic modeling, 문서 군집화)**
 
@@ -115,9 +107,9 @@ NLP는 컴퓨터가 주어진 단어나 문장, 긴 문단을 이해하는 **Nau
 
   
 
-- **Social science와 연관
+- **Social science와 연관**
 
-  **SNS, Media data 등에서 사람들의 성향을 파악할 수 있습니다.
+  SNS, Media data 등에서 사람들의 성향을 파악할 수 있습니다.
 
  
 
@@ -127,9 +119,9 @@ NLP는 컴퓨터가 주어진 단어나 문장, 긴 문단을 이해하는 **Nau
 
  
 
-- **구글이나 네이버에서 사용되는 검색 기술을 주로 연구하는 분야
+- **구글이나 네이버에서 사용되는 검색 기술을 주로 연구하는 분야**
 
-  **
+  
 
 - **추천 시스템으로 진화**
 
@@ -139,7 +131,7 @@ NLP는 컴퓨터가 주어진 단어나 문장, 긴 문단을 이해하는 **Nau
 
  
 
-## 2️⃣ **Bag-of-Words**
+## 2. **Bag-of-Words**
 
  
 
@@ -155,7 +147,7 @@ Bag-of-Words는 Text mining 분야에서 딥러닝이 적용되기 이전에 많
 
 
 
-![img](https://blog.kakaocdn.net/dn/ufM4s/btqXu3Z3IdX/bWoJLxrsikvGg0ZDZkyRUK/img.png)
+![img](Lecture1_Intro%20to%20NLP,%20Bag-of-Words.assets/img1.png)
 
 
 
@@ -166,7 +158,7 @@ Bag-of-Words는 Text mining 분야에서 딥러닝이 적용되기 이전에 많
 
 
 
-![img](https://blog.kakaocdn.net/dn/bkhvdN/btqXrDgjgrM/vMKpkv1CKfJTVtYSOUqqRk/img.png)
+![img](Lecture1_Intro%20to%20NLP,%20Bag-of-Words.assets/img2.png)
 
 
 
@@ -176,7 +168,7 @@ Bag-of-Words는 Text mining 분야에서 딥러닝이 적용되기 이전에 많
 
 
 
-![img](https://blog.kakaocdn.net/dn/px0Zv/btqXgpwqUM7/McIi0j17VfptGxFhKk4nyk/img.png)
+![img](Lecture1_Intro%20to%20NLP,%20Bag-of-Words.assets/img3.png)
 
 
 
@@ -213,45 +205,41 @@ P(c|d)P(c|d)가 가장 높은 값을 가졌을 때 그때의 cc를 택하는 방
 
 
 
-![img](https://blog.kakaocdn.net/dn/cAgQKU/btqXrCV1qXy/KZnJHn84EaW5mCeOl1kknK/img.png)https://www.edwith.org/bcaitech1
-
-
+![img](Lecture1_Intro%20to%20NLP,%20Bag-of-Words.assets/img4.png)
 
  
 
-P(d)P(d)는 특정 확률분포를 나타내며, 상수로 나타낼 수 있기 때문에 무시할 수 있습니다.
+$P(d)$는 특정 확률분포를 나타내며, 상수로 나타낼 수 있기 때문에 무시할 수 있습니다.
 
  
 
-P(d|c)P(c)P(d|c)P(c)를 아래 식과 같이 표현할 수 있습니다.
+$P(d|c)P(c)$를 아래 식과 같이 표현할 수 있습니다.
 
-이때, P(d|c)P(d|c)를 단어들의 Sequence P(w1,w2,....,wn|c)P(w1,w2,....,wn|c)로 표현할 수 있으며, 
+이때, $P(d|c)$를 단어들의 Sequence $P(w1,w2,....,wn|c)$로 표현할 수 있으며, 
 
-**cc가 고정되어 있고 w1,w2,....,wnw1,w2,....,wn이 모두 독립이라고 가정했을 때, 곱의 형태로 표현**할 수 있습니다.
-
- 
-
-
-
-![img](https://blog.kakaocdn.net/dn/bpIP5Z/btqXrDUWEQw/okiwZDYF4vuWJBKssGTkW1/img.png)
-
-
-
- 
-
-예를 들어, 아래와 같은 document와 class가 존재할 때, "Classification task uses transformer"라는 문장의 class cc를 구하는 문제입니다.
+**$c$가 고정되어 있고 $w1,w2,....,wn$이 모두 독립이라고 가정했을 때, 곱의 형태로 표현**할 수 있습니다.
 
  
 
 
 
-![img](https://blog.kakaocdn.net/dn/bW6o69/btqXj8urTEJ/cSo6geCKIx1a7qg89CkmO0/img.png)https://www.edwith.org/bcaitech1
+![img](Lecture1_Intro%20to%20NLP,%20Bag-of-Words.assets/img5.png)
 
 
 
  
 
-Class의 확률분포 P(ccv),P(cNLP)P(ccv),P(cNLP)는 다음과 같습니다.
+예를 들어, 아래와 같은 document와 class가 존재할 때, "Classification task uses transformer"라는 문장의 class c를 구하는 문제입니다.
+
+ 
+
+
+
+![img](Lecture1_Intro%20to%20NLP,%20Bag-of-Words.assets/img6.png)
+
+ 
+
+Class의 확률분포 $P(c_{cv}),P(c_{NLP})$는 다음과 같습니다.
 
 (각각의 class는 2개, 2개로 등장을 할 수 있기 때문에 1/2, 1/2)
 
@@ -259,7 +247,7 @@ Class의 확률분포 P(ccv),P(cNLP)P(ccv),P(cNLP)는 다음과 같습니다.
 
 
 
-![img](https://blog.kakaocdn.net/dn/bElnFq/btqXb1bAVDu/fKLTFEAYXKtuJ7ZmvAvCs1/img.png)
+![img](Lecture1_Intro%20to%20NLP,%20Bag-of-Words.assets/img7.png)
 
 
 
@@ -275,19 +263,15 @@ CV Class에서는 task는 한 번만 등장했기 때문에 1/14로 추정할 �
 
 
 
-![img](https://blog.kakaocdn.net/dn/IL6MZ/btqXu4YYWut/dW7guIMRfLk8TyQUs4mk7K/img.png)https://www.edwith.org/bcaitech1
-
-
+![img](Lecture1_Intro%20to%20NLP,%20Bag-of-Words.assets/img8.png)
 
  
 
-각 word가 독립적이라고 가정했을 때, document d5d5 " “Classification task uses transformer"는 어떤 Class에 속하는지 추론할 수 있습니다.
+각 word가 독립적이라고 가정했을 때, document d5 " “Classification task uses transformer"는 어떤 Class에 속하는지 추론할 수 있습니다.
 
  
 
-
-
-![img](https://blog.kakaocdn.net/dn/1Z9wJ/btqXrDm34h1/UIvUoB8Qkq8rsWu8Jqc9j0/img.png)https://www.edwith.org/bcaitech1
+![img](Lecture1_Intro%20to%20NLP,%20Bag-of-Words.assets/img9.png)
 
 
 
@@ -295,9 +279,7 @@ CV Class에서는 task는 한 번만 등장했기 때문에 1/14로 추정할 �
 
  
 
- 
-
-## 3️⃣ **Word Embedding**
+## 3. **Word Embedding**
 
  
 
@@ -315,9 +297,7 @@ ex) cat, kitty는 short distance / cat, hamburger는 far distance
 
 
 
-![img](https://blog.kakaocdn.net/dn/xT1HM/btqXb1bA6IK/5N6aXswsN8ZSE96mnZtnF1/img.png)Distributed Representations of Words and Phrases and their Compositionality, NeurIPS’13
-
-
+![img](Lecture1_Intro%20to%20NLP,%20Bag-of-Words.assets/img10.png)
 
  
 
@@ -341,9 +321,7 @@ cat은 "The", "purrs" / "This", "hunts", "mice"와 높은 관련성을 가진다
 
 
 
-![img](https://blog.kakaocdn.net/dn/7Mjda/btqXobYGOBE/20Jm1dWyTtLrELGBUhxIN0/img.png)Distributed Representations of Words and Phrases and their Compositionality, NeurIPS’13
-
-
+![img](Lecture1_Intro%20to%20NLP,%20Bag-of-Words.assets/img11.png)
 
  
 
@@ -353,35 +331,37 @@ Word2Vec 알고리즘은 다음과 같은 순서로 동작합니다.
 
  
 
-- **STEP 1 : Sentence tokenization 수행
+- **STEP 1 : Sentence tokenization 수행**
 
-  **ex) Sentence : "I study math."
-
-  
-
-- **STEP 2 : Unique 한 단어들만 모아서 vocabulary 생성
-
-  **ex) Vocabulary : {"I", "study", "math"}
+  ex) Sentence : "I study math."
 
   
 
-- **STEP 3 : One-hot vector로 변경
+- **STEP 2 : Unique 한 단어들만 모아서 vocabulary 생성**
 
-  **ex) "study" [0,1,0]
-
-  
-
-- **STEP 4 : Sliding window를 사용해서 한 word를 중심으로 앞 뒤로 나타난 각각의 word와 입출력 단어 쌍을 구성
-
-  **ex) I => (I, study)**
-  **study => (study, I), (study, math)
-  math => (math, study)
+  ex) Vocabulary : {"I", "study", "math"}
 
   
 
-- **STEP 5 : 입출력 단어 쌍들에 대해 예측 task를 수행하는 neural network 생성
+- **STEP 3 : One-hot vector로 변경**
 
-  **입력은 one-hot vector로 들어가게 됩니다.
+  ex) "study" [0,1,0]
+
+  
+
+- **STEP 4 : Sliding window를 사용해서 한 word를 중심으로 앞 뒤로 나타난 각각의 word와 입출력 단어 쌍을 구성**
+
+  ex) 
+
+  - I => (I, study)
+  - study => (study, I), (study, math)
+  - math => (math, study)
+
+  
+
+- **STEP 5 : 입출력 단어 쌍들에 대해 예측 task를 수행하는 neural network 생성**
+
+  입력은 one-hot vector로 들어가게 됩니다.
   hidden layer의 개수는 hyper parameter(사용자가 정함)
   만약, Input vector가 [0,1,0]이면 => hidden layer는 2개 => ouptut layer는 3개 형태로 나올 수 있습니다.
 
@@ -389,9 +369,7 @@ Word2Vec 알고리즘은 다음과 같은 순서로 동작합니다.
 
 
 
-![img](https://blog.kakaocdn.net/dn/by1CWL/btqXj8Bc8jH/J0o2dpEIF7aCwkyPgzZ9z0/img.png)Distributed Representations of Words and Phrases and their Compositionality, NeurIPS’13
-
-
+![img](Lecture1_Intro%20to%20NLP,%20Bag-of-Words.assets/img12.png)
 
  
 
@@ -413,7 +391,7 @@ Word2Vec은 유사한 word끼리 유사한 방향을 보입니다.
 
 
 
-![img](https://blog.kakaocdn.net/dn/XzNnE/btqXj8BddP2/RmiZoosGfaSMbDqL0RHHd0/img.png)
+![img](Lecture1_Intro%20to%20NLP,%20Bag-of-Words.assets/img13.png)
 
 
 
@@ -429,19 +407,17 @@ Glove의 특징은 입출력 단어 쌍들에 대해서 **학습 데이터의 �
 
 따라서 Glove는 새로운 Loss function을 사용합니다.
 
-입력 word의 embedding된 **vector uiui**와 출력 word의 embedding **vector vjvj**의 **내적** 값과,
+입력 word의 embedding된 **vector ui**와 출력 word의 embedding **vector vj**의 **내적** 값과,
 
-**한 윈도우 내에서 동시에 몇 번 나타났는가**를 나타내는 **PijPij**에 loglog값을 취해서,
+**한 윈도우 내에서 동시에 몇 번 나타났는가**를 나타내는 **Pij**에 loglog값을 취해서,
 
-**uivjuivj와 logPijlogPij의 값이 최대한 가까워질 수 있도록 loss function 사용**합니다.
+**uivj와 logPij의 값이 최대한 가까워질 수 있도록 loss function 사용**합니다.
 
  
 
 
 
-![img](https://blog.kakaocdn.net/dn/UfWUB/btqXj8usCcl/7MdWsYN1meykLK6Qqkpuf0/img.png)GloVe: Global Vectors for Word Representation, EMNLP’14
-
-
+![img](Lecture1_Intro%20to%20NLP,%20Bag-of-Words.assets/img14.png)
 
  
 
@@ -449,4 +425,4 @@ Glove 모델을 통해 vector들의 방향을 따져봤을 때 **비슷한 관�
 
 
 
-![img](https://blog.kakaocdn.net/dn/clhIEs/btqXj8gQCCW/6Eur8o9iEl7NR63kXJrzI0/img.png)
+![img](Lecture1_Intro%20to%20NLP,%20Bag-of-Words.assets/img15.png)
