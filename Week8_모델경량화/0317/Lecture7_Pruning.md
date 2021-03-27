@@ -10,9 +10,7 @@ Weighted sum은 **가중해서 sum을 한다**는 의미입니다.
 
  
 
-S=N∑iwixiS=∑iNwixi
-
- 
+$S=N∑_{i}w_ix_i$
 
  
 

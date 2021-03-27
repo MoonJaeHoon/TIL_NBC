@@ -170,9 +170,9 @@ Tensorflow나 PyTorch Graph를 실행하기 위해서는 여러 Compiler를 거�
 
  
 
-- **Parallelization
+- Parallelization
 
-  **병렬처리가 안 되는 loop를 병렬처리가 되도록 변환하는 방법입니다.
+  병렬처리가 안 되는 loop를 병렬처리가 되도록 변환하는 방법입니다.
 
  
 
