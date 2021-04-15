@@ -10,4 +10,5 @@ train과 valid를 나눌 때에는  학습:검증=8:2로 분리하였고, 각 �
 
 - focal loss
 - Data Augmentation
-- 
+
+  
