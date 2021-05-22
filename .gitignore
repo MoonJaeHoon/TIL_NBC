@@ -11,6 +11,8 @@
 */__pycache__/*
 run.bat
 
+*.tsv
+
 Adv_IMC_test.csv
 Adv_IMC_train.csv
 
