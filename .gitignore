@@ -10,8 +10,9 @@
 */.vscode/settings.json
 */__pycache__/*
 run.bat
-
+*.zip
 *.tsv
+*.docx
 
 Adv_IMC_test.csv
 Adv_IMC_train.csv
