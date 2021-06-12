@@ -1,0 +1,19 @@
+# 이하경 조교님
+
+
+
+![image-20210611202243235](CV_Tip.assets/image-20210611202243235.png)
+
+![image-20210611202252756](CV_Tip.assets/image-20210611202252756.png)
+
+
+
+
+
+![image-20210611202419898](CV_Tip.assets/image-20210611202419898.png)
+
+![image-20210611202608764](CV_Tip.assets/image-20210611202608764.png)
+
+![image-20210611203030716](CV_Tip.assets/image-20210611203030716.png)
+
+![image-20210611203146770](CV_Tip.assets/image-20210611203146770.png)
